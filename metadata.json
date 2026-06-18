@@ -1,0 +1,6 @@
+{
+  "name": "SmartPrints Hub",
+  "description": "SmartPrints Hub is a world-class professional printing, branding, digital services, and cyber portal in Westlands, Nairobi, Kenya. Fast, high-quality, and modern branding solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
