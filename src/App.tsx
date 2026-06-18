@@ -876,8 +876,9 @@ export default function App() {
           <div>
             <span className="text-[10px] font-bold text-white uppercase tracking-wider block mb-3 font-mono">Opening hours</span>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Monday – Saturday: 7:30 AM to 7:30 PM<br />
-              Sunday & Public holidays: Closed<br />
+              Monday – Friday: 6:30 AM to 9:30 PM<br />
+              Saturday: 7:00 AM to 9:00 PM<br />
+              Sunday :8:00AM to 8:00 PM<br />
               Fulfillment: Shop A11, Westlands Market
             </p>
           </div>
