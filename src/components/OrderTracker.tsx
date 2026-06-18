@@ -68,7 +68,7 @@ export default function OrderTracker() {
               Track Your Print Status
             </h2>
             <p className="text-slate-500 dark:text-slate-400 text-xs mt-2">
-              Stay in close loop with your graphics layout and print queue. Enter your unique tracking ID from Nairobi sales receipt.
+              Stay in close loop with your graphics layout and print queue. Enter your unique tracking ID from Westlands sales receipt.
             </p>
           </div>
 
@@ -102,7 +102,7 @@ export default function OrderTracker() {
 
           {/* Preset templates options quick-tab */}
           <div className="bg-slate-50 dark:bg-slate-850 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800">
-            <span className="text-[10px] text-slate-400 font-mono block uppercase mb-2">Preset Trial Jobs in Nairobi:</span>
+            <span className="text-[10px] text-slate-400 font-mono block uppercase mb-2">Preset Trial Jobs in Westlands:</span>
             <div className="grid grid-cols-3 gap-1.5">
               {["SPH-NBI-001", "SPH-NBI-002", "SPH-NBI-003"].map((id) => (
                 <button
@@ -226,7 +226,7 @@ export default function OrderTracker() {
                   </p>
                   <div className="mt-3 flex gap-2">
                     <a
-                      href="https://maps.google.com/?q=Westlands+Market+Nairobi"
+                      href="https://maps.google.com/?q=Westlands+Market+Westlands"
                       target="_blank"
                       rel="noreferrer"
                       className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors"

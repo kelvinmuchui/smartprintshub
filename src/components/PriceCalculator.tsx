@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calculator, Sparkles, HelpCircle, CheckCircle2, ChevronRight, ShoppingCart } from "lucide-react";
+import { Calculator, Sparkles, HelpCircle, CheckCircle2, ChevronRight, Phone } from "lucide-react";
 import { CartItem } from "../types";
 
 interface PriceCalculatorProps {
@@ -83,15 +83,15 @@ export default function PriceCalculator({ onAddToCart, setTab }: PriceCalculator
     <div id="price-calculator" className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl transition-all h-full flex flex-col justify-between relative overflow-hidden">
       
       {/* Background visual glosses */}
-      <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-green-500/10 to-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-blue-600/10 to-blue-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div>
         <div className="flex items-center justify-between mb-4">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold font-sans uppercase">
             <Calculator className="w-3.5 h-3.5" />
-            <span>Nairobi Print Estimator</span>
+            <span>Westlands Print Estimator</span>
           </div>
-          <span className="text-[10px] text-green-500 font-mono font-bold uppercase tracking-wider bg-green-500/10 px-2 py-0.5 rounded-full animate-pulse">
+          <span className="text-[10px] text-blue-500 font-mono font-bold uppercase tracking-wider bg-blue-500/10 px-2 py-0.5 rounded-full animate-pulse">
             Live Rates
           </span>
         </div>
@@ -100,7 +100,7 @@ export default function PriceCalculator({ onAddToCart, setTab }: PriceCalculator
           Instant Print Calculator
         </h3>
         <p className="text-slate-500 dark:text-slate-400 text-xs mb-6">
-          Toggle parameters instantly to obtain standard Nairobi industry baseline prices.
+          Toggle parameters instantly to obtain standard Westlands industry baseline prices.
         </p>
 
         <div className="space-y-4">
@@ -217,7 +217,7 @@ export default function PriceCalculator({ onAddToCart, setTab }: PriceCalculator
 
             <div className="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
               <span>Min: {product === "rollup-banner" || product === "canvas" ? "1" : "50"}</span>
-              {quantity >= 500 && <span className="text-green-500 font-bold font-sans">12% Bulk Discount Applied!</span>}
+              {quantity >= 500 && <span className="text-blue-500 font-bold font-sans">12% Bulk Discount Applied!</span>}
               <span>Max: {product === "rollup-banner" || product === "canvas" ? "20" : "5000"}</span>
             </div>
           </div>
@@ -234,7 +234,7 @@ export default function PriceCalculator({ onAddToCart, setTab }: PriceCalculator
             </span>
           </div>
           <div className="text-right">
-            <span className="text-[9px] block text-green-500 font-bold uppercase tracking-wider bg-green-500/10 px-2 py-0.5 rounded">
+            <span className="text-[9px] block text-blue-500 font-bold uppercase tracking-wider bg-blue-500/10 px-2 py-0.5 rounded">
               Ready in 24 hrs
             </span>
             <span className="text-[10px] text-slate-400 font-mono block mt-1">
@@ -244,34 +244,23 @@ export default function PriceCalculator({ onAddToCart, setTab }: PriceCalculator
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          <button
-            onClick={handleAddEstimateToCart}
-            disabled={isAdded}
-            className={`w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${
-              isAdded
-                ? "bg-green-600 text-white"
-                : "bg-[#0A1B3D] hover:bg-slate-800 text-white shadow-lg shadow-slate-900/10"
-            }`}
+          <a
+            href={`https://wa.me/254743603068?text=Hello%20SmartPrints%20Hub,%20I'd%20love%20to%20order%20the%20${product}%20with%20quantity%20${quantity}.%20Total%20estimate%20is%20KES%20${currentPrice}.`}
+            target="_blank"
+            rel="noreferrer"
+            className="w-full py-3.5 bg-slate-950 hover:bg-black text-white border border-slate-800 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md"
           >
-            {isAdded ? (
-              <>
-                <CheckCircle2 className="w-4.5 h-4.5" />
-                <span>Added to Cart!</span>
-              </>
-            ) : (
-              <>
-                <ShoppingCart className="w-4 h-4" />
-                <span>Add to Cart</span>
-              </>
-            )}
-          </button>
+            <Phone className="w-4 h-4 text-blue-400" />
+            <span>WhatsApp Order</span>
+          </a>
 
           <button
             onClick={() => {
               setTab("upload");
-              window.scrollTo(0, 0);
+              const el = document.getElementById("upload");
+              if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
-            className="w-full py-3.5 bg-gradient-to-r from-blue-700 to-[#28A745] hover:opacity-90 text-white rounded-xl font-sans text-xs font-black uppercase tracking-wider shadow-md flex items-center justify-center gap-1.5"
+            className="w-full py-3.5 bg-gradient-to-r from-blue-700 to-blue-900 hover:opacity-95 text-white rounded-xl font-sans text-xs font-black uppercase tracking-wider shadow-md flex items-center justify-center gap-1.5"
           >
             <span>Proceed to Print</span>
             <ChevronRight className="w-4 h-4" />

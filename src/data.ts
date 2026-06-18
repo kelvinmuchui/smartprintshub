@@ -56,7 +56,7 @@ export const SERVICES_LIST: PrintService[] = [
     id: "receipt-invoice",
     title: "Branded Receipt & Invoice Books",
     category: "printing",
-    description: "Self-carbonated duplicates and triplicates with sequential numbering, tailored for local Nairobi businesses.",
+    description: "Self-carbonated duplicates and triplicates with sequential numbering, tailored for local Westlands businesses.",
     iconName: "FileSpreadsheet",
     startingPrice: "KES 1,500 / Book",
     popularFinishing: "NCR Carbonless duplicate/triplicate",
@@ -170,7 +170,7 @@ export const PORTFOLIO_LIST: PortfolioItem[] = [
     title: "Teardrop Alum Roll Up Banners",
     category: "branding",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
-    description: "Vivid visual layout graphics printed on block-out satin polyester sheets for a prominent technology expo in Nairobi.",
+    description: "Vivid visual layout graphics printed on block-out satin polyester sheets for a prominent technology expo in Westlands.",
   },
   {
     id: "proj-4",
@@ -226,7 +226,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     title: "Premium A5 Promotional Flyers",
     category: "Flyers",
     price: 3500,
-    description: "Pack of 250 thick glossy A5 flyers perfect for retail product hand-outs and Nairobi expos.",
+    description: "Pack of 250 thick glossy A5 flyers perfect for retail product hand-outs and Westlands expos.",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
     unit: "pack (250pcs)",
     finishingOptions: ["150gsm Gloss Paper", "250gsm Semi-Matte Paper"]
@@ -270,15 +270,15 @@ export const SMARTPRINTS_FAQS = [
     a: "We offer Same-Day express printing for standard orders submitted before 11:30 AM! Standard corporate cards normally take 24 hours. For larger custom branding like vehicle wraps, timeline is subject to scope."
   },
   {
-    q: "Where is SmartPrints Hub located in Nairobi?",
-    a: "We are proudly located in Westlands Market, Shop A11, Westlands, Nairobi, Kenya. Our physical shop is fully equipped with design workstations and digital presses, allowing walk-ins anytime!"
+    q: "Where is SmartPrints Hub located in Westlands?",
+    a: "We are proudly located in Westlands Market, Shop A11, Westlands, Kenya. Our physical shop is fully equipped with design workstations and digital presses, allowing walk-ins anytime!"
   },
   {
     q: "Can I submit customized layouts, or do you design from scratch?",
     a: "Both! You can drag and drop your final PDF, AI, PSD, or PNG files on our portal. If you need inspiration, try our AI Design Assistant powered by Gemini or sit with our on-site expert designers at Shop A11."
   },
   {
-    q: "Do you offer country-wide delivery outside Nairobi?",
+    q: "Do you offer country-wide delivery outside Westlands?",
     a: "Yes! We print and dispatch secure country-wide parcel deliveries through trusted county courier operators (Wells Fargo, G4S, and regional shut-offs) directly to your doorstep."
   },
   {

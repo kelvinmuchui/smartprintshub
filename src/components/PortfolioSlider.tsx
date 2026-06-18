@@ -99,7 +99,7 @@ export default function PortfolioSlider({
             style={{ width: containerRef.current?.getBoundingClientRect().width }}
             referrerPolicy="no-referrer"
           />
-          <div className="absolute bottom-3 right-3 bg-green-600/90 text-white font-mono text-[9px] uppercase px-2 py-0.5 rounded backdrop-blur whitespace-nowrap">
+          <div className="absolute bottom-3 right-3 bg-blue-600/90 text-white font-mono text-[9px] uppercase px-2 py-0.5 rounded backdrop-blur whitespace-nowrap">
             After: High-Luster Print
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function PortfolioSlider({
           className="absolute inset-y-0 w-1 bg-white cursor-ew-resize"
           style={{ left: `${sliderPosition}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white text-[#003B9C] shadow-lg flex items-center justify-center border-2 border-green-500 hover:scale-110 transition-transform">
+          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white text-[#003B9C] shadow-lg flex items-center justify-center border-2 border-blue-500 hover:scale-110 transition-transform">
             <ArrowLeftRight className="w-4 h-4 pointer-events-none" />
           </div>
         </div>

@@ -28,13 +28,13 @@ export default function CartDrawer({
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const vatRate = 0.16;
   const vat = Math.round(subtotal * vatRate);
-  const deliveryFee = deliveryType === "delivery" ? 450 : 0; // standard Nairobi Westlands parcel fee
+  const deliveryFee = deliveryType === "delivery" ? 450 : 0; // standard Westlands parcel fee
   const grandTotal = subtotal + vat + deliveryFee;
 
   const handleCheckout = (e: React.FormEvent) => {
     e.preventDefault();
     if (deliveryType === "delivery" && !deliveryAddress.trim()) {
-      alert("Please enter a delivery address inside Nairobi.");
+      alert("Please enter a delivery address inside Westlands.");
       return;
     }
 
@@ -193,14 +193,14 @@ export default function CartDrawer({
                       : "bg-white dark:bg-slate-900 border-slate-250 dark:border-slate-800 text-slate-600"
                   }`}
                 >
-                  Nairobi Delivery
+                  Westlands Delivery
                 </button>
               </div>
 
               {deliveryType === "delivery" && (
                 <div>
                   <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">
-                    Fulfillment Delivery Address inside Nairobi
+                    Fulfillment Delivery Address inside Westlands
                   </label>
                   <textarea
                     rows={2}

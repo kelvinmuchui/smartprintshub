@@ -124,18 +124,15 @@ export default function App() {
       />
 
       {/* Main Container Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <AnimatePresence mode="wait">
-          
-          {/* TAB 1: HOME PAGE BENTO GRID */}
-          {tab === "home" && (
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              className="space-y-8"
-              id="home-view"
-            >
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-24 md:space-y-36">
+        
+        {/* SECTION 1: HOME PAGE BENTO GRID */}
+        <section id="home" className="scroll-mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-8"
+          >
               
               {/* Primary Bento Layout - Large Screen Grid */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-auto">
@@ -143,36 +140,42 @@ export default function App() {
                 {/* 1. HERO CARD (Col Span 7) */}
                 <div className="lg:col-span-8 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-100 dark:border-slate-800 shadow-xl relative overflow-hidden flex flex-col justify-between">
                   {/* Glowing background floating blurs */}
-                  <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-600/10 to-green-500/10 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-yellow-500/5 to-transparent rounded-full blur-2xl pointer-events-none" />
+                  <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-600/10 to-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-slate-500/5 to-transparent rounded-full blur-2xl pointer-events-none" />
 
                   <div className="relative z-10 space-y-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold font-sans uppercase tracking-wider border border-blue-500/20">
-                      <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                      <span>Nairobi's Premium Print & Custom Branding Experts</span>
+                      <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                      <span>Westlands' Premium Print & Custom Branding Experts</span>
                     </div>
 
                     <h1 className="text-3xl sm:text-5xl lg:text-5xl font-display font-black text-slate-900 dark:text-white leading-[1.1] tracking-tight">
-                      Professional Printing Solutions That Bring Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-[#003B9C] to-green-500 dark:from-blue-400 dark:to-green-400">Ideas to Life</span>
+                      Professional Printing Solutions That Bring Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-[#003B9C] to-blue-500 dark:from-blue-400 dark:to-blue-450">Ideas to Life</span>
                     </h1>
 
                     <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl">
-                      Fast, affordable and high-quality digital printing in Westlands, Nairobi. From corporate business cards & durable roll-up banners to eCitizen & iTax cyber operations.
+                      Fast, affordable and high-quality digital printing in Westlands. From corporate business cards & durable roll-up banners to eCitizen & iTax cyber operations.
                     </p>
                   </div>
 
                   {/* CTAs */}
                   <div className="flex flex-wrap gap-3 mt-8 relative z-10">
                     <button
-                      onClick={() => setTab("services")}
+                      onClick={() => {
+                        setTab("services");
+                        document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }}
                       className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#003B9C] to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white font-sans text-xs font-black uppercase tracking-widest shadow-lg shadow-blue-500/20 flex items-center gap-2 transition-transform hover:scale-[1.02]"
                     >
                       <span>Explore Services</span>
                       <ChevronRight className="w-4 h-4" />
                     </button>
                     <button
-                      onClick={() => setTab("upload")}
-                      className="px-6 py-3.5 rounded-xl bg-white dark:bg-slate-850 border border-slate-205 dark:border-slate-800 text-[#0A1B3D] dark:text-white font-sans text-xs font-black uppercase tracking-widest hover:border-green-500 transition-colors"
+                      onClick={() => {
+                        setTab("upload");
+                        document.getElementById("upload")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }}
+                      className="px-6 py-3.5 rounded-xl bg-white dark:bg-slate-850 border border-slate-205 dark:border-slate-800 text-[#0A1B3D] dark:text-white font-sans text-xs font-black uppercase tracking-widest hover:border-blue-500 transition-colors"
                     >
                       Request Quotation
                     </button>
@@ -180,9 +183,9 @@ export default function App() {
                       href="https://wa.me/254743603068"
                       target="_blank"
                       rel="noreferrer"
-                      className="px-6 py-3.5 rounded-xl bg-[#28A745] hover:bg-green-600 text-white font-sans text-xs font-black uppercase tracking-widest flex items-center gap-1.5 transition-transform hover:scale-[1.02]"
+                      className="px-6 py-3.5 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 text-white font-sans text-xs font-black uppercase tracking-widest flex items-center gap-1.5 transition-transform hover:scale-[1.02]"
                     >
-                      <Phone className="w-4 h-4" />
+                      <Phone className="w-4 h-4 text-blue-450" />
                       <span>WhatsApp Chat</span>
                     </a>
                   </div>
@@ -195,9 +198,9 @@ export default function App() {
                   
                   <div className="space-y-4">
                     <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-4 shadow-inner">
-                      <Printer className="w-6 h-6 text-green-400" />
+                      <Printer className="w-6 h-6 text-blue-400" />
                     </div>
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-[#FFD400] font-black block">
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-blue-400 font-black block">
                       Express Pre-Press Ingress
                     </span>
                     <h3 className="text-xl sm:text-2xl font-display font-black uppercase tracking-tight">
@@ -209,7 +212,11 @@ export default function App() {
                   </div>
 
                   <button
-                    onClick={() => { setTab("upload"); window.scrollTo(0, 0); }}
+                    onClick={() => { 
+                      setTab("upload"); 
+                      const el = document.getElementById("upload");
+                      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }}
                     className="w-full mt-6 py-3.5 bg-[#FFD400] hover:bg-yellow-450 text-[#0A1B3D] rounded-xl font-sans font-black text-xs uppercase tracking-widest shadow transition-transform hover:scale-[1.02]"
                   >
                     Submit PDF / Artwork
@@ -224,27 +231,27 @@ export default function App() {
                   </div>
                   <div className="h-8 w-px bg-slate-200 dark:bg-slate-800" />
                   <div className="flex flex-col">
-                    <span className="text-3xl font-display font-black text-[#28A745]">99.8%</span>
+                    <span className="text-3xl font-display font-black text-blue-600 dark:text-blue-400">99.8%</span>
                     <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Client Smiles</span>
                   </div>
                   <div className="h-8 w-px bg-slate-200 dark:bg-slate-800" />
                   <div className="flex -space-x-2.5">
                     <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-300 flex items-center justify-center text-[10px] font-bold text-slate-800">KW</div>
                     <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-800">DO</div>
-                    <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-green-500 flex items-center justify-center text-[9px] font-black text-white">+3k</div>
+                    <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-blue-600 flex items-center justify-center text-[9px] font-black text-white">+3k</div>
                   </div>
                 </div>
 
                 {/* 4. SAME-DAY DISPATCH BANNER BOX */}
                 <div className="lg:col-span-4 bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-lg flex flex-col justify-between">
                   <div className="flex items-center gap-2 mb-2">
-                    <Clock className="w-4.5 h-4.5 text-[#FFD400]" />
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-[#FFD400] font-bold">
+                    <Clock className="w-4.5 h-4.5 text-blue-400" />
+                    <span className="text-[10px] uppercase font-mono tracking-widest text-blue-400 font-bold">
                       Express Delivery Dispatch
                     </span>
                   </div>
                   <h4 className="text-base font-bold text-white uppercase tracking-tight">
-                    Same-Day Printing Nairobi
+                    Same-Day Printing Westlands
                   </h4>
                   <p className="text-slate-400 text-xs mt-1">
                     Standard business cards, pamphlets & glossy brochures ordered before 11:30 AM are dispatched by G4S / Wells Fargo same evening!
@@ -256,7 +263,7 @@ export default function App() {
                   <div className="absolute right-0 bottom-0 w-32 h-32 bg-white/5 rounded-full blur-xl" />
                   <div>
                     <span className="text-[9px] uppercase font-mono tracking-widest text-white/80 font-bold block mb-1">
-                      Our Nairobi Address
+                      Our Westlands Address
                     </span>
                     <h4 className="text-lg font-display font-black uppercase tracking-tight">
                       Westlands Shop A11
@@ -266,7 +273,11 @@ export default function App() {
                     </p>
                   </div>
                   <button 
-                    onClick={() => { setTab("contact"); window.scrollTo(0, 0); }}
+                    onClick={() => { 
+                      setTab("contact"); 
+                      const el = document.getElementById("contact");
+                      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }}
                     className="w-full mt-4 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl font-mono text-[10px] uppercase tracking-wider"
                   >
                     View Directions & Maps
@@ -281,7 +292,7 @@ export default function App() {
                 {/* Visual before/after canvas identity comparison slider */}
                 <PortfolioSlider 
                   title="Dynamic Hotel Menu Card Redesign"
-                  description="Slide to witness the difference between unformatted layout draft instructions and our final luxury Spot-UV printed menus delivered to Aura Café Nairobi:"
+                  description="Slide to witness the difference between unformatted layout draft instructions and our final luxury Spot-UV printed menus delivered to Aura Café Westlands:"
                   beforeImage="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
                   afterImage="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80"
                 />
@@ -295,7 +306,7 @@ export default function App() {
               <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
                 <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
                   <div>
-                    <span className="text-[10px] text-green-500 font-mono font-bold tracking-widest block uppercase mb-1">
+                    <span className="text-[10px] text-blue-500 font-mono font-bold tracking-widest block uppercase mb-1">
                       SmartPrints Catalog Specialties
                     </span>
                     <h3 className="text-2xl font-display font-black text-slate-900 dark:text-white uppercase tracking-tight">
@@ -303,7 +314,11 @@ export default function App() {
                     </h3>
                   </div>
                   <button
-                    onClick={() => { setTab("services"); window.scrollTo(0, 0); }}
+                    onClick={() => { 
+                      setTab("services"); 
+                      const el = document.getElementById("services");
+                      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }}
                     className="flex items-center gap-1.5 text-xs text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider hover:underline"
                   >
                     <span>View all 50+ services</span>
@@ -374,7 +389,7 @@ export default function App() {
                   <div>
                     <span className="text-[10px] text-slate-400 font-mono block uppercase">Corporate Account Partners</span>
                     <h4 className="text-base font-bold text-slate-850 dark:text-white mt-1 mb-3">
-                      Trusted by Brands across Nairobi
+                      Trusted by Brands across Westlands
                     </h4>
                     <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                       We offer dedicated digital invoices, corporate credit ledger accounts, and custom template archiving. Call Shop A11 to open a direct partner ledger.
@@ -389,7 +404,7 @@ export default function App() {
                       Kilimani Tech
                     </span>
                     <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-850 border border-slate-150 rounded text-slate-500 font-bold block">
-                      Nairobi Realty
+                      Westlands Realty
                     </span>
                   </div>
                 </div>
@@ -397,16 +412,16 @@ export default function App() {
               </div>
 
             </motion.div>
-          )}
+          </section>
 
-          {/* TAB 2: SERVICES DIRECTORY */}
-          {tab === "services" && (
+          {/* SECTION 2: SERVICES DIRECTORY */}
+          <section id="services" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
               className="space-y-8"
-              id="services-view"
             >
               <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
                 <span className="text-[10px] text-blue-600 dark:text-blue-400 font-mono font-bold uppercase tracking-widest block">
@@ -497,7 +512,7 @@ export default function App() {
                     
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] uppercase font-mono tracking-widest text-[#28A745] font-black bg-green-500/10 px-2.5 py-0.5 rounded-full">
+                        <span className="text-[10px] uppercase font-mono tracking-widest text-blue-600 dark:text-blue-400 font-black bg-blue-500/10 px-2.5 py-0.5 rounded-full">
                           {service.startingPrice}
                         </span>
                         
@@ -540,7 +555,7 @@ export default function App() {
                         href={`https://wa.me/254743603068?text=Hello%20SmartPrints%20Hub,%20I'd%20love%20a%20precise%20quote%20for%20the%20${service.title}%20service.`}
                         target="_blank"
                         rel="noreferrer"
-                        className="p-2.5 bg-green-500 hover:bg-green-600 text-white rounded-xl flex items-center justify-center transition-colors"
+                        className="p-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition-colors"
                         title="WhatsApp Quote request"
                       >
                         <Phone className="w-5 h-5" />
@@ -551,16 +566,16 @@ export default function App() {
               </div>
 
             </motion.div>
-          )}
+          </section>
 
-          {/* TAB 3: PORTFOLIO GALLERY */}
-          {tab === "portfolio" && (
+          {/* SECTION 3: PORTFOLIO GALLERY */}
+          <section id="portfolio" className="scroll-mt-24 bg-slate-50/30 dark:bg-slate-900/10 p-6 md:p-10 rounded-3xl border border-slate-100 dark:border-slate-800">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
               className="space-y-8"
-              id="portfolio-view"
             >
               <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
                 <span className="text-[10px] text-blue-600 dark:text-blue-400 font-mono font-bold uppercase tracking-widest block">
@@ -640,137 +655,31 @@ export default function App() {
               </div>
 
             </motion.div>
-          )}
+          </section>
 
-          {/* TAB 4: SHOP PRINT ONLINE */}
-          {tab === "shop" && (
+
+
+          {/* SECTION 5: AI DESIGNER SCREEN */}
+          <section id="ai-assistant" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              className="space-y-8"
-              id="shop-view"
-            >
-              <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
-                <span className="text-[10px] text-blue-600 dark:text-blue-400 font-mono font-bold uppercase tracking-widest block">
-                  Secure Online Print Store
-                </span>
-                <h2 className="text-3xl sm:text-4xl font-display font-black text-slate-900 dark:text-white uppercase tracking-tight">
-                  Pre-configured Stationery & Banners
-                </h2>
-                <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
-                  Add pre-configured bundles directly into your print bag and trigger automated Safaricom M-Pesa STK prompts during checkout.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {SHOP_PRODUCTS.map((prod) => {
-                  const size = selectedProductSizes[prod.id] || "Standard";
-                  const paper = selectedProductPaper[prod.id] || prod.finishingOptions[0];
-
-                  return (
-                    <div 
-                      key={prod.id}
-                      className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-150 dark:border-slate-800 shadow-sm flex flex-col justify-between group"
-                    >
-                      <div className="h-48 relative overflow-hidden">
-                        <img 
-                          src={prod.image} 
-                          alt={prod.title} 
-                          className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
-                          referrerPolicy="no-referrer"
-                        />
-                        <span className="absolute bottom-3 right-3 bg-blue-600 text-white font-mono text-xs font-bold px-2.5 py-1 rounded-lg">
-                          KES {prod.price.toLocaleString()}
-                        </span>
-                      </div>
-
-                      <div className="p-5 space-y-4">
-                        <div>
-                          <span className="text-[9px] uppercase font-mono tracking-widest text-[#28A745] font-black block mb-0.5">
-                            {prod.category}
-                          </span>
-                          <h4 className="font-display font-bold text-base text-slate-900 dark:text-white">
-                            {prod.title}
-                          </h4>
-                          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-                            {prod.description}
-                          </p>
-                        </div>
-
-                        {/* Custom configuration boxes */}
-                        <div className="space-y-2 border-t border-slate-100 dark:border-slate-800/85 pt-3">
-                          <div>
-                            <label className="block text-[10px] text-slate-400 font-bold uppercase mb-1">Paper Material Stock</label>
-                            <select
-                              value={paper}
-                              onChange={(e) => setSelectedProductPaper({ ...selectedProductPaper, [prod.id]: e.target.value })}
-                              className="w-full text-[10px] p-2 bg-slate-50 dark:bg-slate-850 dark:border-slate-700 rounded border outline-none"
-                            >
-                              {prod.finishingOptions.map((opt) => (
-                                <option key={opt} value={opt}>{opt}</option>
-                              ))}
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="p-5 pt-0">
-                        <button
-                          onClick={() => handleAddToCart({
-                            id: prod.id,
-                            title: prod.title,
-                            price: prod.price,
-                            quantity: 1,
-                            customOptions: {
-                              size: size,
-                              paperType: paper
-                            }
-                          })}
-                          className="w-full py-3 bg-[#0A1B3D] hover:bg-slate-800 text-white font-sans text-xs font-black uppercase tracking-widest rounded-xl transition-transform hover:scale-[1.01]"
-                        >
-                          Add to Print Bag
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-            </motion.div>
-          )}
-
-          {/* TAB 5: AI DESIGNER SCREEN */}
-          {tab === "ai-assistant" && (
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              id="ai-assistant-view"
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
             >
               <AiDesigner />
             </motion.div>
-          )}
+          </section>
 
-          {/* TAB 6: JOB TRACKER */}
-          {tab === "order-tracker" && (
+
+
+          {/* SECTION 7: SUBMIT QUOTATION / FILE UPLOAD */}
+          <section id="upload" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              id="order-tracker-view"
-            >
-              <OrderTracker />
-            </motion.div>
-          )}
-
-          {/* TAB 7: SUBMIT QUOTATION / FILE UPLOAD */}
-          {tab === "upload" && (
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              id="upload-view"
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
             >
               <ArtworkUploader 
                 onSuccess={(orderMeta) => {
@@ -779,16 +688,16 @@ export default function App() {
                 setTab={setTab}
               />
             </motion.div>
-          )}
+          </section>
 
-          {/* TAB 8: CONTACT US */}
-          {tab === "contact" && (
+          {/* SECTION 8: CONTACT US */}
+          <section id="contact" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
               className="space-y-8"
-              id="contact-view"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
@@ -917,9 +826,7 @@ export default function App() {
 
               </div>
             </motion.div>
-          )}
-
-        </AnimatePresence>
+          </section>
       </main>
 
       {/* FOOTER SECTION */}
@@ -928,7 +835,7 @@ export default function App() {
           
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-700 to-green-500 flex items-center justify-center text-white font-black text-sm relative overflow-hidden">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-700 to-blue-500 flex items-center justify-center text-white font-black text-sm relative overflow-hidden">
                 <img 
                   src="/logo.png" 
                   alt="SmartPrints logo" 
@@ -943,27 +850,26 @@ export default function App() {
               <span className="font-display font-bold text-sm text-white tracking-tight">SMARTPRINTS HUB</span>
             </div>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Luxury digital offset printing, heavy outdoor vinyl banner fabrication, KRA electronic filings & cyber assistance inside Westlands Market Nairobi.
+              Luxury digital offset printing, heavy outdoor vinyl banner fabrication, KRA electronic filings & cyber assistance inside Westlands Market.
             </p>
           </div>
 
           <div>
             <span className="text-[10px] font-bold text-white uppercase tracking-wider block mb-3 font-mono">Specialities</span>
             <ul className="space-y-1 text-xs">
-              <li><button onClick={() => { setTab("services"); window.scrollTo(0,0); }} className="hover:text-white">Business Cards</button></li>
-              <li><button onClick={() => { setTab("services"); window.scrollTo(0,0); }} className="hover:text-white">Rollup Banners</button></li>
-              <li><button onClick={() => { setTab("services"); window.scrollTo(0,0); }} className="hover:text-white">Waterproof Stickers</button></li>
-              <li><button onClick={() => { setTab("services"); window.scrollTo(0,0); }} className="hover:text-white">Fine Canvas Photo Print</button></li>
+              <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Business Cards</button></li>
+              <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Rollup Banners</button></li>
+              <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Waterproof Stickers</button></li>
+              <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Fine Canvas Photo Print</button></li>
             </ul>
           </div>
 
           <div>
             <span className="text-[10px] font-bold text-white uppercase tracking-wider block mb-3 font-mono">Useful links</span>
             <ul className="space-y-1 text-xs">
-              <li><button onClick={() => { setTab("services"); window.scrollTo(0,0); }} className="hover:text-white">Our Printing Services</button></li>
-              <li><button onClick={() => { setTab("order-tracker"); window.scrollTo(0,0); }} className="hover:text-white">Live Job Tracking</button></li>
-              <li><button onClick={() => { setTab("upload"); window.scrollTo(0,0); }} className="hover:text-white">Submit quote file</button></li>
-              <li><button onClick={() => { setTab("contact"); window.scrollTo(0,0); }} className="hover:text-white">Location Map</button></li>
+              <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Our Printing Services</button></li>
+              <li><button onClick={() => { setTab("upload"); document.getElementById("upload")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Submit quote file</button></li>
+              <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Location Map</button></li>
             </ul>
           </div>
 
@@ -979,9 +885,9 @@ export default function App() {
         </div>
 
         <div className="max-w-7xl mx-auto border-t border-slate-900 pt-6 flex flex-wrap justify-between items-center text-[10px] uppercase font-bold tracking-wider font-mono gap-4">
-          <div>© 2026 SmartPrints Hub Ltd — Nairobi Kenya. All dimensions calibrated.</div>
+          <div>© 2026 SmartPrints Hub Ltd — Westlands, Kenya. All dimensions calibrated.</div>
           <div className="flex gap-4">
-            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Online support Active</span>
+            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Online support Active</span>
             <span className="text-slate-500">M-Pesa till / Credit line ledger</span>
           </div>
         </div>
@@ -998,15 +904,18 @@ export default function App() {
         <a 
           href="https://wa.me/254743603068?text=Hello%20SmartPrints%20Hub,%20I%20need%20a%20print%20quote."
           target="_blank"
-          style={{ backgroundColor: "#28A745" }}
+          style={{ backgroundColor: "#003B9C" }}
           rel="noreferrer"
           className="flex-1 py-3 text-white rounded-xl text-xs font-black uppercase tracking-wider text-center shadow-lg"
         >
           WhatsApp Chat
         </a>
         <button 
-          onClick={() => { setTab("upload"); window.scrollTo(0, 0); }}
-          className="flex-1 py-3 bg-[#0A1B3D] text-[#FFD400] rounded-xl text-[10px] font-black uppercase tracking-widest text-center shadow-lg"
+          onClick={() => { 
+            setTab("upload"); 
+            document.getElementById("upload")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }}
+          className="flex-1 py-3 bg-[#0A1B3D] text-white border border-slate-800 rounded-xl text-[10px] font-black uppercase tracking-widest text-center shadow-lg"
         >
           Request Quote
         </button>

@@ -94,7 +94,7 @@ export default function ArtworkUploader({ onSuccess, setTab }: ArtworkUploaderPr
         setSuccessCode(data.trackingId);
         onSuccess(data.order);
       } else {
-        throw new Error(data.message || "Failed to submit quotation details to Nairobi service");
+        throw new Error(data.message || "Failed to submit quotation details to Westlands service");
       }
     } catch (err: any) {
       setError(err?.message || "An unexpected error occurred during file recording. Retry.");
@@ -107,11 +107,11 @@ export default function ArtworkUploader({ onSuccess, setTab }: ArtworkUploaderPr
     <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl p-6 lg:p-10 relative overflow-hidden">
       
       {/* Visual neon circles */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-green-500/5 to-blue-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-600/5 to-blue-500/5 rounded-full blur-3xl" />
 
       {successCode ? (
         <div className="text-center py-10 max-w-md mx-auto space-y-6">
-          <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center mx-auto shadow-lg">
+          <div className="w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900/10 text-blue-600 dark:text-blue-400 flex items-center justify-center mx-auto shadow-lg">
             <CheckCircle2 className="w-10 h-10 animate-bounce" />
           </div>
           <div>
@@ -148,21 +148,21 @@ export default function ArtworkUploader({ onSuccess, setTab }: ArtworkUploaderPr
             </button>
             <button
               onClick={() => {
-                setTab("order-tracker");
-                window.scrollTo(0, 0);
+                setTab("home");
+                document.getElementById("home")?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
               className="w-full py-3 bg-[#0A1B3D] hover:bg-slate-850 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors"
             >
-              Trace Job History
+              Back to Home
             </button>
           </div>
         </div>
       ) : (
         <div>
           <div className="mb-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-bold font-sans uppercase mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold font-sans uppercase mb-3">
               <Upload className="w-3.5 h-3.5" />
-              <span>Nairobi Graphic & file Ingress</span>
+              <span>Westlands Graphic & file Ingress</span>
             </div>
             <h2 className="text-3xl font-display font-black tracking-tight text-slate-900 dark:text-white mb-2">
               Submit Artworks & Request Quotations
@@ -192,9 +192,9 @@ export default function ArtworkUploader({ onSuccess, setTab }: ArtworkUploaderPr
                 onDragLeave={handleDrag}
                 onDrop={handleDrop}
                 onClick={onButtonClick}
-                className={`border-2 border-dashed rounded-3xl p-8 text-center flex flex-col items-center justify-center min-h-[220px] cursor-pointer transition-all ${
+                 className={`border-2 border-dashed rounded-3xl p-8 text-center flex flex-col items-center justify-center min-h-[220px] cursor-pointer transition-all ${
                   dragActive
-                    ? "border-green-500 bg-green-500/5"
+                    ? "border-blue-500 bg-blue-500/5"
                     : file
                     ? "border-blue-500 bg-blue-500/5"
                     : "border-slate-250 dark:border-slate-800 hover:border-blue-500 hover:bg-slate-50/50 dark:hover:bg-slate-850"
@@ -209,7 +209,7 @@ export default function ArtworkUploader({ onSuccess, setTab }: ArtworkUploaderPr
                 />
 
                 <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 mb-4 shadow-sm">
-                  {file ? <FileText className="w-8 h-8 text-blue-500 animate-pulse" /> : <Upload className="w-8 h-8 text-green-500" />}
+                  {file ? <FileText className="w-8 h-8 text-blue-500 animate-pulse" /> : <Upload className="w-8 h-8 text-blue-500" />}
                 </div>
 
                 {file ? (
@@ -220,7 +220,7 @@ export default function ArtworkUploader({ onSuccess, setTab }: ArtworkUploaderPr
                     <p className="text-xs text-slate-400 font-mono">
                       {(file.size / (1024 * 1024)).toFixed(2)} MB • Ready
                     </p>
-                    <span className="text-[10px] uppercase font-bold text-green-500 bg-green-500/10 px-2 py-0.5 rounded-full inline-block mt-2">
+                    <span className="text-[10px] uppercase font-bold text-blue-600 bg-blue-500/10 px-2 py-0.5 rounded-full inline-block mt-2">
                       File Attached Successfully
                     </span>
                   </div>
@@ -363,7 +363,7 @@ export default function ArtworkUploader({ onSuccess, setTab }: ArtworkUploaderPr
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 bg-gradient-to-r from-blue-700 to-[#28A745] hover:opacity-95 text-white font-sans font-black text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-4 bg-gradient-to-r from-blue-700 to-blue-500 hover:opacity-95 text-white font-sans font-black text-xs uppercase tracking-wider rounded-xl shadow-lg transition-transform hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {loading ? (
                     <>

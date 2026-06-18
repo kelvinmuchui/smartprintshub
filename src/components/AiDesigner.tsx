@@ -7,7 +7,7 @@ export default function AiDesigner() {
   const [industry, setIndustry] = useState("Restaurant / Catering");
   const [keywords, setKeywords] = useState("Fresh, Organic, Premium, High Contrast");
   const [alignmentStyle, setAlignmentStyle] = useState("Modern & Bold");
-  const [specialRequests, setSpecialRequests] = useState("Please suggest a layout for Westlands Nairobi business launch.");
+  const [specialRequests, setSpecialRequests] = useState("Please suggest a layout for Westlands business launch.");
   
   const [loading, setLoading] = useState(false);
   const [suggestion, setSuggestion] = useState<AIDesignSuggestion | null>(null);
@@ -38,7 +38,7 @@ export default function AiDesigner() {
         throw new Error(data.message || "Failed to process artificial layout parameters");
       }
     } catch (err: any) {
-      setError(err?.message || "An error occurred with Nairobi Gemini servers.");
+      setError(err?.message || "An error occurred with Westlands Gemini servers.");
     } finally {
       setLoading(false);
     }
@@ -49,11 +49,11 @@ export default function AiDesigner() {
       
       {/* Decorative gradients */}
       <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-blue-700/5 to-purple-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-green-500/5 to-yellow-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tr from-blue-500/5 to-slate-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header descriptor */}
       <div className="mb-8">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 to-green-500/10 text-slate-800 dark:text-slate-200 text-xs font-bold font-sans uppercase mb-3 border border-slate-200 dark:border-slate-800">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-blue-500/10 to-blue-700/10 text-slate-800 dark:text-slate-200 text-xs font-bold font-sans uppercase mb-3 border border-slate-200 dark:border-slate-800">
           <Sparkles className="w-4 h-4 text-[#003B9C]" />
           <span>Gemini AI Design Assistant Studio</span>
         </div>
@@ -130,7 +130,7 @@ export default function AiDesigner() {
             </div>
             
             <div>
-              <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">Nairobi Standard</label>
+              <label className="block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase mb-1">Westlands Standard</label>
               <span className="block text-xs text-center p-2.5 bg-blue-50 dark:bg-blue-950/20 text-blue-600 font-bold border border-blue-100 rounded-lg">
                 Shop A11 Pre-Checked
               </span>
@@ -211,11 +211,10 @@ export default function AiDesigner() {
                     ))}
                   </div>
                 </div>
-
                 {/* Typography combinations */}
                 <div className="bg-[#F8F9FA] dark:bg-slate-850 p-4 rounded-xl border border-slate-200/50 dark:border-slate-800">
                   <span className="text-[10px] text-slate-400 font-mono block uppercase mb-2 flex items-center gap-1">
-                    <Type className="w-3.5 h-3.5 text-green-500" /> Typography Pairings
+                    <Type className="w-3.5 h-3.5 text-blue-500" /> Typography Pairings
                   </span>
                   <div className="space-y-2">
                     <div>
@@ -260,15 +259,15 @@ export default function AiDesigner() {
               </div>
 
               {/* Safety suggestions list */}
-              <div className="p-4 bg-yellow-50 dark:bg-yellow-950/10 border border-yellow-200/50 dark:border-yellow-900/30 rounded-xl">
-                <span className="text-[10px] text-yellow-700 dark:text-yellow-400 font-bold tracking-wider uppercase block mb-2 flex items-center gap-1">
+              <div className="p-4 bg-blue-50 dark:bg-blue-950/10 border border-blue-200/50 dark:border-blue-900/30 rounded-xl">
+                <span className="text-[10px] text-blue-700 dark:text-blue-400 font-bold tracking-wider uppercase block mb-2 flex items-center gap-1">
                   <Lightbulb className="w-3.5 h-3.5" /> High-End Printing Margin Guidelines
                 </span>
                 <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
                   {suggestion.suggestions.map((sug, idx) => (
                     <li key={idx} className="flex gap-2">
-                      <span className="text-[#28A745] font-bold">✓</span>
-                      <span>{sug}</span>
+                       <span className="text-blue-500 font-bold">✓</span>
+                       <span>{sug}</span>
                     </li>
                   ))}
                 </ul>
@@ -279,7 +278,7 @@ export default function AiDesigner() {
             <div className="flex flex-col items-center justify-center p-12 border border-dashed border-slate-200 dark:border-slate-800 rounded-3xl h-full min-h-[300px] text-center bg-slate-50/50 dark:bg-slate-900/40">
               <div className="w-16 h-16 rounded-2xl gradient-bg text-white flex items-center justify-center shadow-lg shadow-blue-500/10 mb-5 relative">
                 <Sparkles className="w-8 h-8 animate-pulse" />
-                <div className="w-3 h-3 bg-green-400 rounded-full border-2 border-white absolute -top-1 -right-1 animate-ping" />
+                <div className="w-3 h-3 bg-blue-400 rounded-full border-2 border-white absolute -top-1 -right-1 animate-ping" />
               </div>
               <h4 className="text-lg font-display font-black text-slate-850 dark:text-white mb-2">
                 Awaiting Specifications Input

@@ -127,7 +127,7 @@ app.post("/api/quotations", (req, res) => {
     return res.status(400).json({ success: false, message: "Required fields missing (Name, Phone, Product, Quantity)" });
   }
 
-  // Generate unique Nairobi print code
+  // Generate unique Westlands print code
   const codeIndex = Object.keys(mockOrders).length + 1;
   const uniqueCode = `SPH-NBI-${String(codeIndex).padStart(3, "0")}`;
 
@@ -195,7 +195,7 @@ app.post("/api/ai-designer", async (req, res) => {
       ],
       suggestions: [
         `Ensure a safety print bleed margin of at least 3mm on all outer edges for laser-cutting at Westlands Shop A11.`,
-        `Since your style preference is ${alignmentStyle || "Elegant & Modern"}, use matte-lamination finishing with spot UV varnish to match current top Nairobi standards.`,
+        `Since your style preference is ${alignmentStyle || "Elegant & Modern"}, use matte-lamination finishing with spot UV varnish to match current top Westlands standards.`,
         `Incorporate the keywords "${keywords || "Quality, Speed"}" in large display typefaces at the top margin.`
       ]
     });
@@ -203,7 +203,7 @@ app.post("/api/ai-designer", async (req, res) => {
 
   try {
     // Call Gemini 3.5 Flash server-side using modern gemini SDK config response schema
-    const prompt = `You are a world-class graphic designer and print pre-press layout assistant for "SmartPrints Hub", a luxury printing company in Nairobi, Kenya.
+    const prompt = `You are a world-class graphic designer and print pre-press layout assistant for "SmartPrints Hub", a luxury printing company in Westlands, Kenya.
     The client wants you to suggest a stunning design, color scheme, typography, and visual layout configuration for a physical print product.
     
     CLIENT SPECIFICATIONS:
@@ -213,7 +213,7 @@ app.post("/api/ai-designer", async (req, res) => {
     - Style Preference: "${alignmentStyle || "Minimalist & Clean"}"
     - Additional Client Requests: "${specialRequests || "None"}"
     
-    Provide a beautiful design specification suggestion returned strictly as a JSON object, outlining the layout structure, specific hex code color palettes that look spectacular with Nairobi's premium corporate standards, typography pairs available in Google Fonts, and core professional printing suggestions like bleed size, paper weight recommendations (e.g. 350gsm matte or glossy paper), and post-press finishing adjustments.`;
+    Provide a beautiful design specification suggestion returned strictly as a JSON object, outlining the layout structure, specific hex code color palettes that look spectacular with Westlands' premium corporate standards, typography pairs available in Google Fonts, and core professional printing suggestions like bleed size, paper weight recommendations (e.g. 350gsm matte or glossy paper), and post-press finishing adjustments.`;
 
     const response = await aiInstance.models.generateContent({
       model: "gemini-3.5-flash",
