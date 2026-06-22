@@ -12,12 +12,12 @@ export default function AboutUs() {
         <div className="md:col-span-5 relative flex items-center justify-center p-4">
           {/* Dot matrix grid decoration in the background of the image */}
           <div className="absolute -top-2 -right-2 w-24 h-24 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent bg-[size:10px_10px] pointer-events-none" />
-          
+
           {/* Main Background Image Card */}
           <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-slate-200/60 dark:border-slate-800 relative z-0">
-            <img 
-              src={stationeryImg} 
-              alt="Professional stationery branding and print preparation workspace flatlay" 
+            <img
+              src={stationeryImg}
+              alt="Professional stationery branding and print preparation workspace flatlay"
               className="w-full h-full object-cover select-none"
               referrerPolicy="no-referrer"
             />
@@ -25,9 +25,9 @@ export default function AboutUs() {
 
           {/* Overlapping Foreground Image Card (Bottom Right Offset) */}
           <div className="absolute -bottom-2 right-2 w-1/2 aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-900 bg-white dark:bg-slate-900 z-10 transform translate-y-4 hover:scale-105 transition-transform duration-350">
-            <img 
-              src={brandFocusImg} 
-              alt="A detailed magnifying glass focusing on premium BRAND print lettering" 
+            <img
+              src={brandFocusImg}
+              alt="A detailed magnifying glass focusing on premium BRAND print lettering"
               className="w-full h-full object-cover select-none"
               referrerPolicy="no-referrer"
             />
@@ -52,7 +52,7 @@ export default function AboutUs() {
 
           {/* Mission/Profile Statement Copy */}
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-sans font-medium">
-            At SmartPrints Hub (inspired by Westlands' finest DS Creations), we specialize in high-quality printing services tailored to meet your business and personal needs. We proudly offer full-cycle production, managing your project from concept and design to the final vibrant, heavy-ink print.
+            At SmartPrints Hub  we specialize in high-quality printing services tailored to meet your business and personal needs. We proudly offer full-cycle production, managing your project from concept and design to the final vibrant, heavy-ink print.
           </p>
 
           <hr className="border-slate-100 dark:border-slate-800/80" />
