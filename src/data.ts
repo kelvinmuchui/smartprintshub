@@ -6,6 +6,8 @@ import whiteGiftBags from "./assets/images/white_gift_bags_1782060419074.jpg";
 import weddingProgramme from "./assets/images/wedding_programme_1782060432014.jpg";
 import printedUmbrellas from "./assets/images/printed_umbrellas_1782060450625.jpg";
 import stickerRollPrinting from "./assets/images/sticker_roll_printing_1782060466027.jpg";
+import planitProjectsHardHat from "./assets/images/planit_projects_hard_hat.jpg";
+import rissulStickers from "./assets/images/rissul_stickers.jpg";
 
 export const SERVICES_LIST: PrintService[] = [
   // 1. PRINTING SERVICES
@@ -204,6 +206,20 @@ export const PORTFOLIO_LIST: PortfolioItem[] = [
     category: "printing",
     image: stickerRollPrinting,
     description: "Precision DTF UV and laminate label adhesive plotting presenting vivid colorful high-gloss die-cut character decals."
+  },
+  {
+    id: "proj-8",
+    title: "Planit Projects Branded Safety Hard Hats",
+    category: "branding",
+    image: planitProjectsHardHat,
+    description: "Premium industrial safety helmets customized with the Planit Projects corporate logo for construction site branding."
+  },
+  {
+    id: "proj-9",
+    title: "Rissul Branded Glossy Label Prints",
+    category: "printing",
+    image: rissulStickers,
+    description: "Vibrant red and yellow custom brand stickers printed on premium self-adhesive vinyl sheets."
   }
 ];
 
