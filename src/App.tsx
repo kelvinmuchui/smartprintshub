@@ -324,15 +324,14 @@ export default function App() {
                   </div>
 
                   <p className="text-xs italic text-slate-600 dark:text-slate-300 leading-relaxed">
-                    "SmartPrints Hub has single-handedly transformed our branding materials. Their roll-up banners look extremely professional, the colors are rich, and they delivered to our Westlands office before the deadline. Will be doing all our corporate printing here!"
-                  </p>
+Their service is top-notch fast, reliable, and high quality. I would highly recommend them to anyone looking for printing or cyber services. Definitely worth checking out!                  </p>
 
                   <div className="flex items-center gap-3 mt-4">
                     <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center text-xs text-blue-800 font-black">
                       PO
                     </div>
                     <div>
-                      <span className="text-xs font-bold block text-slate-800 dark:text-slate-200">Phyllis Onyango</span>
+                      <span className="text-xs font-bold block text-slate-800 dark:text-slate-200">Davis Ngooro</span>
                       <span className="text-[10px] text-slate-400 block font-mono">Communications, Aura Labs Tech Kenya</span>
                     </div>
                   </div>
