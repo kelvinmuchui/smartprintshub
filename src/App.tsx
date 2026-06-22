@@ -608,7 +608,7 @@ Their service is top-notch fast, reliable, and high quality. I would highly reco
 
 
           {/* SECTION 5: AI DESIGNER SCREEN */}
-          <section id="ai-assistant" className="scroll-mt-24">
+          {/* <section id="ai-assistant" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -618,7 +618,7 @@ Their service is top-notch fast, reliable, and high quality. I would highly reco
               <AiDesigner />
             </motion.div>
           </section>
-
+ */}
 
 
 
