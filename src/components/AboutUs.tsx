@@ -1,8 +1,7 @@
 import React from "react";
 import { Printer, Zap } from "lucide-react";
-
-const stationeryImg = "/src/assets/images/about_stationery_1782113676282.jpg";
-const brandFocusImg = "/src/assets/images/about_brand_focus_1782113696665.jpg";
+import stationeryImg from "../assets/images/about_stationery_1782113676282.jpg";
+import brandFocusImg from "../assets/images/about_brand_focus_1782113696665.jpg";
 
 export default function AboutUs() {
   return (
