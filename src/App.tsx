@@ -29,15 +29,18 @@ import {
   ShieldCheck,
   Send,
   Star,
-  Quote
+  Quote,
+  Maximize,
+  BookOpen,
+  ChevronDown,
+  Globe,
+  Fingerprint
 } from "lucide-react";
 
 import Navbar from "./components/Navbar";
-import PriceCalculator from "./components/PriceCalculator";
 import AiDesigner from "./components/AiDesigner";
 import OrderTracker from "./components/OrderTracker";
-import ArtworkUploader from "./components/ArtworkUploader";
-import PortfolioSlider from "./components/PortfolioSlider";
+import AboutUs from "./components/AboutUs";
 import CartDrawer from "./components/CartDrawer";
 
 import { SERVICES_LIST, PORTFOLIO_LIST, SHOP_PRODUCTS, SMARTPRINTS_FAQS } from "./data";
@@ -49,8 +52,8 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [activeServiceCategory, setActiveServiceCategory] = useState<"all" | "printing" | "branding" | "cyber">("all");
-  const [activePortfolioCategory, setActivePortfolioCategory] = useState<"all" | "printing" | "branding" | "corporate">("all");
+  const [expandedService, setExpandedService] = useState<string | null>(null);
+  const [activePortfolioCategory, setActivePortfolioCategory] = useState<"all" | "printing" | "branding" | "corporate" | "events">("all");
 
   // Shop item customization states
   const [selectedProductSizes, setSelectedProductSizes] = useState<Record<string, string>>({});
@@ -93,16 +96,6 @@ export default function App() {
 
   const handleClearCart = () => setCart([]);
 
-  // Filter lists based on search parameter
-  const filteredServices = SERVICES_LIST.filter((s) => {
-    const matchesSearch = s.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          s.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          s.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          (s.specs && s.specs.some(spec => spec.toLowerCase().includes(searchQuery.toLowerCase())));
-    const matchesCategory = activeServiceCategory === "all" || s.category === activeServiceCategory;
-    return matchesSearch && matchesCategory;
-  });
-
   const filteredPortfolio = PORTFOLIO_LIST.filter((p) => {
     if (activePortfolioCategory === "all") return true;
     return p.category.toLowerCase().includes(activePortfolioCategory.toLowerCase());
@@ -137,8 +130,8 @@ export default function App() {
               {/* Primary Bento Layout - Large Screen Grid */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-auto">
                 
-                {/* 1. HERO CARD (Col Span 7) */}
-                <div className="lg:col-span-8 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-100 dark:border-slate-800 shadow-xl relative overflow-hidden flex flex-col justify-between">
+                {/* 1. HERO CARD (Col Span 12) */}
+                <div className="lg:col-span-12 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-100 dark:border-slate-800 shadow-xl relative overflow-hidden flex flex-col justify-between">
                   {/* Glowing background floating blurs */}
                   <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-600/10 to-blue-500/5 rounded-full blur-3xl pointer-events-none" />
                   <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-slate-500/5 to-transparent rounded-full blur-2xl pointer-events-none" />
@@ -172,8 +165,8 @@ export default function App() {
                     </button>
                     <button
                       onClick={() => {
-                        setTab("upload");
-                        document.getElementById("upload")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                        setTab("contact");
+                        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
                       }}
                       className="px-6 py-3.5 rounded-xl bg-white dark:bg-slate-850 border border-slate-205 dark:border-slate-800 text-[#0A1B3D] dark:text-white font-sans text-xs font-black uppercase tracking-widest hover:border-blue-500 transition-colors"
                     >
@@ -189,38 +182,6 @@ export default function App() {
                       <span>WhatsApp Chat</span>
                     </a>
                   </div>
-                </div>
-
-                {/* 2. QUICK UPLOAD BENTO BOX (Col Span 5) */}
-                <div className="lg:col-span-4 bg-gradient-to-br from-[#003B9C] to-slate-900 rounded-3xl p-6 sm:p-8 text-white relative overflow-hidden flex flex-col justify-between shadow-xl">
-                  {/* Glowing decoration */}
-                  <div className="absolute right-0 bottom-0 w-60 h-60 bg-white/5 rounded-full blur-3xl" />
-                  
-                  <div className="space-y-4">
-                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-4 shadow-inner">
-                      <Printer className="w-6 h-6 text-blue-400" />
-                    </div>
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-blue-400 font-black block">
-                      Express Pre-Press Ingress
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-display font-black uppercase tracking-tight">
-                      Artwork Upload
-                    </h3>
-                    <p className="text-slate-300 text-xs leading-relaxed">
-                      Have a print-ready design (PDF, AI, PSD, ZIP)? Drag it on our portal for instant scaling and layout confirmation at Shop A11.
-                    </p>
-                  </div>
-
-                  <button
-                    onClick={() => { 
-                      setTab("upload"); 
-                      const el = document.getElementById("upload");
-                      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }}
-                    className="w-full mt-6 py-3.5 bg-[#FFD400] hover:bg-yellow-450 text-[#0A1B3D] rounded-xl font-sans font-black text-xs uppercase tracking-widest shadow transition-transform hover:scale-[1.02]"
-                  >
-                    Submit PDF / Artwork
-                  </button>
                 </div>
 
                 {/* 3. CORE STATISTICS GRID CARD */}
@@ -286,19 +247,11 @@ export default function App() {
 
               </div>
 
-              {/* SECTION: TWO COLUMN SPREAD FOR INTERACTIVE TOOLS */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch pt-6">
+              {/* SECTION: ABOUT SMARTPRINTS HUB */}
+              <div className="pt-6">
                 
-                {/* Visual before/after canvas identity comparison slider */}
-                <PortfolioSlider 
-                  title="Dynamic Hotel Menu Card Redesign"
-                  description="Slide to witness the difference between unformatted layout draft instructions and our final luxury Spot-UV printed menus delivered to Aura Café Westlands:"
-                  beforeImage="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
-                  afterImage="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80"
-                />
-
-                {/* Pricing Quick Calculator Component embedded directly inside the bento flow */}
-                <PriceCalculator onAddToCart={handleAddToCart} setTab={setTab} />
+                {/* About Page section matching the mockup exactly */}
+                <AboutUs />
 
               </div>
 
@@ -333,7 +286,7 @@ export default function App() {
                       className="p-5 bg-slate-50 dark:bg-slate-850 rounded-2xl border border-slate-200/50 dark:border-slate-800 flex flex-col justify-between hover:shadow-md transition-shadow"
                     >
                       <div>
-                        <span className="text-[9px] uppercase font-mono tracking-widest text-blue-600 dark:text-blue-400 font-bold block mb-1">Starting KES {s.startingPrice}</span>
+                        <span className="text-[9px] uppercase font-mono tracking-widest text-blue-600 dark:text-blue-400 font-bold block mb-1">{s.category} Service</span>
                         <h4 className="font-display font-bold text-base text-slate-850/90 dark:text-white leading-tight mb-2">
                           {s.title}
                         </h4>
@@ -343,12 +296,13 @@ export default function App() {
                       </div>
                       <button
                         onClick={() => {
-                          setTab("upload");
-                          window.scrollTo(0, 0);
+                          setTab("contact");
+                          const el = document.getElementById("contact");
+                          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
                         }}
                         className="w-full py-2 bg-[#0A1B3D] hover:bg-slate-800 text-white font-mono rounded-lg text-[10px] uppercase font-bold tracking-widest"
                       >
-                        Submit Artwork for Pricing
+                        Request Custom Pricing
                       </button>
                     </div>
                   ))}
@@ -414,157 +368,169 @@ export default function App() {
             </motion.div>
           </section>
 
-          {/* SECTION 2: SERVICES DIRECTORY */}
-          <section id="services" className="scroll-mt-24">
+          {/* SECTION 2: SIMPLIFIED SERVICES */}
+          <section id="services" className="scroll-mt-24 py-16">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
-              className="space-y-8"
+              className="space-y-12"
             >
               <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
                 <span className="text-[10px] text-blue-600 dark:text-blue-400 font-mono font-bold uppercase tracking-widest block">
-                  Service Directory ({filteredServices.length} matching packages)
+                  Our Professional Services
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-display font-black text-slate-900 dark:text-white uppercase tracking-tight">
-                  High Precision Printing, Branding & Digital Cyber
+                  High-Precision Printing & Finishing
                 </h2>
-                <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
-                  Filter through our extensive list of business-grade physical prints and authorized government KRA / eCitizen filing services.
-                </p>
-
-                {/* In-page live searching bar */}
-                <div className="flex gap-2 p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md mx-auto shadow-sm">
-                  <div className="flex items-center gap-2 p-2 w-full">
-                    <Search className="w-5 h-5 text-slate-400 shrink-0" />
-                    <input
-                      type="text"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      placeholder="Type stickers, canvas, KRA returns..."
-                      className="bg-transparent border-none text-xs sm:text-sm outline-none w-full text-slate-900 dark:text-white"
-                    />
-                  </div>
-                  {searchQuery && (
-                    <button 
-                      onClick={() => setSearchQuery("")}
-                      className="text-xs px-3 text-slate-400 hover:text-slate-650"
-                    >
-                      Clear
-                    </button>
-                  )}
-                </div>
-
-                {/* Filter Categories */}
-                <div className="flex flex-wrap justify-center gap-2 pt-2">
-                  <button
-                    onClick={() => setActiveServiceCategory("all")}
-                    className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
-                      activeServiceCategory === "all"
-                        ? "bg-blue-600 text-white"
-                        : "bg-white dark:bg-slate-850 text-slate-600 hover:bg-slate-100"
-                    }`}
-                  >
-                    All Services
-                  </button>
-                  <button
-                    onClick={() => setActiveServiceCategory("printing")}
-                    className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
-                      activeServiceCategory === "printing"
-                        ? "bg-blue-600 text-white"
-                        : "bg-white dark:bg-slate-850 text-slate-600 hover:bg-slate-100"
-                    }`}
-                  >
-                    Fine Printing
-                  </button>
-                  <button
-                    onClick={() => setActiveServiceCategory("branding")}
-                    className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
-                      activeServiceCategory === "branding"
-                        ? "bg-blue-600 text-white"
-                        : "bg-white dark:bg-slate-850 text-slate-600 hover:bg-slate-100"
-                    }`}
-                  >
-                    Large Format & Branding
-                  </button>
-                  <button
-                    onClick={() => setActiveServiceCategory("cyber")}
-                    className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
-                      activeServiceCategory === "cyber"
-                        ? "bg-blue-600 text-white"
-                        : "bg-white dark:bg-slate-850 text-slate-600 hover:bg-slate-100"
-                    }`}
-                  >
-                    KRA / iTax & Cyber Portals
-                  </button>
-                </div>
+                <div className="h-1 w-12 bg-blue-600 mx-auto rounded-full mt-2" />
               </div>
 
-              {/* Grid representation */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredServices.map((service) => (
-                  <div 
-                    key={service.id}
-                    className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group"
-                  >
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-500/5 to-transparent rounded-full" />
-                    
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-[10px] uppercase font-mono tracking-widest text-blue-600 dark:text-blue-400 font-black bg-blue-500/10 px-2.5 py-0.5 rounded-full">
-                          {service.startingPrice}
-                        </span>
-                        
-                        <span className="text-slate-400 group-hover:text-blue-500 transition-colors text-xs font-bold uppercase font-mono">
-                          {service.category}
-                        </span>
+              {/* Responsive Services Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                {[
+                  {
+                    id: "large-format",
+                    title: "Large Format Prints",
+                    icon: Maximize,
+                    description: "High resolution large format printing solutions designed to make your brand stand out.",
+                    items: [
+                      { name: "Luxury Roll Up Banners", price: "from KES 6,500" },
+                      { name: "Waterproof Vinyl Stickers", price: "from KES 15" },
+                      { name: "Vehicle & Window UV Wraps", price: "Custom Quote" },
+                      { name: "A0, A1, A2 Color Plotting", price: "from KES 350" }
+                    ]
+                  },
+                  {
+                    id: "digital-printing",
+                    title: "Digital Printing",
+                    icon: FileText,
+                    description: "We provide high-quality and excellent digital printing and finishing services for a wide array of products.",
+                    items: [
+                      { name: "Executive Business Cards", price: "from KES 1,200/100pcs" },
+                      { name: "Vivid Color Laser Printing", price: "from KES 50/page" },
+                      { name: "Company Profiles & Booklets", price: "from KES 2,500" },
+                      { name: "High-Volume Laser Copying", price: "from KES 5/page" }
+                    ]
+                  },
+                  {
+                    id: "book-binding",
+                    title: "Book Binding",
+                    icon: BookOpen,
+                    description: "We offer specialized book binding services to give your documents a professional finish.",
+                    items: [
+                      { name: "Hard Cover Thesis Binding", price: "Premium finishing" },
+                      { name: "NCR Receipt & Invoice Books", price: "from KES 1,500/book" },
+                      { name: "Wire-O Spiral Soft Binding", price: "Corporate portfolios" },
+                      { name: "Perfect Glue Binding", price: "Crisp presentation finish" }
+                    ]
+                  },
+                  {
+                    id: "visa-banners",
+                    title: "Visa Application & Posters/Banners",
+                    icon: Globe,
+                    description: "Comprehensive travel visual promotional printing, biometric visa compliant photos, and visa documentation packs.",
+                    items: [
+                      { name: "Biometric Visa Photos", price: "from KES 305" },
+                      { name: "Embassy Document Printing", price: "from KES 10/page" },
+                      { name: "High-Gloss Travel Posters", price: "from KES 350" },
+                      { name: "Promotional Travel Agency Banners", price: "from KES 6,500" }
+                    ]
+                  },
+                  {
+                    id: "digital-registration",
+                    title: "Business & Digital Registry",
+                    icon: Fingerprint,
+                    description: "Fast-track company setup, digital registration, eCitizen support, and local tax compliance portal assistance.",
+                    items: [
+                      { name: "Business Registration Assistance", price: "from KES 4,500" },
+                      { name: "KRA PIN & iTax Filing support", price: "from KES 300" },
+                      { name: "eCitizen Portal Service Access", price: "from KES 300" },
+                      { name: "Smart SHA & NHIF/NSSF Registration", price: "from KES 300" }
+                    ]
+                  }
+                ].map((service) => {
+                  const IconComp = service.icon;
+                  const isExpanded = expandedService === service.id;
+                  
+                  return (
+                    <motion.div
+                      layout
+                      key={service.id}
+                      className="bg-white dark:bg-slate-900 rounded-[2rem] p-8 sm:p-10 border border-slate-150/80 dark:border-slate-800 shadow-sm flex flex-col justify-between items-center text-center hover:shadow-md transition-shadow relative overflow-hidden h-full"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    >
+                      <div className="flex flex-col items-center w-full">
+                        {/* Soft blue icon circle */}
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-50 dark:bg-blue-950/20 flex items-center justify-center text-blue-500 mb-6 transition-transform hover:scale-105 duration-300">
+                          <IconComp className="w-8 h-8 sm:w-10 sm:h-10" />
+                        </div>
+
+                        {/* Title */}
+                        <h4 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                          {service.title}
+                        </h4>
+
+                        {/* Description */}
+                        <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed mb-6 max-w-sm">
+                          {service.description}
+                        </p>
+
+                        {/* Expandable sub-items */}
+                        <AnimatePresence>
+                          {isExpanded && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="w-full border-t border-slate-100 dark:border-slate-800 pt-5 mt-2 space-y-3 text-left overflow-hidden"
+                            >
+                              {service.items.map((item, idx) => (
+                                <div key={idx} className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 font-sans border-b border-dashed border-slate-100 dark:border-slate-800/60 pb-2 last:border-none last:pb-0">
+                                  <span className="text-blue-500 dark:text-blue-400 font-bold">✓</span>
+                                  <span className="font-semibold text-slate-800 dark:text-slate-200">{item.name}</span>
+                                </div>
+                              ))}
+                              
+                              <div className="pt-4 flex gap-2 w-full">
+                                <button
+                                  onClick={() => {
+                                    setTab("contact");
+                                    const el = document.getElementById("contact");
+                                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                                  }}
+                                  className="w-full py-2.5 bg-slate-900 dark:bg-slate-800 hover:bg-black text-white rounded-xl text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer"
+                                >
+                                  Inquire Premium Quote
+                                </button>
+                                <a
+                                  href={`https://wa.me/254743603068?text=Hello%20Smart%20Printers%20Hub,%20I'd%20like%20to%20get%20a%20quote%20for%20${encodeURIComponent(service.title)}.`}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="px-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition-colors cursor-pointer"
+                                  title="WhatsApp Chat Inquiry"
+                                >
+                                  <Phone className="w-4 h-4" />
+                                </a>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
 
-                      <h4 className="text-lg font-display font-black text-slate-900 dark:text-white leading-tight mb-2">
-                        {service.title}
-                      </h4>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed mb-4">
-                        {service.description}
-                      </p>
-
-                      {service.specs && (
-                        <ul className="space-y-1 mt-2 text-[11px] text-slate-400 border-t border-slate-100 dark:border-slate-800/80 pt-3 mb-4">
-                          {service.specs.map((item, id) => (
-                            <li key={id} className="flex gap-1.5 items-start">
-                              <span className="text-blue-500 font-bold shrink-0">✓</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-
-                    <div className="pt-2 flex gap-2">
+                      {/* Read More button trigger */}
                       <button
-                        onClick={() => {
-                          setTab("upload");
-                          window.scrollTo(0, 0);
-                        }}
-                        className="w-full py-2.5 bg-[#0a1b3d] dark:bg-slate-800 hover:bg-slate-855 text-white rounded-xl text-xs font-bold uppercase tracking-wider"
+                        onClick={() => setExpandedService(isExpanded ? null : service.id)}
+                        className="flex items-center gap-1.5 text-blue-500 hover:text-blue-600 font-bold text-xs uppercase tracking-wider transition-colors mt-6 pt-2 group cursor-pointer"
                       >
-                        Submit Art Files
+                        <span>{isExpanded ? "Show Less" : "Read More"}</span>
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : "group-hover:translate-y-0.5"}`} />
                       </button>
-                      
-                      <a
-                        href={`https://wa.me/254743603068?text=Hello%20SmartPrints%20Hub,%20I'd%20love%20a%20precise%20quote%20for%20the%20${service.title}%20service.`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition-colors"
-                        title="WhatsApp Quote request"
-                      >
-                        <Phone className="w-5 h-5" />
-                      </a>
-                    </div>
-                  </div>
-                ))}
+                    </motion.div>
+                  );
+                })}
               </div>
-
             </motion.div>
           </section>
 
@@ -590,7 +556,7 @@ export default function App() {
 
                 {/* Filter Categories */}
                 <div className="flex flex-wrap justify-center gap-2 pt-2">
-                  {["all", "printing", "branding", "corporate"].map((cat) => (
+                  {["all", "printing", "branding", "corporate", "events"].map((cat) => (
                     <button
                       key={cat}
                       onClick={() => setActivePortfolioCategory(cat as any)}
@@ -604,23 +570,6 @@ export default function App() {
                     </button>
                   ))}
                 </div>
-              </div>
-
-              {/* Slider Before/After Grid Row */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-10">
-                <PortfolioSlider 
-                  title="Aura Coffee Logo & Spot UV Cards"
-                  description="Slide to witness premium dual-sided layout formatting for local Westlands café"
-                  beforeImage="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
-                  afterImage="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80"
-                />
-                
-                <PortfolioSlider 
-                  title="Nairobi Summit Roll-up Teardrop"
-                  description="Slide to check waterproof satin color contrast adjustments"
-                  beforeImage="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80"
-                  afterImage="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80"
-                />
               </div>
 
               {/* Portfolios Normal Grid */}
@@ -673,22 +622,7 @@ export default function App() {
 
 
 
-          {/* SECTION 7: SUBMIT QUOTATION / FILE UPLOAD */}
-          <section id="upload" className="scroll-mt-24">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <ArtworkUploader 
-                onSuccess={(orderMeta) => {
-                  setRecentTrackCode(orderMeta);
-                }} 
-                setTab={setTab}
-              />
-            </motion.div>
-          </section>
+
 
           {/* SECTION 8: CONTACT US */}
           <section id="contact" className="scroll-mt-24">
@@ -762,13 +696,13 @@ export default function App() {
                   
                   {/* Immediate contact detail card */}
                   <div className="bg-[#0A1B3D] text-white rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
-                    <span className="text-[10px] tracking-widest uppercase font-mono text-[#FFD400] font-black block">SmartPrints contact center</span>
+                    <span className="text-[10px] tracking-widest uppercase font-mono text-blue-400 font-black block">SmartPrints contact center</span>
                     <h3 className="text-xl sm:text-2xl font-display font-black uppercase tracking-tight">Speak with print manager</h3>
                     <p className="text-slate-300 text-xs">If you prefer offline communication, text on WhatsApp or drop in at Shop A11 for customized paper feedback.</p>
 
                     <div className="space-y-3 pt-4 border-t border-slate-800">
                       <div className="flex gap-2.5 items-center">
-                        <Phone className="w-5 h-5 text-green-400" />
+                        <Phone className="w-5 h-5 text-blue-400" />
                         <div>
                           <span className="text-[9px] block text-slate-400 font-mono">CALL / TEXT SHOP</span>
                           <span className="text-sm font-bold block text-white">+254743603068</span>
@@ -784,7 +718,7 @@ export default function App() {
                       </div>
 
                       <div className="flex gap-2.5 items-center">
-                        <MapPin className="w-5 h-5 text-[#FFD400]" />
+                        <MapPin className="w-5 h-5 text-blue-400" />
                         <div>
                           <span className="text-[9px] block text-slate-400 font-mono">PHYSICAL VISIT</span>
                           <span className="text-sm font-bold block text-white">Westlands Market, Shop A11, Nairobi</span>
@@ -835,19 +769,12 @@ export default function App() {
           
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-700 to-blue-500 flex items-center justify-center text-white font-black text-sm relative overflow-hidden">
-                <img 
-                  src="/logo.png" 
-                  alt="SmartPrints logo" 
-                  className="absolute inset-0 w-full h-full object-cover z-10" 
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
-                  referrerPolicy="no-referrer"
-                />
-                <span>S</span>
-              </div>
-              <span className="font-display font-bold text-sm text-white tracking-tight">SMARTPRINTS HUB</span>
+              <img 
+                src="/logo.svg" 
+                alt="Smart Printers Hub" 
+                className="h-10 w-auto object-contain" 
+                referrerPolicy="no-referrer"
+              />
             </div>
             <p className="text-xs text-slate-500 leading-relaxed">
               Luxury digital offset printing, heavy outdoor vinyl banner fabrication, KRA electronic filings & cyber assistance inside Westlands Market.
@@ -868,17 +795,17 @@ export default function App() {
             <span className="text-[10px] font-bold text-white uppercase tracking-wider block mb-3 font-mono">Useful links</span>
             <ul className="space-y-1 text-xs">
               <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Our Printing Services</button></li>
-              <li><button onClick={() => { setTab("upload"); document.getElementById("upload")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Submit quote file</button></li>
+              <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Request Custom Quote</button></li>
               <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Location Map</button></li>
             </ul>
           </div>
 
           <div>
             <span className="text-[10px] font-bold text-white uppercase tracking-wider block mb-3 font-mono">Opening hours</span>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Monday – Friday: 6:30 AM to 9:30 PM<br />
-              Saturday: 7:00 AM to 9:00 PM<br />
-              Sunday :8:00AM to 8:00 PM<br />
+            <p className="text-xs text-slate-500 leading-relaxed font-mono">
+              Mon – Fri: 6:30 AM – 9:30 PM<br />
+              Saturday: 7:00 AM – 9:30 PM<br />
+              Sunday: 7:30 AM – 8:30 PM<br />
               Fulfillment: Shop A11, Westlands Market
             </p>
           </div>
@@ -913,8 +840,8 @@ export default function App() {
         </a>
         <button 
           onClick={() => { 
-            setTab("upload"); 
-            document.getElementById("upload")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            setTab("contact"); 
+            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
           }}
           className="flex-1 py-3 bg-[#0A1B3D] text-white border border-slate-800 rounded-xl text-[10px] font-black uppercase tracking-widest text-center shadow-lg"
         >

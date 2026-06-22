@@ -43,7 +43,6 @@ export default function Navbar({
     { id: "home", label: "Home" },
     { id: "services", label: "Our Services" },
     { id: "portfolio", label: "Our Portfolio" },
-    { id: "upload", label: "Submit Quote" },
     { id: "contact", label: "Contact Us" }
   ];
 
@@ -60,7 +59,7 @@ export default function Navbar({
           </span>
           <span className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
             <Clock className="w-3.5 h-3.5 text-blue-400" />
-            <span>Mon-Sat: 7:30 AM – 7:30 PM | Sun: Closed</span>
+            <span>Mon-Fri: 6:30 AM – 9:30 PM | Sat: 7 AM – 9:30 PM | Sun: 7:30 AM – 8:30 PM</span>
           </span>
         </div>
         <div className="flex items-center gap-4">
@@ -85,29 +84,15 @@ export default function Navbar({
               const el = document.getElementById("home");
               if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
             }} 
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center cursor-pointer group"
             id="brand-logo"
           >
-            <div className="w-11 h-11 rounded-xl gradient-bg flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-all relative overflow-hidden">
-              <img 
-                src="/logo.png" 
-                alt="SmartPrints logo" 
-                className="absolute inset-0 w-full h-full object-cover z-10" 
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
-                referrerPolicy="no-referrer"
-              />
-              <Printer className="w-6 h-6 animate-pulse" />
-            </div>
-            <div>
-              <span className="font-display font-bold text-lg sm:text-xl tracking-tight block text-slate-900 dark:text-white transition-colors">
-                SMARTPRINTS<span className="text-green-500 dark:text-green-400">HUB</span>
-              </span>
-              <span className="text-[10px] uppercase font-mono tracking-widest block text-slate-500 dark:text-slate-400">
-                Westlands, Kenya
-              </span>
-            </div>
+            <img 
+              src="/logo.svg" 
+              alt="Smart Printers Hub" 
+              className="h-11 sm:h-13 w-auto object-contain group-hover:scale-[1.02] transition-transform duration-200" 
+              referrerPolicy="no-referrer"
+            />
           </div>
 
           {/* Desktop Navigation Links */}

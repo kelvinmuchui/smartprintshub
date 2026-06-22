@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 180" width="100%" height="100%">
+  <!-- Definitions for gradients and shadows -->
+  <defs>
+    <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <g transform="translate(10, 10)">
+    <!-- 1. ICON BLOCK (Left) -->
+    <g id="printer-icon" filter="url(#subtle-shadow)">
+      <!-- Three cascading printed sheets at the bottom output tray -->
+      <!-- Item 1 (Blue sheet) -->
+      <path d="M 62 105 L 110 105 L 100 123 L 52 123 Z" fill="#2E4AA6" />
+      
+      <!-- Item 2 (Green sheet) -->
+      <path d="M 70 115 L 115 115 L 105 133 L 60 133 Z" fill="#1B834F" />
+      
+      <!-- Item 3 (Gold sheet) -->
+      <path d="M 78 125 L 118 125 L 108 143 L 68 143 Z" fill="#DE971E" />
+
+      <!-- Printer machine black body -->
+      <!-- Left stand support -->
+      <rect x="42" y="86" width="14" height="24" rx="4" fill="#000000" />
+      <!-- Right stand support -->
+      <rect x="114" y="86" width="14" height="24" rx="4" fill="#000000" />
+      
+      <!-- Main center body -->
+      <rect x="50" y="70" width="70" height="26" rx="6" fill="#000000" />
+      <!-- Top feed deck -->
+      <rect x="66" y="58" width="38" height="12" rx="3" fill="#1C1B1F" />
+      
+      <!-- High-end design rings/swooshes (Orbit path around printer) -->
+      <!-- Blue orbit swoosh -->
+      <path d="M 32 102 C 24 88, 30 72, 46 64 C 62 56, 88 56, 112 62" 
+            fill="none" stroke="#2253AC" stroke-width="6.5" stroke-linecap="round" />
+            
+      <!-- Green orbit swoosh -->
+      <path d="M 32 102 C 40 108, 62 110, 94 92 C 122 76, 128 62, 126 50" 
+            fill="none" stroke="#68B83D" stroke-width="6.5" stroke-linecap="round" />
+      
+      <!-- Green terminal orbital dot -->
+      <circle cx="118" cy="46" r="6" fill="#68B83D" />
+    </g>
+
+    <!-- 2. BRAND TEXT BLOCK (Right) -->
+    <!-- "SMART" text -->
+    <text x="210" y="70" 
+          font-family="system-ui, -apple-system, 'Inter', sans-serif" 
+          font-weight="900" 
+          font-style="oblique" 
+          font-size="44" 
+          letter-spacing="1"
+          fill="#2C41BE">SMART</text>
+
+    <!-- "PRINTERS" text -->
+    <text x="194" y="112" 
+          font-family="system-ui, -apple-system, 'Inter', sans-serif" 
+          font-weight="900" 
+          font-style="oblique" 
+          font-size="34" 
+          letter-spacing="0.5"
+          fill="#137A43">PRINTERS</text>
+
+    <!-- "HUB" capsule element -->
+    <g transform="translate(162, 125)">
+      <!-- Oval/Capsule Background -->
+      <rect x="0" y="0" width="224" height="42" rx="21" fill="#2C41BE" />
+      
+      <!-- Speed lines on left side of HUB -->
+      <line x1="16" y1="17" x2="52" y2="17" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <line x1="20" y1="21" x2="52" y2="21" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <line x1="24" y1="25" x2="52" y2="25" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+
+      <!-- "HUB" Text -->
+      <text x="112" y="31" 
+            font-family="system-ui, -apple-system, 'Inter', sans-serif" 
+            font-weight="900" 
+            font-size="30" 
+            fill="#FFFFFF" 
+            text-anchor="middle"
+            letter-spacing="1.5">HUB</text>
+
+      <!-- Speed lines on right side of HUB -->
+      <line x1="172" y1="17" x2="208" y2="17" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <line x1="172" y1="21" x2="204" y2="21" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <line x1="172" y1="25" x2="200" y2="25" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+    </g>
+  </g>
+</svg>

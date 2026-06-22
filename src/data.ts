@@ -151,40 +151,52 @@ export const SERVICES_LIST: PrintService[] = [
 export const PORTFOLIO_LIST: PortfolioItem[] = [
   {
     id: "proj-1",
-    title: "Westlands Aura Coffee Identity",
-    category: "corporate",
-    image: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80",
-    description: "Complete visual branding including matte menu cards, gold-foil letterheads, and waterproof product mug stickers.",
-    beforeImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80", // plain table
-    afterImage: "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=800&q=80" // polished branding
+    title: "FestivalMerch Custom Event Lanyards",
+    category: "events",
+    image: "/src/assets/images/printed_lanyards_1782060369007.jpg",
+    description: "Premium black satin double-sided lanyards printed with 'FestivalMerch' and 'Daniel Engen Productions' branding, finished with high-durability metallic lobster claws."
   },
   {
     id: "proj-2",
-    title: "Matte Spot-UV Business Cards",
-    category: "printing",
-    image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=800&q=80",
-    description: "Highly polished business cards with matte velvet base laminate paired with gorgeous glossy raised spot UV lettering.",
+    title: "Davidson Services Executive Notebooks",
+    category: "corporate",
+    image: "/src/assets/images/orange_notebooks_1782060385152.jpg",
+    description: "Vibrant orange hardcover promotional notebooks with a crisp blue-and-white 'Davidson Services' company logo and orange elastic security bands."
   },
   {
     id: "proj-3",
-    title: "Teardrop Alum Roll Up Banners",
+    title: "Belanga Hamburgueseria Wide Vinyl Banner",
     category: "branding",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
-    description: "Vivid visual layout graphics printed on block-out satin polyester sheets for a prominent technology expo in Westlands.",
+    image: "/src/assets/images/large_format_burger_banner_1782060399147.jpg",
+    description: "Continuous roll outdoor vinyl printing featuring vibrant, rich-tonality, high-density food photography on heavy-duty waterproof signage."
   },
   {
     id: "proj-4",
-    title: "Die-Cut Cosmetic Labels",
-    category: "branding",
-    image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=800&q=80",
-    description: "Beautiful cosmetic product branding wrapper sheets printed on premium transparent gloss vinyl with precise die-cut circles."
+    title: "NAC Creatives Custom Carrier Bags",
+    category: "corporate",
+    image: "/src/assets/images/white_gift_bags_1782060419074.jpg",
+    description: "Eco-friendly premium white board gift bags featuring custom dark-typography branding and matching orange rope handles."
   },
   {
     id: "proj-5",
-    title: "Kenya Tech Summit Badges & Posters",
-    category: "events",
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80",
-    description: "High-volume personalized neck-badges, dynamic poster prints, and satin certificates for summit attendees.",
+    title: "Commemorative Bifold Wedding Program Booklets",
+    category: "printing",
+    image: "/src/assets/images/wedding_programme_1782060432014.jpg",
+    description: "Elegant bifold mass ceremony programs styled in deep emerald forest green tones and decorative geometric gold foliage accents."
+  },
+  {
+    id: "proj-6",
+    title: "Family Pesa Pap! Promotional Umbrellas",
+    category: "branding",
+    image: "/src/assets/images/printed_umbrellas_1782060450625.jpg",
+    description: "Branded promotional outdoor marketing umbrellas commissioned for nationwide financial field services agent networks."
+  },
+  {
+    id: "proj-7",
+    title: "High-Gloss Continuous Sticker Rolls",
+    category: "printing",
+    image: "/src/assets/images/sticker_roll_printing_1782060466027.jpg",
+    description: "Precision DTF UV and laminate label adhesive plotting presenting vivid colorful high-gloss die-cut character decals."
   }
 ];
 
