@@ -1,11 +1,4 @@
 import { PrintService, PortfolioItem } from "./types";
-import printedLanyards from "./assets/images/printed_lanyards_1782060369007.jpg";
-import orangeNotebooks from "./assets/images/orange_notebooks_1782060385152.jpg";
-import largeFormatBurgerBanner from "./assets/images/large_format_burger_banner_1782060399147.jpg";
-import whiteGiftBags from "./assets/images/white_gift_bags_1782060419074.jpg";
-import weddingProgramme from "./assets/images/wedding_programme_1782060432014.jpg";
-import printedUmbrellas from "./assets/images/printed_umbrellas_1782060450625.jpg";
-import stickerRollPrinting from "./assets/images/sticker_roll_printing_1782060466027.jpg";
 
 export const SERVICES_LIST: PrintService[] = [
   // 1. PRINTING SERVICES
@@ -160,50 +153,85 @@ export const PORTFOLIO_LIST: PortfolioItem[] = [
     id: "proj-1",
     title: "FestivalMerch Custom Event Lanyards",
     category: "events",
-    image: printedLanyards,
+    image: "/src/assets/images/printed_lanyards_1782060369007.jpg",
     description: "Premium black satin double-sided lanyards printed with 'FestivalMerch' and 'Daniel Engen Productions' branding, finished with high-durability metallic lobster claws."
   },
   {
     id: "proj-2",
     title: "Davidson Services Executive Notebooks",
     category: "corporate",
-    image: orangeNotebooks,
+    image: "/src/assets/images/orange_notebooks_1782060385152.jpg",
     description: "Vibrant orange hardcover promotional notebooks with a crisp blue-and-white 'Davidson Services' company logo and orange elastic security bands."
   },
   {
     id: "proj-3",
     title: "Belanga Hamburgueseria Wide Vinyl Banner",
     category: "branding",
-    image: largeFormatBurgerBanner,
+    image: "/src/assets/images/large_format_burger_banner_1782060399147.jpg",
     description: "Continuous roll outdoor vinyl printing featuring vibrant, rich-tonality, high-density food photography on heavy-duty waterproof signage."
   },
   {
     id: "proj-4",
     title: "NAC Creatives Custom Carrier Bags",
     category: "corporate",
-    image: whiteGiftBags,
+    image: "/src/assets/images/white_gift_bags_1782060419074.jpg",
     description: "Eco-friendly premium white board gift bags featuring custom dark-typography branding and matching orange rope handles."
   },
   {
     id: "proj-5",
     title: "Commemorative Bifold Wedding Program Booklets",
     category: "printing",
-    image: weddingProgramme,
+    image: "/src/assets/images/wedding_programme_1782060432014.jpg",
     description: "Elegant bifold mass ceremony programs styled in deep emerald forest green tones and decorative geometric gold foliage accents."
   },
   {
     id: "proj-6",
     title: "Family Pesa Pap! Promotional Umbrellas",
     category: "branding",
-    image: printedUmbrellas,
+    image: "/src/assets/images/pesa_pap_umbrellas_1782116346864.jpg",
     description: "Branded promotional outdoor marketing umbrellas commissioned for nationwide financial field services agent networks."
   },
   {
     id: "proj-7",
     title: "High-Gloss Continuous Sticker Rolls",
     category: "printing",
-    image: stickerRollPrinting,
+    image: "/src/assets/images/sticker_roll_printing_1782060466027.jpg",
     description: "Precision DTF UV and laminate label adhesive plotting presenting vivid colorful high-gloss die-cut character decals."
+  },
+  {
+    id: "proj-8",
+    title: "Executive Gold-Foil Business Cards",
+    category: "corporate",
+    image: "/src/assets/images/luxury_business_cards_1788273973821.jpg",
+    description: "Ultra-thick 400gsm duplexed matte black cardstock featuring metallic gold hot-stamp foiling and precision edge-gilding."
+  },
+  {
+    id: "proj-9",
+    title: "Aura Summit Retractable Roll-Up Banners",
+    category: "events",
+    image: "/src/assets/images/rollup_expo_banner_1788273988689.jpg",
+    description: "Non-curl anti-glare satin roll-up banner stands engineered for Westlands high-profile tech conferences and trade expos."
+  },
+  {
+    id: "proj-10",
+    title: "Corporate Insulated Thermal Flasks & Bottles",
+    category: "corporate",
+    image: "/src/assets/images/branded_corporate_flasks_1788274006304.jpg",
+    description: "Laser-engraved matte black and stainless vacuum flasks produced for executive corporate welcome packs and staff gifting."
+  },
+  {
+    id: "proj-11",
+    title: "Savannah Gold Specialty Coffee Packaging",
+    category: "branding",
+    image: "/src/assets/images/luxury_packaging_box_1788274020431.jpg",
+    description: "Custom die-cut rigid gift packaging boxes with soft-touch matte lamination, gold leaf lettering, and protective display inserts."
+  },
+  {
+    id: "proj-12",
+    title: "Corporate Tri-Fold Capability Brochures",
+    category: "printing",
+    image: "/src/assets/images/tri_fold_brochures_1788274041456.jpg",
+    description: "Vibrant full-color commercial profile brochures printed on 250gsm silk art paper with precision double machine scoring."
   }
 ];
 
