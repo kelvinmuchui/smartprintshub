@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
@@ -103,6 +104,29 @@ const mockOrders: Record<string, OrderJob> = {
 };
 
 // API Endpoints
+
+// Static SEO Assets: Sitemap & Robots
+app.get("/sitemap.xml", (req, res) => {
+  const sitemapPath = path.join(process.cwd(), "public", "sitemap.xml");
+  if (fs.existsSync(sitemapPath)) {
+    res.setHeader("Content-Type", "application/xml");
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.sendFile(sitemapPath);
+  } else {
+    res.status(404).send("Sitemap not found");
+  }
+});
+
+app.get("/robots.txt", (req, res) => {
+  const robotsPath = path.join(process.cwd(), "public", "robots.txt");
+  if (fs.existsSync(robotsPath)) {
+    res.setHeader("Content-Type", "text/plain");
+    res.sendFile(robotsPath);
+  } else {
+    res.setHeader("Content-Type", "text/plain");
+    res.send("User-agent: *\nAllow: /\nSitemap: https://smartprintshub.co.ke/sitemap.xml\n");
+  }
+});
 
 // 1. Healthcheck
 app.get("/api/health", (req, res) => {

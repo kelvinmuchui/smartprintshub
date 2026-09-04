@@ -42,6 +42,7 @@ import AiDesigner from "./components/AiDesigner";
 import OrderTracker from "./components/OrderTracker";
 import AboutUs from "./components/AboutUs";
 import CartDrawer from "./components/CartDrawer";
+import SeoStatusDashboard from "./components/SeoStatusDashboard";
 
 import { SERVICES_LIST, PORTFOLIO_LIST, SHOP_PRODUCTS, SMARTPRINTS_FAQS } from "./data";
 import { CartItem, TrackingStatus } from "./types";
@@ -52,6 +53,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSeoDashboardOpen, setIsSeoDashboardOpen] = useState(false);
   const [expandedService, setExpandedService] = useState<string | null>(null);
   const [activePortfolioCategory, setActivePortfolioCategory] = useState<"all" | "printing" | "branding" | "corporate" | "events">("all");
 
@@ -114,6 +116,7 @@ export default function App() {
         setIsCartOpen={setIsCartOpen}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        onOpenSeoDashboard={() => setIsSeoDashboardOpen(true)}
       />
 
       {/* Main Container Content */}
@@ -324,14 +327,15 @@ export default function App() {
                   </div>
 
                   <p className="text-xs italic text-slate-600 dark:text-slate-300 leading-relaxed">
-Their service is top-notch fast, reliable, and high quality. I would highly recommend them to anyone looking for printing or cyber services. Definitely worth checking out!                  </p>
+                    "SmartPrints Hub has single-handedly transformed our branding materials. Their roll-up banners look extremely professional, the colors are rich, and they delivered to our Westlands office before the deadline. Will be doing all our corporate printing here!"
+                  </p>
 
                   <div className="flex items-center gap-3 mt-4">
                     <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center text-xs text-blue-800 font-black">
                       PO
                     </div>
                     <div>
-                      <span className="text-xs font-bold block text-slate-800 dark:text-slate-200">Davis Ngooro</span>
+                      <span className="text-xs font-bold block text-slate-800 dark:text-slate-200">Phyllis Onyango</span>
                       <span className="text-[10px] text-slate-400 block font-mono">Communications, Aura Labs Tech Kenya</span>
                     </div>
                   </div>
@@ -581,7 +585,7 @@ Their service is top-notch fast, reliable, and high quality. I would highly reco
                     <div className="h-56 relative overflow-hidden">
                       <img 
                         src={p.image} 
-                        alt={p.title} 
+                        alt={`${p.title} - ${p.category} printing in Westlands Nairobi | SmartPrints Hub`} 
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         referrerPolicy="no-referrer"
                       />
@@ -608,7 +612,7 @@ Their service is top-notch fast, reliable, and high quality. I would highly reco
 
 
           {/* SECTION 5: AI DESIGNER SCREEN */}
-          {/* <section id="ai-assistant" className="scroll-mt-24">
+          <section id="ai-assistant" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -618,7 +622,7 @@ Their service is top-notch fast, reliable, and high quality. I would highly reco
               <AiDesigner />
             </motion.div>
           </section>
- */}
+
 
 
 
@@ -796,6 +800,7 @@ Their service is top-notch fast, reliable, and high quality. I would highly reco
               <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Our Printing Services</button></li>
               <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Request Custom Quote</button></li>
               <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Location Map</button></li>
+              <li><button onClick={() => setIsSeoDashboardOpen(true)} className="hover:text-white text-blue-400 font-mono text-[11px] flex items-center gap-1.5 pt-1"><span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> Admin SEO Status Console</button></li>
             </ul>
           </div>
 
@@ -813,12 +818,30 @@ Their service is top-notch fast, reliable, and high quality. I would highly reco
 
         <div className="max-w-7xl mx-auto border-t border-slate-900 pt-6 flex flex-wrap justify-between items-center text-[10px] uppercase font-bold tracking-wider font-mono gap-4">
           <div>© 2026 SmartPrints Hub Ltd — Westlands, Kenya. All dimensions calibrated.</div>
-          <div className="flex gap-4">
-            <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Online support Active</span>
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setIsSeoDashboardOpen(true)}
+              className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+              Admin SEO Console
+            </button>
             <span className="text-slate-500">M-Pesa till / Credit line ledger</span>
           </div>
         </div>
       </footer>
+
+      {/* FLOATING ADMIN QUICK TOGGLE (DESKTOP) */}
+      <div className="fixed bottom-6 left-6 z-40 hidden md:block">
+        <button
+          onClick={() => setIsSeoDashboardOpen(true)}
+          className="flex items-center gap-2 px-3 py-2 bg-slate-900/90 hover:bg-slate-900 text-white rounded-2xl shadow-xl border border-slate-700/80 backdrop-blur-md transition-all hover:scale-105 group text-xs font-mono"
+          title="Open Admin SEO & Heading Keyword Health Status Dashboard"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span className="text-[11px] font-bold text-slate-300 group-hover:text-white">SEO Health Console</span>
+        </button>
+      </div>
 
       {/* FLOATING ACTION BOTTOM PANEL BAR FOR MOBILE */}
       <div className="fixed bottom-4 left-4 right-4 z-40 lg:hidden flex gap-2">
@@ -856,6 +879,12 @@ Their service is top-notch fast, reliable, and high quality. I would highly reco
         onRemoveItem={handleRemoveFromCart}
         onUpdateQuantity={handleUpdateCartQty}
         onClearCart={handleClearCart}
+      />
+
+      {/* ADMIN SEO STATUS & ALT-TEXT MONITOR DASHBOARD */}
+      <SeoStatusDashboard 
+        isOpen={isSeoDashboardOpen} 
+        onClose={() => setIsSeoDashboardOpen(false)} 
       />
 
     </div>

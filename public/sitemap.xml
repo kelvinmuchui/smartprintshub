@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Primary Homepage -->
+  <url>
+    <loc>https://smartprintshub.co.ke/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://smartprintshub.co.ke/public/logo.svg</image:loc>
+      <image:title>SmartPrints Hub Logo - Premier Printing &amp; Digital Services in Westlands Nairobi</image:title>
+      <image:caption>SmartPrints Hub corporate identity and printing studio in Westlands, Nairobi, Kenya</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Printing & Branding Services Catalog -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#services</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Digital & eCitizen Cyber Services -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#cyber-services</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Online Print Shop & Merchandise Pricing Catalog -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#shop</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Portfolio & Client Gallery -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#portfolio</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Live Job & Order Tracker -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#track-order</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- AI Pre-Press Design Assistant -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#ai-designer</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Instant Cost Estimator & Quote Request -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#quote-calculator</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About SmartPrints Hub Westlands -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#about</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Physical Location, Map & Store Hours -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#contact</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Frequently Asked Questions & Print Guidelines -->
+  <url>
+    <loc>https://smartprintshub.co.ke/#faqs</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
