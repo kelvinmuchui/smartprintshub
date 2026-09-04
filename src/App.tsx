@@ -141,7 +141,7 @@ export default function App() {
                     </div>
 
                     <h1 className="text-3xl sm:text-5xl lg:text-5xl font-display font-black text-slate-900 dark:text-white leading-[1.1] tracking-tight">
-                      Professional Printing Solutions That Bring Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-[#003B9C] to-blue-500 dark:from-blue-400 dark:to-blue-450">Ideas to Life</span>
+                      Printing Services in Westlands, Nairobi That Bring Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-[#003B9C] to-blue-500 dark:from-blue-400 dark:to-blue-450">Ideas to Life</span>
                     </h1>
 
                     <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl">
@@ -723,6 +723,7 @@ export default function App() {
           <div>
             <span className="text-[10px] font-bold text-white uppercase tracking-wider block mb-3 font-mono">Useful links</span>
             <ul className="space-y-1 text-xs">
+              <li><a href="/printing-in-westlands/" className="hover:text-white">Printing in Westlands</a></li>
               <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Our Printing Services</button></li>
               <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Request Custom Quote</button></li>
               <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Location Map</button></li>
