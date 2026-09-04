@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Maximize2, ChevronLeft, ChevronRight, X, Layers, Building2, Sparkles } from "lucide-react";
 import { PortfolioItem } from "../types";
@@ -25,6 +25,25 @@ export const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ items }) => 
     if (activeCategory === "all") return true;
     return p.category === activeCategory;
   });
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveImageIndexes((prev) => {
+        const next = { ...prev };
+
+        items.forEach((item) => {
+          const imageCount = item.images?.length ?? 0;
+          if (imageCount > 1) {
+            next[item.id] = ((prev[item.id] ?? 0) + 1) % imageCount;
+          }
+        });
+
+        return next;
+      });
+    }, 4000);
+
+    return () => window.clearInterval(interval);
+  }, [items]);
 
   const handleNextImage = (itemId: string, maxImages: number, e: React.MouseEvent) => {
     e.stopPropagation();
