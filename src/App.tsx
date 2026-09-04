@@ -43,6 +43,7 @@ import OrderTracker from "./components/OrderTracker";
 import AboutUs from "./components/AboutUs";
 import CartDrawer from "./components/CartDrawer";
 import SeoStatusDashboard from "./components/SeoStatusDashboard";
+import { PortfolioGallery } from "./components/PortfolioGallery";
 
 import { SERVICES_LIST, PORTFOLIO_LIST, SHOP_PRODUCTS, SMARTPRINTS_FAQS } from "./data";
 import { CartItem, TrackingStatus } from "./types";
@@ -55,7 +56,6 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSeoDashboardOpen, setIsSeoDashboardOpen] = useState(false);
   const [expandedService, setExpandedService] = useState<string | null>(null);
-  const [activePortfolioCategory, setActivePortfolioCategory] = useState<"all" | "printing" | "branding" | "corporate" | "events">("all");
 
   // Shop item customization states
   const [selectedProductSizes, setSelectedProductSizes] = useState<Record<string, string>>({});
@@ -97,11 +97,6 @@ export default function App() {
   };
 
   const handleClearCart = () => setCart([]);
-
-  const filteredPortfolio = PORTFOLIO_LIST.filter((p) => {
-    if (activePortfolioCategory === "all") return true;
-    return p.category.toLowerCase().includes(activePortfolioCategory.toLowerCase());
-  });
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? "bg-slate-950 text-slate-100" : "bg-[#F8F9FA] text-slate-900"}`}>
@@ -538,76 +533,7 @@ export default function App() {
           </section>
 
           {/* SECTION 3: PORTFOLIO GALLERY */}
-          <section id="portfolio" className="scroll-mt-24 bg-slate-50/30 dark:bg-slate-900/10 p-6 md:p-10 rounded-3xl border border-slate-100 dark:border-slate-800">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-              className="space-y-8"
-            >
-              <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
-                <span className="text-[10px] text-blue-600 dark:text-blue-400 font-mono font-bold uppercase tracking-widest block">
-                  Showcase Portfolio Gallery
-                </span>
-                <h2 className="text-3xl sm:text-4xl font-display font-black text-slate-900 dark:text-white uppercase tracking-tight">
-                  High-End Brand Identity Transformations
-                </h2>
-                <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
-                  Examine complete real-life physical asset creations printed and structured for Nairobi's leading digital and food enterprises.
-                </p>
-
-                {/* Filter Categories */}
-                <div className="flex flex-wrap justify-center gap-2 pt-2">
-                  {["all", "printing", "branding", "corporate", "events"].map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setActivePortfolioCategory(cat as any)}
-                      className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
-                        activePortfolioCategory === cat
-                          ? "bg-blue-600 text-white"
-                          : "bg-white dark:bg-slate-850 text-slate-600 hover:bg-slate-100"
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Portfolios Normal Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredPortfolio.map((p) => (
-                  <div 
-                    key={p.id}
-                    className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow group"
-                  >
-                    <div className="h-56 relative overflow-hidden">
-                      <img 
-                        src={p.image} 
-                        alt={`${p.title} - ${p.category} printing in Westlands Nairobi | SmartPrints Hub`} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute top-3 left-3 bg-slate-900/80 text-white text-[9px] font-bold font-mono uppercase px-2 py-0.5 rounded backdrop-blur">
-                        {p.category}
-                      </div>
-                    </div>
-
-                    <div className="p-5">
-                      <h4 className="font-display font-bold text-base text-slate-900 dark:text-white">
-                        {p.title}
-                      </h4>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs mt-2 leading-relaxed">
-                        {p.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-            </motion.div>
-          </section>
+          <PortfolioGallery items={PORTFOLIO_LIST} />
 
 
 

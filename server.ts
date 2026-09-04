@@ -128,6 +128,18 @@ app.get("/robots.txt", (req, res) => {
   }
 });
 
+// Google Search Console Site Verification Endpoint
+app.get("/googleacab13e66d241d14.html", (req, res) => {
+  const verifPath = path.join(process.cwd(), "public", "googleacab13e66d241d14.html");
+  if (fs.existsSync(verifPath)) {
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.sendFile(verifPath);
+  } else {
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.send("google-site-verification: googleacab13e66d241d14.html\n");
+  }
+});
+
 // 1. Healthcheck
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "SmartPrints Hub Server is online & ready" });

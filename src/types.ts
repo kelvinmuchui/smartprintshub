@@ -19,6 +19,9 @@ export interface PortfolioItem {
   title: string;
   category: "printing" | "branding" | "stationery" | "corporate" | "events";
   image: string;
+  images?: string[]; // Multiple photos for the same company / project
+  client?: string;
+  badge?: string;
   description: string;
   beforeImage?: string; // For the interactive Before/After sliders!
   afterImage?: string;
