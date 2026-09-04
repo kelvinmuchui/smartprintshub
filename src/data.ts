@@ -150,6 +150,57 @@ export const SERVICES_LIST: PrintService[] = [
 // PORTFOLIO ITEMS
 export const PORTFOLIO_LIST: PortfolioItem[] = [
   {
+    id: "proj-vibit-college",
+    title: "VIBIT Agricultural Training College Roll-up Banner & Promotional Flyers",
+    category: "branding",
+    client: "VIBIT Agricultural Training College",
+    badge: "2 Asset Types",
+    image: "/src/assets/images/vibit_rollup_banner_1788509247765.jpg",
+    images: [
+      "/src/assets/images/vibit_rollup_banner_1788509247765.jpg",
+      "/src/assets/images/vibit_flyers_stack_1788509270498.jpg"
+    ],
+    description: "Complete branding and event collateral for VIBIT Agricultural Training College (TVET Accredited, Westlands Nairobi), pairing a high-resolution retractable roll-up banner stand with vibrant printed 'Build a Career in Coffee Industry' marketing flyers."
+  },
+  {
+    id: "proj-google-gemini",
+    title: "Google Cloud Gemini Enterprise Masterclass Suite",
+    category: "events",
+    client: "Google Cloud",
+    badge: "2 Asset Types",
+    image: "/src/assets/images/google_gemini_notebook_1788354702974.jpg",
+    images: [
+      "/src/assets/images/google_gemini_notebook_1788354702974.jpg",
+      "/src/assets/images/google_gemini_rollups_1788354724010.jpg"
+    ],
+    description: "Full event branding suite for Google Cloud's Gemini Enterprise Masterclass in Nairobi, combining custom-printed hardcover executive notebooks with elastic bands and twin retractable roll-up banner stands."
+  },
+  {
+    id: "proj-afdb-workshop",
+    title: "AfDB Climate Action Window Inception Workshop",
+    category: "events",
+    client: "African Development Bank Group",
+    badge: "2 Asset Types",
+    image: "/src/assets/images/afdb_backdrop_banner_1788354765390.jpg",
+    images: [
+      "/src/assets/images/afdb_backdrop_banner_1788354765390.jpg",
+      "/src/assets/images/afdb_rollup_banners_1788354779144.jpg"
+    ],
+    description: "High-visibility conference branding for the CAW Technical Assistance Inception Workshop at Pullman Hotel Nairobi Upper Hill, featuring a large fabric backdrop display banner and twin pull-up roll-up stands."
+  },
+  {
+    id: "proj-framed-lake-canvas",
+    title: "Alpine Lake & Chalet Fine Art Framed Wall Decor",
+    category: "printing",
+    client: "Corporate Boardroom & Interior Decor",
+    badge: "Fine Art Print",
+    image: "/src/assets/images/framed_lake_canvas_1788354739742.jpg",
+    images: [
+      "/src/assets/images/framed_lake_canvas_1788354739742.jpg"
+    ],
+    description: "Ultra-vibrant high-resolution landscape photographic print mounted on heavy substrate with custom black slim aluminum gallery framing for executive office wall decor."
+  },
+  {
     id: "proj-1",
     title: "FestivalMerch Custom Event Lanyards",
     category: "events",
