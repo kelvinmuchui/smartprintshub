@@ -726,7 +726,10 @@ export default function App() {
               <li><a href="/printing-in-westlands/" className="hover:text-white">Printing in Westlands</a></li>
               <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Our Printing Services</button></li>
               <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Request Custom Quote</button></li>
-              <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Location Map</button></li>
+              <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Westlands Shop A11 Directions</button></li>
+              <li><a href="/sitemap.xml" target="_blank" rel="noreferrer" className="hover:text-white text-slate-400 font-mono text-[11px] block">XML Sitemap</a></li>
+              <li><a href="/robots.txt" target="_blank" rel="noreferrer" className="hover:text-white text-slate-400 font-mono text-[11px] block">Robots.txt Directives</a></li>
+              <li><a href="/llms.txt" target="_blank" rel="noreferrer" className="hover:text-white text-indigo-400 font-mono text-[11px] block">LLMs.txt (AI Search Protocol)</a></li>
               <li><button onClick={() => setIsSeoDashboardOpen(true)} className="hover:text-white text-blue-400 font-mono text-[11px] flex items-center gap-1.5 pt-1"><span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> Admin SEO Status Console</button></li>
             </ul>
           </div>

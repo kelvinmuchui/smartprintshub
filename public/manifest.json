@@ -1,0 +1,17 @@
+{
+  "short_name": "SmartPrints Hub",
+  "name": "SmartPrints Hub - Premier Printing, Branding & Cyber Services Westlands",
+  "description": "Professional commercial printing, corporate branding, signage, promotional merchandise, and digital cyber services in Westlands, Nairobi, Kenya.",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0A1B3D",
+  "theme_color": "#0A1B3D",
+  "display": "standalone",
+  "orientation": "portrait"
+}

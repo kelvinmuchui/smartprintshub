@@ -809,11 +809,11 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
 
                     <div className="p-2.5 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/80 dark:border-slate-800">
                       <div className="flex justify-between font-mono text-[10px] text-slate-400">
-                        <span>Geo-Targeting Tags (Local Westlands Coordinates)</span>
+                        <span>Canonical & Protocol Header</span>
                         <span className="text-emerald-500 font-bold">Active</span>
                       </div>
                       <p className="font-mono text-[11px] text-slate-500 mt-1">
-                        geo.position: -1.2678; 36.8078 (Westlands, Nairobi, KE)
+                        https://www.smartprintshub.co.ke/
                       </p>
                     </div>
                   </div>
@@ -823,7 +823,7 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
                 <div className="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
                   <h4 className="text-xs font-display font-bold uppercase tracking-tight text-slate-800 dark:text-slate-200 flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                    Structured Schema (JSON-LD) Status
+                    Structured Schema (@graph) Status
                   </h4>
 
                   <div className="space-y-2 text-xs">
@@ -833,7 +833,21 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
                           LocalBusiness & PrintShop Schema
                         </span>
                         <span className="text-[11px] text-slate-500">
-                          Woodvale Grove Shop A11, Opening Hours, Phone, M-Pesa payments
+                          Westlands Market Shop A11, GPS (-1.2678, 36.8078), M-Pesa, Mon-Sat hours
+                        </span>
+                      </div>
+                      <span className="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold rounded">
+                        Active
+                      </span>
+                    </div>
+
+                    <div className="p-2.5 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
+                      <div>
+                        <span className="font-bold text-slate-800 dark:text-slate-100 block">
+                          WebSite & Organization Schema
+                        </span>
+                        <span className="text-[11px] text-slate-500">
+                          SearchAction site search, customer service ContactPoint phone numbers
                         </span>
                       </div>
                       <span className="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold rounded">
@@ -847,7 +861,7 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
                           FAQPage Rich Snippets Schema
                         </span>
                         <span className="text-[11px] text-slate-500">
-                          Same-day turnarounds, file formats (CMYK/PDF), delivery zones
+                          Same-day turnarounds, prices in KES, PDF/CMYK guidelines, eCitizen
                         </span>
                       </div>
                       <span className="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold rounded">
@@ -858,10 +872,10 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
                     <div className="p-2.5 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
                       <div>
                         <span className="font-bold text-slate-800 dark:text-slate-100 block">
-                          OfferCatalog Schema
+                          OfferCatalog & Breadcrumbs
                         </span>
                         <span className="text-[11px] text-slate-500">
-                          Banners, business cards, umbrellas, promotional merchandise
+                          Roll-up banners, executive cards, t-shirts, notebooks, cyber services
                         </span>
                       </div>
                       <span className="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold rounded">
@@ -871,6 +885,70 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
                   </div>
                 </div>
 
+              </div>
+
+              {/* AI SEARCH & GENERATIVE ENGINE OPTIMIZATION (GEO) CARD */}
+              <div className="p-5 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-slate-900 dark:to-indigo-950/40 rounded-2xl border border-indigo-200 dark:border-indigo-900/60 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-indigo-100 dark:border-indigo-900/40 pb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="p-1.5 bg-indigo-600 text-white rounded-lg shadow-sm">
+                      <Sparkles className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-xs font-display font-bold uppercase tracking-tight text-slate-900 dark:text-white">
+                          AI Search & Generative Engine Optimization (GEO)
+                        </h4>
+                        <span className="px-2 py-0.5 bg-indigo-600 text-white font-mono text-[10px] font-bold rounded shadow-sm">
+                          LLMs.txt Active
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400">
+                        Authoritative knowledge documentation configured for Perplexity, ChatGPT Search, Google Gemini AI Overviews & Claude.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="/llms.txt"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-3 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-indigo-700 dark:text-indigo-300 rounded-xl text-xs font-mono font-semibold transition-colors flex items-center gap-1.5 shadow-sm border border-indigo-200 dark:border-indigo-800"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      <span>View /llms.txt</span>
+                    </a>
+                    <a
+                      href="/llms-full.txt"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-mono font-semibold transition-colors flex items-center gap-1.5 shadow-sm"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      <span>Full Context</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
+                  <div className="p-2.5 bg-white dark:bg-slate-900 rounded-xl border border-indigo-100 dark:border-indigo-950 flex flex-col justify-between">
+                    <span className="text-[10px] text-slate-400 uppercase font-bold">OpenAI / ChatGPT</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs mt-1">GPTBot: Allowed</span>
+                  </div>
+                  <div className="p-2.5 bg-white dark:bg-slate-900 rounded-xl border border-indigo-100 dark:border-indigo-950 flex flex-col justify-between">
+                    <span className="text-[10px] text-slate-400 uppercase font-bold">Perplexity AI</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs mt-1">PerplexityBot: Allowed</span>
+                  </div>
+                  <div className="p-2.5 bg-white dark:bg-slate-900 rounded-xl border border-indigo-100 dark:border-indigo-950 flex flex-col justify-between">
+                    <span className="text-[10px] text-slate-400 uppercase font-bold">Google Gemini</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs mt-1">Google-Extended: Allowed</span>
+                  </div>
+                  <div className="p-2.5 bg-white dark:bg-slate-900 rounded-xl border border-indigo-100 dark:border-indigo-950 flex flex-col justify-between">
+                    <span className="text-[10px] text-slate-400 uppercase font-bold">Anthropic Claude</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold text-xs mt-1">ClaudeBot: Allowed</span>
+                  </div>
+                </div>
               </div>
 
               {/* GOOGLE SEARCH CONSOLE OWNERSHIP VERIFICATION CARD */}

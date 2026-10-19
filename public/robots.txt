@@ -1,5 +1,60 @@
+# ==============================================================================
+# SmartPrints Hub Robots.txt
+# Business: SmartPrints Hub - Premier Printing, Branding & Digital Cyber Services
+# Location: Westlands Market, Shop A11, Westlands, Nairobi, Kenya
+# Canonical URL: https://www.smartprintshub.co.ke/
+# ==============================================================================
+
+# Default Crawlers (Google, Bing, Yahoo, DuckDuckGo)
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /*?*preview=true
 
-# Sitemap Location
-Sitemap: https://smartprintshub.co.ke/sitemap.xml
+# Google Search & Google Images
+User-agent: Googlebot
+User-agent: Googlebot-Image
+Allow: /
+Allow: /logo.svg
+Allow: /sitemap.xml
+Allow: /llms.txt
+
+# Google Gemini & AI Overviews (Allow for Generative Search Indexing)
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# OpenAI ChatGPT & SearchBot (Allow for generative answers & citations)
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Perplexity AI (Allow for citation in local service queries)
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Anthropic Claude (Allow for knowledge citations)
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI & Cohere
+User-agent: Meta-ExternalAgent
+User-agent: cohere-ai
+Allow: /
+
+# Canonical Sitemaps & LLM Discovery
+Sitemap: https://www.smartprintshub.co.ke/sitemap.xml
+Host: www.smartprintshub.co.ke

@@ -103,14 +103,25 @@ const mockOrders: Record<string, OrderJob> = {
   }
 };
 
+// SEO & Crawler Optimization Headers Middleware
+app.use((req, res, next) => {
+  // Allow all search engines and AI crawlers
+  res.setHeader("X-Robots-Tag", "all, index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  if (req.path === "/" || req.path === "") {
+    res.setHeader("Link", '<https://www.smartprintshub.co.ke/>; rel="canonical"');
+  }
+  next();
+});
+
 // API Endpoints
 
 // Static SEO Assets: Sitemap & Robots
 app.get("/sitemap.xml", (req, res) => {
   const sitemapPath = path.join(process.cwd(), "public", "sitemap.xml");
   if (fs.existsSync(sitemapPath)) {
-    res.setHeader("Content-Type", "application/xml");
-    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.setHeader("Content-Type", "application/xml; charset=utf-8");
+    res.setHeader("Cache-Control", "public, max-age=86400, stale-while-revalidate=43200");
     res.sendFile(sitemapPath);
   } else {
     res.status(404).send("Sitemap not found");
@@ -120,11 +131,47 @@ app.get("/sitemap.xml", (req, res) => {
 app.get("/robots.txt", (req, res) => {
   const robotsPath = path.join(process.cwd(), "public", "robots.txt");
   if (fs.existsSync(robotsPath)) {
-    res.setHeader("Content-Type", "text/plain");
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    res.setHeader("Cache-Control", "public, max-age=86400");
     res.sendFile(robotsPath);
   } else {
-    res.setHeader("Content-Type", "text/plain");
-    res.send("User-agent: *\nAllow: /\nSitemap: https://smartprintshub.co.ke/sitemap.xml\n");
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    res.send("User-agent: *\nAllow: /\nSitemap: https://www.smartprintshub.co.ke/sitemap.xml\n");
+  }
+});
+
+// AI Search Engine Knowledge Protocol (llms.txt & llms-full.txt)
+app.get("/llms.txt", (req, res) => {
+  const llmsPath = path.join(process.cwd(), "public", "llms.txt");
+  if (fs.existsSync(llmsPath)) {
+    res.setHeader("Content-Type", "text/markdown; charset=utf-8");
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.sendFile(llmsPath);
+  } else {
+    res.status(404).send("# SmartPrints Hub\nhttps://www.smartprintshub.co.ke/");
+  }
+});
+
+app.get("/llms-full.txt", (req, res) => {
+  const llmsFullPath = path.join(process.cwd(), "public", "llms-full.txt");
+  if (fs.existsSync(llmsFullPath)) {
+    res.setHeader("Content-Type", "text/markdown; charset=utf-8");
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.sendFile(llmsFullPath);
+  } else {
+    res.status(404).send("# SmartPrints Hub Full Context\nhttps://www.smartprintshub.co.ke/");
+  }
+});
+
+// Web App Manifest
+app.get("/manifest.json", (req, res) => {
+  const manifestPath = path.join(process.cwd(), "public", "manifest.json");
+  if (fs.existsSync(manifestPath)) {
+    res.setHeader("Content-Type", "application/manifest+json; charset=utf-8");
+    res.setHeader("Cache-Control", "public, max-age=86400");
+    res.sendFile(manifestPath);
+  } else {
+    res.status(404).send("Manifest not found");
   }
 });
 
