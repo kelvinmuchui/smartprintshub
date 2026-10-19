@@ -33,8 +33,22 @@ export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
           "@type": ["LocalBusiness", "PrintShop", "Organization"],
           "@id": `${SITE_URL}/#business`,
           name: BUSINESS.name,
+          alternateName: BUSINESS.alternateName,
           description: BUSINESS.description,
           url: SITE_URL,
+          logo: {
+            "@type": "ImageObject",
+            url: BUSINESS.logo,
+            contentUrl: BUSINESS.logo,
+            width: 512,
+            height: 512,
+            caption: "SmartPrints Hub Official Logo"
+          },
+          image: [
+            BUSINESS.logo,
+            `${SITE_URL}/logo.png`,
+            SOCIAL_IMAGE
+          ],
           telephone: BUSINESS.phone,
           email: BUSINESS.email,
           address: {
@@ -44,6 +58,12 @@ export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
             addressRegion: BUSINESS.region,
             addressCountry: BUSINESS.country
           },
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: -1.2678,
+            longitude: 36.8078
+          },
+          priceRange: "$$",
           sameAs: [
             BUSINESS.instagram,
             "https://wa.me/254743603068"
@@ -110,16 +130,20 @@ export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
     setMeta('meta[name="twitter:image"]', "name", SOCIAL_IMAGE);
     setLink("canonical", canonical);
 
-    document.head.querySelectorAll('script[type="application/ld+json"]').forEach((element) => element.remove());
-    const schemaElement = document.createElement("script");
-    schemaElement.type = "application/ld+json";
-    schemaElement.dataset.smartprintsSchema = "true";
+    let schemaElement = document.head.querySelector<HTMLScriptElement>('script[data-smartprints-schema="true"]');
+    if (!schemaElement) {
+      const existing = document.head.querySelector<HTMLScriptElement>('script[type="application/ld+json"]');
+      if (existing) {
+        schemaElement = existing;
+        schemaElement.dataset.smartprintsSchema = "true";
+      } else {
+        schemaElement = document.createElement("script");
+        schemaElement.type = "application/ld+json";
+        schemaElement.dataset.smartprintsSchema = "true";
+        document.head.appendChild(schemaElement);
+      }
+    }
     schemaElement.textContent = JSON.stringify(schema);
-    document.head.appendChild(schemaElement);
-
-    return () => {
-      schemaElement.remove();
-    };
   }, [isLocalLandingPage]);
 
   return null;

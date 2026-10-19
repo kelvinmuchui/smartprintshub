@@ -4,9 +4,21 @@
   "description": "Professional commercial printing, corporate branding, signage, promotional merchandise, and digital cyber services in Westlands, Nairobi, Kenya.",
   "icons": [
     {
-      "src": "/logo.svg",
+      "src": "/favicon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
       "type": "image/svg+xml",
-      "sizes": "192x192 512x512"
+      "sizes": "any"
     }
   ],
   "start_url": "/",
