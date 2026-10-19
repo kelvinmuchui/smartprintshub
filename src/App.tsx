@@ -74,6 +74,30 @@ export default function App() {
     }
   }, [darkMode]);
 
+  // Private admin access only (via URL parameter ?admin=seo, hash #seo-admin, or shortcut Ctrl+Shift+S)
+  useEffect(() => {
+    const checkAdminQuery = () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("admin") === "seo" || window.location.hash === "#seo-admin") {
+        setIsSeoDashboardOpen(true);
+      }
+    };
+    checkAdminQuery();
+    window.addEventListener("hashchange", checkAdminQuery);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        setIsSeoDashboardOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("hashchange", checkAdminQuery);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
   // Cart operations
@@ -111,7 +135,6 @@ export default function App() {
         setIsCartOpen={setIsCartOpen}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        onOpenSeoDashboard={() => setIsSeoDashboardOpen(true)}
       />
 
       {/* Main Container Content */}
@@ -653,6 +676,20 @@ export default function App() {
                           <span className="text-sm font-bold block text-white">Westlands Market, Shop A11, Nairobi</span>
                         </div>
                       </div>
+
+                      <a 
+                        href="https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex gap-2.5 items-center group hover:bg-slate-800/60 p-1.5 -mx-1.5 rounded-xl transition-all"
+                        title="Follow SmartPrints Hub on Instagram"
+                      >
+                        <Instagram className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform" />
+                        <div>
+                          <span className="text-[9px] block text-pink-400 font-mono font-bold">INSTAGRAM DM & PORTFOLIO</span>
+                          <span className="text-sm font-bold block text-white group-hover:text-pink-300 transition-colors">@smartprinters_hub_westlands</span>
+                        </div>
+                      </a>
                     </div>
                   </div>
 
@@ -708,6 +745,18 @@ export default function App() {
             <p className="text-xs text-slate-500 leading-relaxed">
               Luxury digital offset printing, heavy outdoor vinyl banner fabrication, KRA electronic filings & cyber assistance inside Westlands Market.
             </p>
+            <div className="pt-2">
+              <a 
+                href="https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-indigo-500/10 border border-pink-500/30 text-pink-300 hover:text-white hover:border-pink-400 transition-all text-xs font-semibold group shadow-sm"
+                title="Follow SmartPrints Hub on Instagram"
+              >
+                <Instagram className="w-4 h-4 text-pink-400 group-hover:scale-110 transition-transform" />
+                <span>Instagram: @smartprinters_hub_westlands</span>
+              </a>
+            </div>
           </div>
 
           <div>
@@ -730,7 +779,7 @@ export default function App() {
               <li><a href="/sitemap.xml" target="_blank" rel="noreferrer" className="hover:text-white text-slate-400 font-mono text-[11px] block">XML Sitemap</a></li>
               <li><a href="/robots.txt" target="_blank" rel="noreferrer" className="hover:text-white text-slate-400 font-mono text-[11px] block">Robots.txt Directives</a></li>
               <li><a href="/llms.txt" target="_blank" rel="noreferrer" className="hover:text-white text-indigo-400 font-mono text-[11px] block">LLMs.txt (AI Search Protocol)</a></li>
-              <li><button onClick={() => setIsSeoDashboardOpen(true)} className="hover:text-white text-blue-400 font-mono text-[11px] flex items-center gap-1.5 pt-1"><span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> Admin SEO Status Console</button></li>
+              <li><a href="https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0" target="_blank" rel="noopener noreferrer" className="hover:text-white text-pink-400 font-mono text-[11px] flex items-center gap-1.5 pt-1 group"><Instagram className="w-3.5 h-3.5 text-pink-400 group-hover:scale-110 transition-transform" /> Follow on Instagram (@smartprinters_hub_westlands)</a></li>
             </ul>
           </div>
 
@@ -749,29 +798,20 @@ export default function App() {
         <div className="max-w-7xl mx-auto border-t border-slate-900 pt-6 flex flex-wrap justify-between items-center text-[10px] uppercase font-bold tracking-wider font-mono gap-4">
           <div>© 2026 SmartPrints Hub Ltd — Westlands, Kenya. All dimensions calibrated.</div>
           <div className="flex items-center gap-4">
-            <button 
-              onClick={() => setIsSeoDashboardOpen(true)}
-              className="text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1"
+            <a 
+              href="https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-400 hover:text-pink-300 transition-colors flex items-center gap-1.5 lowercase"
+              title="SmartPrints Hub on Instagram"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-              Admin SEO Console
-            </button>
+              <Instagram className="w-3.5 h-3.5 text-pink-400" />
+              <span>@smartprinters_hub_westlands</span>
+            </a>
             <span className="text-slate-500">M-Pesa till / Credit line ledger</span>
           </div>
         </div>
       </footer>
-
-      {/* FLOATING ADMIN QUICK TOGGLE (DESKTOP) */}
-      <div className="fixed bottom-6 left-6 z-40 hidden md:block">
-        <button
-          onClick={() => setIsSeoDashboardOpen(true)}
-          className="flex items-center gap-2 px-3 py-2 bg-slate-900/90 hover:bg-slate-900 text-white rounded-2xl shadow-xl border border-slate-700/80 backdrop-blur-md transition-all hover:scale-105 group text-xs font-mono"
-          title="Open Admin SEO & Heading Keyword Health Status Dashboard"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span className="text-[11px] font-bold text-slate-300 group-hover:text-white">SEO Health Console</span>
-        </button>
-      </div>
 
       {/* FLOATING ACTION BOTTOM PANEL BAR FOR MOBILE */}
       <div className="fixed bottom-4 left-4 right-4 z-40 lg:hidden flex gap-2">

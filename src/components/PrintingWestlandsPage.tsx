@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin, Phone, Printer } from "lucide-react";
+import { ArrowRight, Instagram, MapPin, Phone, Printer } from "lucide-react";
 import { SMARTPRINTS_FAQS, SERVICES_LIST } from "../data";
 import { BUSINESS } from "../seo";
 
@@ -92,7 +92,18 @@ export default function PrintingWestlandsPage() {
       <footer className="bg-slate-950 text-slate-400 py-8 px-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs">
           <span>{BUSINESS.name} - {BUSINESS.address}</span>
-          <a href="/" className="text-blue-400 hover:text-blue-300">Back to SmartPrints Hub home</a>
+          <div className="flex items-center gap-4">
+            <a 
+              href="https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-pink-400 hover:text-pink-300 flex items-center gap-1.5 transition-colors font-semibold"
+            >
+              <Instagram className="w-3.5 h-3.5 text-pink-400" />
+              <span>@smartprinters_hub_westlands</span>
+            </a>
+            <a href="/" className="text-blue-400 hover:text-blue-300">Back to SmartPrints Hub home</a>
+          </div>
         </div>
       </footer>
     </div>

@@ -1,10 +1,14 @@
 export const SITE_URL = "https://www.smartprintshub.co.ke";
+export const INSTAGRAM_HANDLE = "smartprinters_hub_westlands";
+export const INSTAGRAM_URL = "https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0";
 
 export const BUSINESS = {
   name: "SmartPrints Hub",
   description: "Professional printing, digital printing, and corporate branding services in Westlands, Nairobi.",
   phone: "+254743603068",
   email: "smartprintershub1@gmail.com",
+  instagram: INSTAGRAM_URL,
+  instagramHandle: `@${INSTAGRAM_HANDLE}`,
   address: "Westlands Market, Shop A11, Westlands, Nairobi, Kenya",
   locality: "Westlands",
   region: "Nairobi",

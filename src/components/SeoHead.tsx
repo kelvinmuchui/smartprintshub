@@ -44,6 +44,10 @@ export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
             addressRegion: BUSINESS.region,
             addressCountry: BUSINESS.country
           },
+          sameAs: [
+            BUSINESS.instagram,
+            "https://wa.me/254743603068"
+          ],
           areaServed: { "@type": "City", name: "Nairobi" },
           openingHoursSpecification: BUSINESS.hours.map((hours) => ({
             "@type": "OpeningHoursSpecification",

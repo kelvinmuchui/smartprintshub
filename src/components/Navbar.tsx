@@ -12,7 +12,8 @@ import {
   Clock, 
   MapPin,
   ChevronRight,
-  ShieldCheck
+  ShieldCheck,
+  Instagram
 } from "lucide-react";
 import { CartItem } from "../types";
 
@@ -65,17 +66,17 @@ export default function Navbar({
             <span>Mon-Fri: 6:30 AM – 9:30 PM | Sat: 7 AM – 9:30 PM | Sun: 7:30 AM – 8:30 PM</span>
           </span>
         </div>
-        <div className="flex items-center gap-3">
-          {onOpenSeoDashboard && (
-            <button
-              onClick={onOpenSeoDashboard}
-              className="flex items-center gap-1 text-[11px] text-blue-300 hover:text-white bg-blue-900/40 hover:bg-blue-800/60 border border-blue-700/40 px-2 py-0.5 rounded transition-all"
-              title="Open Admin SEO & Keyword Status Monitor"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
-              <span>SEO Status</span>
-            </button>
-          )}
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <a
+            href="https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-[11px] text-pink-300 hover:text-white bg-gradient-to-r from-pink-600/30 to-purple-600/30 hover:from-pink-600/50 hover:to-purple-600/50 border border-pink-500/40 px-2.5 py-0.5 rounded transition-all group shadow-sm"
+            title="Follow SmartPrints Hub on Instagram (@smartprinters_hub_westlands)"
+          >
+            <Instagram className="w-3.5 h-3.5 text-pink-400 group-hover:scale-110 transition-transform" />
+            <span className="font-semibold">Instagram</span>
+          </a>
           <a href="tel:+254743603068" className="flex items-center gap-1.5 text-white bg-blue-600/20 text-blue-400 hover:bg-blue-600/30 px-2 py-0.5 rounded transition-all">
             <Phone className="w-3.5 h-3.5 animate-pulse" />
             <span>+254 743 603 068</span>
@@ -284,18 +285,15 @@ export default function Navbar({
                   </button>
                 </div>
 
-                {onOpenSeoDashboard && (
-                  <button
-                    onClick={() => {
-                      onOpenSeoDashboard();
-                      setMobileMenuOpen(false);
-                    }}
-                    className="w-full mt-2 py-2 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono font-bold flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
-                  >
-                    <ShieldCheck className="w-4 h-4 text-blue-500" />
-                    <span>Admin SEO & Alt-Text Console</span>
-                  </button>
-                )}
+                <a
+                  href="https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full mt-2.5 py-2.5 px-3 rounded-lg bg-gradient-to-r from-pink-500/15 via-purple-500/15 to-indigo-500/15 text-pink-600 dark:text-pink-300 text-xs font-semibold flex items-center justify-center gap-2 border border-pink-200 dark:border-pink-800/80 hover:bg-pink-100 dark:hover:bg-pink-900/40 transition-colors shadow-sm"
+                >
+                  <Instagram className="w-4 h-4 text-pink-500 dark:text-pink-400" />
+                  <span>Follow on Instagram (@smartprinters_hub_westlands)</span>
+                </a>
               </div>
             </motion.div>
           )}
