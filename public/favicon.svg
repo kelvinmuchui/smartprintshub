@@ -1,51 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
   <defs>
-    <filter id="fav-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.18" />
-    </filter>
+    <!-- Rich background gradient for high contrast on both Google Light & Dark Mode -->
     <linearGradient id="fav-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0A1B3D" />
-      <stop offset="100%" stop-color="#040D1F" />
+      <stop offset="0%" stop-color="#0B1A3A" />
+      <stop offset="50%" stop-color="#0E2452" />
+      <stop offset="100%" stop-color="#060E1E" />
     </linearGradient>
+    <filter id="mark-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1D4ED8" flood-opacity="0.35" />
+    </filter>
   </defs>
-  
-  <!-- Rounded container with SmartPrints Hub Navy branding -->
-  <rect x="4" y="4" width="152" height="152" rx="36" fill="url(#fav-bg)" stroke="#2253AC" stroke-width="3" />
-  
-  <!-- Centered Printer & Orbital Swoosh Mark -->
-  <g transform="translate(4, -14)" filter="url(#fav-shadow)">
-    <!-- Output paper sheets -->
-    <!-- Blue sheet -->
-    <path d="M 62 105 L 110 105 L 100 123 L 52 123 Z" fill="#3B82F6" />
-    <!-- Green sheet -->
-    <path d="M 70 115 L 115 115 L 105 133 L 60 133 Z" fill="#22C55E" />
-    <!-- Gold sheet -->
-    <path d="M 78 125 L 118 125 L 108 143 L 68 143 Z" fill="#F59E0B" />
 
-    <!-- Printer body -->
-    <rect x="42" y="86" width="14" height="24" rx="4" fill="#FFFFFF" opacity="0.9" />
-    <rect x="114" y="86" width="14" height="24" rx="4" fill="#FFFFFF" opacity="0.9" />
-    <rect x="50" y="70" width="70" height="26" rx="6" fill="#FFFFFF" />
-    <rect x="66" y="58" width="38" height="12" rx="3" fill="#E2E8F0" />
+  <!-- Base container with safe-radius matching Google's circle/squircle display -->
+  <rect width="192" height="192" rx="44" fill="url(#fav-bg)" />
+  <rect x="2" y="2" width="188" height="188" rx="42" fill="none" stroke="#2563EB" stroke-width="3" stroke-opacity="0.6" />
 
-    <!-- Blue orbit swoosh -->
-    <path d="M 32 102 C 24 88, 30 72, 46 64 C 62 56, 88 56, 112 62" 
-          fill="none" stroke="#60A5FA" stroke-width="7" stroke-linecap="round" />
+  <!-- Centered Icon Mark scaled to fit inside 160x160 circular safe zone -->
+  <g transform="translate(19, 14) scale(1.0)" filter="url(#mark-glow)">
+    <!-- 3 Cascading Printed Sheets (CMYK/Vibrant Representation) -->
+    <!-- Sheet 1 (Royal Blue) -->
+    <path d="M 60 102 L 108 102 L 98 120 L 50 120 Z" fill="#3B82F6" />
+    <!-- Sheet 2 (Vibrant Green) -->
+    <path d="M 68 112 L 113 112 L 103 130 L 58 130 Z" fill="#22C55E" />
+    <!-- Sheet 3 (Golden Amber) -->
+    <path d="M 76 122 L 116 122 L 106 140 L 66 140 Z" fill="#F59E0B" />
+
+    <!-- Printer Body (Crisp White/Silver with dark contrast) -->
+    <!-- Left Leg -->
+    <rect x="40" y="83" width="14" height="24" rx="4" fill="#FFFFFF" />
+    <!-- Right Leg -->
+    <rect x="112" y="83" width="14" height="24" rx="4" fill="#FFFFFF" />
+    <!-- Main Center Body -->
+    <rect x="48" y="67" width="70" height="26" rx="6" fill="#FFFFFF" />
+    <!-- Center Print Slot Accent -->
+    <rect x="58" y="78" width="50" height="4" rx="2" fill="#0B1A3A" />
+    <!-- Top Paper Tray Feed -->
+    <rect x="64" y="55" width="38" height="12" rx="3" fill="#E2E8F0" />
+
+    <!-- Dynamic Orbit Swooshes (Signature SmartPrints Hub Motif) -->
+    <!-- Blue Orbit Swoosh -->
+    <path d="M 28 100 C 20 84, 26 67, 44 58 C 62 49, 90 49, 116 56" 
+          fill="none" stroke="#60A5FA" stroke-width="7.5" stroke-linecap="round" />
           
-    <!-- Green orbit swoosh -->
-    <path d="M 32 102 C 40 108, 62 110, 94 92 C 122 76, 128 62, 126 50" 
-          fill="none" stroke="#4ADE80" stroke-width="7" stroke-linecap="round" />
+    <!-- Green Orbit Swoosh -->
+    <path d="M 28 100 C 38 108, 62 110, 96 90 C 126 72, 132 57, 130 44" 
+          fill="none" stroke="#4ADE80" stroke-width="7.5" stroke-linecap="round" />
     
-    <!-- Orbital Dot -->
-    <circle cx="118" cy="46" r="7" fill="#4ADE80" />
+    <!-- Orbital Green Satellite Dot -->
+    <circle cx="123" cy="40" r="7.5" fill="#4ADE80" />
   </g>
-
-  <!-- Brand Subtext "SPH" for instant recognition at small sizes -->
-  <text x="80" y="142" 
-        font-family="system-ui, -apple-system, sans-serif" 
-        font-weight="900" 
-        font-size="19" 
-        letter-spacing="3" 
-        fill="#FFFFFF" 
-        text-anchor="middle">SMARTPRINTS</text>
 </svg>

@@ -16,24 +16,18 @@
 
   <!-- Printer Icon centered -->
   <g transform="translate(146, 70) scale(1.6)" filter="url(#glow)">
-    <!-- Item 1 (Blue sheet) -->
     <path d="M 62 105 L 110 105 L 100 123 L 52 123 Z" fill="#3B82F6" />
-    <!-- Item 2 (Green sheet) -->
     <path d="M 70 115 L 115 115 L 105 133 L 60 133 Z" fill="#22C55E" />
-    <!-- Item 3 (Gold sheet) -->
     <path d="M 78 125 L 118 125 L 108 143 L 68 143 Z" fill="#F59E0B" />
 
-    <!-- Printer machine body -->
     <rect x="42" y="86" width="14" height="24" rx="4" fill="#FFFFFF" opacity="0.9" />
     <rect x="114" y="86" width="14" height="24" rx="4" fill="#FFFFFF" opacity="0.9" />
     <rect x="50" y="70" width="70" height="26" rx="6" fill="#FFFFFF" />
     <rect x="66" y="58" width="38" height="12" rx="3" fill="#E2E8F0" />
 
-    <!-- Blue orbit swoosh -->
     <path d="M 32 102 C 24 88, 30 72, 46 64 C 62 56, 88 56, 112 62" 
           fill="none" stroke="#60A5FA" stroke-width="7" stroke-linecap="round" />
           
-    <!-- Green orbit swoosh -->
     <path d="M 32 102 C 40 108, 62 110, 94 92 C 122 76, 128 62, 126 50" 
           fill="none" stroke="#4ADE80" stroke-width="7" stroke-linecap="round" />
     
