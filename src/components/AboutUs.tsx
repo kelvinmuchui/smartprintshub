@@ -51,7 +51,7 @@ export default function AboutUs() {
 
           {/* Mission/Profile Statement Copy */}
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-sans font-medium">
-            At SmartPrints Hub (inspired by Westlands' finest DS Creations), we specialize in high-quality printing services tailored to meet your business and personal needs. We proudly offer full-cycle production, managing your project from concept and design to the final vibrant, heavy-ink print.
+            At SmartPrints Hub, we specialize in high-quality printing services tailored to meet your business and personal needs. We proudly offer full-cycle production, managing your project from concept and design to the final vibrant, heavy-ink print.
           </p>
 
           <hr className="border-slate-100 dark:border-slate-800/80" />
