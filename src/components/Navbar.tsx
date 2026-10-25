@@ -46,7 +46,10 @@ export default function Navbar({
   const navItems = [
     { id: "home", label: "Home" },
     { id: "services", label: "Our Services" },
+    { id: "calculator", label: "Instant Quote" },
     { id: "portfolio", label: "Our Portfolio" },
+    { id: "delivery", label: "Delivery Areas" },
+    { id: "artwork-guide", label: "Artwork Guide" },
     { id: "contact", label: "Contact Us" }
   ];
 
@@ -274,12 +277,12 @@ export default function Navbar({
                   </a>
                   <button
                     onClick={() => {
-                      setTab("upload");
+                      setTab("calculator");
                       setMobileMenuOpen(false);
-                      const el = document.getElementById("upload");
+                      const el = document.getElementById("calculator");
                       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
                     }}
-                    className="flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold text-center"
+                    className="flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold text-center cursor-pointer"
                   >
                     <span>Instant Quote</span>
                   </button>

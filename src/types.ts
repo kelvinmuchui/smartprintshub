@@ -6,12 +6,36 @@
 export interface PrintService {
   id: string;
   title: string;
-  category: "printing" | "branding" | "cyber" | "kra-ecitizen";
+  category: "printing" | "branding" | "signage" | "apparel" | "packaging" | "cyber" | "kra-ecitizen";
   description: string;
   iconName: string; // Dynamic icon rendering via lucide-react names
   startingPrice: string;
   popularFinishing?: string;
   specs?: string[];
+  highlight?: string;
+}
+
+export interface DeliveryZone {
+  id: string;
+  zoneName: string;
+  areas: string[];
+  speed: string;
+  feeEstimate: string;
+  courierPartner: string;
+  badge: string;
+}
+
+export interface QuoteConfigItem {
+  id: string;
+  name: string;
+  category: string;
+  basePrice: number;
+  unit: string;
+  minimumQty: number;
+  quantityTiers: number[];
+  stockOptions: { name: string; priceMultiplier: number }[];
+  finishOptions: { name: string; extraPerUnit: number }[];
+  leadTimes: { speed: string; multiplier: number; label: string }[];
 }
 
 export interface PortfolioItem {
