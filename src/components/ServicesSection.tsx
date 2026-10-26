@@ -23,7 +23,10 @@ import {
   Phone, 
   ArrowRight,
   CheckCircle2,
-  ChevronRight
+  ChevronRight,
+  ChevronLeft,
+  SlidersHorizontal,
+  LayoutGrid
 } from "lucide-react";
 import { SERVICES_LIST } from "../data";
 import { PrintService } from "../types";
@@ -32,8 +35,54 @@ interface ServicesSectionProps {
   onSelectForQuote: (serviceId: string) => void;
 }
 
+interface BizCardSubtype {
+  id: string;
+  name: string;
+  badge: string;
+  desc: string;
+  specs: string[];
+  finishing: string;
+}
+
+const BIZ_CARD_SUBTYPES: BizCardSubtype[] = [
+  {
+    id: "standard",
+    name: "Standard 300gsm Silk",
+    badge: "Essential",
+    desc: "Crisp 1200 DPI double-sided print on 300gsm smooth silk artboard. Clean square cut or 3mm rounded corners.",
+    specs: ["Stock: 300gsm Silk Artboard", "Double-Sided Full CMYK", "Same-Day (2-4 hrs)"],
+    finishing: "Smooth Uncoated or Light Silk Varnish"
+  },
+  {
+    id: "laminated",
+    name: "Matte / Gloss Laminated",
+    badge: "Most Popular",
+    desc: "300gsm heavy artboard sealed with waterproof anti-scuff thermal matte or high-contrast gloss film.",
+    specs: ["Stock: 300gsm Heavy Artboard", "Waterproof Thermal Film", "Same-Day (3-4 hrs)"],
+    finishing: "Thermal Matte or High-Gloss Lamination"
+  },
+  {
+    id: "velvet",
+    name: "Velvet Soft-Touch Luxury",
+    badge: "Premium Feel",
+    desc: "300gsm silk cardstock with tactile suede peach-skin feel, zero glare and zero fingerprints.",
+    specs: ["Stock: 300gsm Heavy Cardstock", "Suede Peach-Skin Texture", "24 Hours Dispatch"],
+    finishing: "Ultra-Matte Velvet Soft-Touch Skin"
+  },
+  {
+    id: "spot-uv",
+    name: "Spot UV & Metallic Foil",
+    badge: "VIP Elite",
+    desc: "Raised 3D glossy clear varnish highlights on logo or reflective genuine gold/silver stamping.",
+    specs: ["Stock: 300gsm Heavyweight Artboard", "Raised 3D Varnish / Gold Foil", "24–48 Hours Dispatch"],
+    finishing: "Raised 3D Spot UV or Gold/Silver Foil"
+  }
+];
+
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuote }) => {
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [bizCardTypeIndex, setBizCardTypeIndex] = useState<number>(0);
+  const [showAllBizCardTypes, setShowAllBizCardTypes] = useState<boolean>(false);
 
   const categories = [
     { id: "all", label: "All Capabilities" },
@@ -112,54 +161,199 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
 
       {/* Services Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredServices.map((service) => (
-          <div
-            key={service.id}
-            className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
-          >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform">
-                  {getServiceIcon(service.iconName)}
+        {filteredServices.map((service) => {
+          const isBizCards = service.id === "biz-cards";
+          const currentBizType = BIZ_CARD_SUBTYPES[bizCardTypeIndex];
+
+          return (
+            <div
+              key={service.id}
+              className={`p-6 rounded-2xl bg-white dark:bg-slate-900 border transition-all flex flex-col justify-between group ${
+                isBizCards ? "border-blue-300 dark:border-blue-700/80 shadow-md ring-1 ring-blue-500/10" : "border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md"
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    {getServiceIcon(service.iconName)}
+                  </div>
+                  {isBizCards ? (
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded-md">
+                        {showAllBizCardTypes ? "All 4 Types" : `Type ${bizCardTypeIndex + 1}/4`}
+                      </span>
+                    </div>
+                  ) : service.highlight ? (
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                      {service.highlight}
+                    </span>
+                  ) : (
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
+                      {service.category}
+                    </span>
+                  )}
                 </div>
-                {service.highlight ? (
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                    {service.highlight}
-                  </span>
+
+                <h4 className="text-lg font-display font-bold text-slate-900 dark:text-white mb-2 leading-tight flex items-center justify-between">
+                  <span>{service.title}</span>
+                  {isBizCards && (
+                    <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-bold uppercase">
+                      300gsm Standard
+                    </span>
+                  )}
+                </h4>
+
+                {/* SPECIAL CASE: BUSINESS CARDS SINGLE TYPE SLIDER & VIEW ALL */}
+                {isBizCards ? (
+                  <div className="space-y-3 mb-4">
+                    {/* Slider Navigation Bar */}
+                    <div className="flex items-center justify-between p-1.5 bg-slate-50 dark:bg-slate-850 rounded-xl border border-slate-200/70 dark:border-slate-800">
+                      <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
+                        {BIZ_CARD_SUBTYPES.map((bt, idx) => (
+                          <button
+                            key={bt.id}
+                            type="button"
+                            onClick={() => {
+                              setBizCardTypeIndex(idx);
+                              setShowAllBizCardTypes(false);
+                            }}
+                            className={`px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap transition-all cursor-pointer ${
+                              !showAllBizCardTypes && bizCardTypeIndex === idx
+                                ? "bg-[#003B9C] text-white shadow-xs"
+                                : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                            }`}
+                          >
+                            {bt.name.replace(" 300gsm Silk", "")}
+                          </button>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center gap-1 shrink-0 pl-1">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setShowAllBizCardTypes(false);
+                            setBizCardTypeIndex((prev) => (prev > 0 ? prev - 1 : BIZ_CARD_SUBTYPES.length - 1));
+                          }}
+                          aria-label="Previous Card Type"
+                          className="p-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-blue-600 cursor-pointer"
+                        >
+                          <ChevronLeft className="w-3 h-3" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setShowAllBizCardTypes(false);
+                            setBizCardTypeIndex((prev) => (prev < BIZ_CARD_SUBTYPES.length - 1 ? prev + 1 : 0));
+                          }}
+                          aria-label="Next Card Type"
+                          className="p-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-blue-600 cursor-pointer"
+                        >
+                          <ChevronRight className="w-3 h-3" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {!showAllBizCardTypes ? (
+                      /* SINGLE TYPE SPOTLIGHT VIEW */
+                      <div className="p-3 bg-blue-50/40 dark:bg-blue-950/20 rounded-xl border border-blue-100 dark:border-blue-900/40 space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-bold text-slate-900 dark:text-white">
+                            {currentBizType.name}
+                          </span>
+                          <span className="text-[9px] font-mono font-extrabold uppercase px-2 py-0.5 rounded-full bg-blue-600 text-white">
+                            {currentBizType.badge}
+                          </span>
+                        </div>
+                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-sans">
+                          {currentBizType.desc}
+                        </p>
+                        <div className="space-y-1 pt-1.5 border-t border-blue-200/50 dark:border-blue-900/50">
+                          {currentBizType.specs.map((sp, i) => (
+                            <div key={i} className="flex items-start gap-1.5 text-[11px] text-slate-700 dark:text-slate-300 font-sans">
+                              <span className="text-blue-500 font-bold shrink-0">✓</span>
+                              <span>{sp}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400 pt-1">
+                          <span className="font-semibold text-slate-700 dark:text-slate-300">Finishing: </span>
+                          <span>{currentBizType.finishing}</span>
+                        </div>
+
+                        {/* View all button */}
+                        <button
+                          type="button"
+                          onClick={() => setShowAllBizCardTypes(true)}
+                          className="w-full mt-2 py-1.5 px-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider flex items-center justify-center gap-1 border border-blue-200 dark:border-blue-900 cursor-pointer"
+                        >
+                          <LayoutGrid className="w-3 h-3" />
+                          <span>View All 4 Card Types</span>
+                        </button>
+                      </div>
+                    ) : (
+                      /* EXPANDED VIEW: ALL 4 TYPES */
+                      <div className="space-y-2.5">
+                        <div className="flex items-center justify-between text-[11px] font-mono">
+                          <span className="font-bold text-slate-700 dark:text-slate-300">Comparing All 4 Finishes:</span>
+                          <button
+                            type="button"
+                            onClick={() => setShowAllBizCardTypes(false)}
+                            className="text-blue-600 dark:text-blue-400 font-bold hover:underline flex items-center gap-1 cursor-pointer"
+                          >
+                            <SlidersHorizontal className="w-3 h-3" />
+                            <span>Slider View</span>
+                          </button>
+                        </div>
+                        {BIZ_CARD_SUBTYPES.map((bt) => (
+                          <div 
+                            key={bt.id} 
+                            onClick={() => {
+                              setBizCardTypeIndex(BIZ_CARD_SUBTYPES.findIndex(b => b.id === bt.id));
+                              setShowAllBizCardTypes(false);
+                            }}
+                            className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/70 dark:border-slate-800 hover:border-blue-400 cursor-pointer transition-all"
+                          >
+                            <div className="flex items-center justify-between text-xs font-bold mb-1 text-slate-900 dark:text-white">
+                              <span>{bt.name}</span>
+                              <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+                                {bt.badge}
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-slate-500 leading-snug">{bt.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ) : (
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
-                    {service.category}
-                  </span>
+                  /* STANDARD SERVICE CARD PRESENTATION */
+                  <>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans mb-4">
+                      {service.description}
+                    </p>
+
+                    {/* Specs & Popular Finishing */}
+                    {service.specs && service.specs.length > 0 && (
+                      <div className="space-y-1.5 pt-3 border-t border-slate-100 dark:border-slate-800/80 mb-4">
+                        {service.specs.slice(0, 3).map((spec, i) => (
+                          <div key={i} className="flex items-start gap-2 text-[11px] text-slate-600 dark:text-slate-400 font-sans">
+                            <span className="text-blue-500 dark:text-blue-400 font-bold shrink-0">✓</span>
+                            <span>{spec}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {service.popularFinishing && (
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 font-sans mb-4">
+                        <span className="font-semibold text-slate-700 dark:text-slate-300">Finishing: </span>
+                        <span>{service.popularFinishing}</span>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
-
-              <h4 className="text-lg font-display font-bold text-slate-900 dark:text-white mb-2 leading-tight">
-                {service.title}
-              </h4>
-
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans mb-4">
-                {service.description}
-              </p>
-
-              {/* Specs & Popular Finishing */}
-              {service.specs && service.specs.length > 0 && (
-                <div className="space-y-1.5 pt-3 border-t border-slate-100 dark:border-slate-800/80 mb-4">
-                  {service.specs.slice(0, 3).map((spec, i) => (
-                    <div key={i} className="flex items-start gap-2 text-[11px] text-slate-600 dark:text-slate-400 font-sans">
-                      <span className="text-blue-500 dark:text-blue-400 font-bold shrink-0">✓</span>
-                      <span>{spec}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {service.popularFinishing && (
-                <div className="text-[11px] text-slate-500 dark:text-slate-400 font-sans mb-4">
-                  <span className="font-semibold text-slate-700 dark:text-slate-300">Finishing: </span>
-                  <span>{service.popularFinishing}</span>
-                </div>
-              )}
-            </div>
 
             <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 space-y-3">
               <div className="flex items-center justify-between text-[11px] font-mono">
@@ -190,7 +384,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
               </div>
             </div>
           </div>
-        ))}
+        );
+      })}
       </div>
     </div>
   );

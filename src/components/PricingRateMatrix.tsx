@@ -14,6 +14,8 @@ import {
   Info,
   BadgeCheck,
   ChevronRight,
+  ChevronLeft,
+  SlidersHorizontal,
   FileText
 } from "lucide-react";
 import { 
@@ -85,6 +87,8 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<string>("biz-cards");
   const [viewMode, setViewMode] = useState<"cards" | "table">("cards");
+  const [cardDisplayMode, setCardDisplayMode] = useState<"slider" | "grid">("slider");
+  const [activePackageIndex, setActivePackageIndex] = useState<number>(0);
 
   const categories: PricingCategory[] = [
     {
@@ -1022,7 +1026,10 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
         {categories.map((cat) => (
           <button
             key={cat.id}
-            onClick={() => setActiveTab(cat.id)}
+            onClick={() => {
+              setActiveTab(cat.id);
+              setActivePackageIndex(0);
+            }}
             className={`px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all border cursor-pointer flex items-center gap-2 ${
               activeTab === cat.id
                 ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-sm"
@@ -1065,148 +1072,453 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
 
       {/* VIEW MODE 1: VISUAL PACKAGE CARDS */}
       {viewMode === "cards" && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {currentCategory.packages.map((pkg) => (
-            <div
-              key={pkg.id}
-              className={`rounded-3xl bg-white dark:bg-slate-900 border transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 ${
-                pkg.badge ? "border-blue-300 dark:border-blue-700 ring-2 ring-blue-500/20" : "border-slate-200/80 dark:border-slate-800"
-              }`}
-            >
-              <div>
-                {/* Artwork Image Banner with floating badge */}
-                <div className="relative h-44 w-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-                  <img 
-                    src={pkg.image} 
-                    alt={pkg.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                  
-                  {pkg.badge && (
-                    <div className="absolute top-3 right-3">
-                      <span className={`text-[10px] font-mono font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm ${pkg.badgeColor || "bg-blue-600 text-white"}`}>
-                        {pkg.badge}
-                      </span>
-                    </div>
-                  )}
-
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                    <span className="text-[11px] font-mono font-bold flex items-center gap-1 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-md">
-                      <Clock className="w-3 h-3 text-amber-400" />
-                      <span>{pkg.turnaround}</span>
-                    </span>
-                    <span className="text-[10px] font-mono bg-blue-600/90 backdrop-blur-md px-2 py-0.5 rounded-md font-bold uppercase">
-                      MOQ: {pkg.moq}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Card Title & Starting Price */}
-                <div className="p-5 pb-3">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 block mb-0.5">
-                    {pkg.subtitle}
-                  </span>
-                  <h3 className="text-base font-display font-bold text-slate-900 dark:text-white leading-snug mb-3">
-                    {pkg.title}
-                  </h3>
-
-                  {/* Prominent Price Tag */}
-                  <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-850 border border-slate-150 dark:border-slate-800 mb-4">
-                    <div className="flex items-baseline justify-between mb-1">
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
-                        Price From
-                      </span>
-                      <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
-                        {pkg.perUnitRate}
-                      </span>
-                    </div>
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="text-2xl font-display font-black text-slate-950 dark:text-white">
-                        {pkg.baseStartingPrice}
-                      </span>
-                      <span className="text-[11px] text-slate-500 font-sans">
-                        / base bundle
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Quantity & Price Tier Matrix */}
-                  <div className="space-y-1.5 mb-4">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold block mb-1">
-                      Volume Rate Matrix (KES)
-                    </span>
-                    <div className="grid grid-cols-2 gap-1.5">
-                      {pkg.bundles.map((bundle, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => handleOrderWhatsApp(pkg.title, bundle)}
-                          className={`p-2 rounded-xl text-left border transition-all cursor-pointer ${
-                            bundle.isPopular 
-                              ? "bg-blue-50/80 dark:bg-blue-950/40 border-blue-300 dark:border-blue-700/60 ring-1 ring-blue-500/20" 
-                              : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-150 dark:border-slate-800 hover:border-slate-300"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between text-[11px]">
-                            <span className="font-bold text-slate-800 dark:text-slate-200 font-sans">
-                              {bundle.quantity}
-                            </span>
-                            {bundle.isPopular && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-                            )}
-                          </div>
-                          <div className="text-xs font-display font-black text-slate-900 dark:text-white">
-                            KSh {bundle.price.toLocaleString()}
-                          </div>
-                          {bundle.unitRate && (
-                            <div className="text-[9px] text-slate-500 dark:text-slate-400 font-mono">
-                              {bundle.unitRate}
-                            </div>
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Specifications */}
-                  <div className="space-y-1.5 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] font-sans">
-                    <div className="flex items-start gap-1.5 text-slate-600 dark:text-slate-400">
-                      <span className="text-blue-500 font-bold">✓</span>
-                      <span><strong className="text-slate-800 dark:text-slate-200">Stock:</strong> {pkg.stock}</span>
-                    </div>
-                    <div className="flex items-start gap-1.5 text-slate-600 dark:text-slate-400">
-                      <span className="text-blue-500 font-bold">✓</span>
-                      <span><strong className="text-slate-800 dark:text-slate-200">Finish:</strong> {pkg.finishing}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="p-5 pt-3 space-y-2 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-850/40">
+        <div className="space-y-6">
+          {/* Controls Bar for Slider vs View All */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 bg-slate-50 dark:bg-slate-850/80 rounded-2xl border border-slate-200/80 dark:border-slate-800">
+            {/* Quick Type Selection Pills */}
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 shrink-0 mr-1 hidden sm:inline">
+                Types ({currentCategory.packages.length}):
+              </span>
+              {currentCategory.packages.map((pkg, idx) => (
                 <button
-                  type="button"
-                  onClick={() => handleOrderWhatsApp(pkg.title, pkg.bundles[0])}
-                  className="w-full py-2.5 px-3 rounded-xl bg-[#003B9C] hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                  key={pkg.id}
+                  onClick={() => {
+                    setActivePackageIndex(idx);
+                    setCardDisplayMode("slider");
+                  }}
+                  className={`px-3 py-1.5 rounded-xl text-xs whitespace-nowrap transition-all cursor-pointer flex items-center gap-1.5 ${
+                    cardDisplayMode === "slider" && activePackageIndex === idx
+                      ? "bg-[#003B9C] text-white shadow-xs font-bold"
+                      : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:border-blue-400 font-medium"
+                  }`}
                 >
-                  <Phone className="w-3.5 h-3.5" />
-                  <span>Order on WhatsApp</span>
+                  <span className={`w-1.5 h-1.5 rounded-full ${cardDisplayMode === "slider" && activePackageIndex === idx ? "bg-white" : "bg-blue-600"}`}></span>
+                  <span>{pkg.title}</span>
                 </button>
-                
-                {onSelectForCalculator && (
+              ))}
+            </div>
+
+            {/* Slider Navigation & View More / Grid Toggle */}
+            <div className="flex items-center gap-2 shrink-0 self-end sm:self-auto">
+              {cardDisplayMode === "slider" ? (
+                <>
+                  <div className="flex items-center gap-1 bg-white dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <button
+                      type="button"
+                      onClick={() => setActivePackageIndex((prev) => (prev > 0 ? prev - 1 : currentCategory.packages.length - 1))}
+                      aria-label="Previous Type"
+                      className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <span className="text-xs font-mono font-bold px-2 text-slate-700 dark:text-slate-300">
+                      {activePackageIndex + 1}/{currentCategory.packages.length}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setActivePackageIndex((prev) => (prev < currentCategory.packages.length - 1 ? prev + 1 : 0))}
+                      aria-label="Next Type"
+                      className="p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
                   <button
                     type="button"
-                    onClick={() => onSelectForCalculator(pkg.calculatorId)}
-                    className="w-full py-2 px-3 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                    onClick={() => setCardDisplayMode("grid")}
+                    className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900 hover:bg-black text-white dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-bold transition-all cursor-pointer shadow-xs"
                   >
-                    <Calculator className="w-3 h-3 text-blue-500" />
-                    <span>Customize in Calculator</span>
+                    <LayoutGrid className="w-3.5 h-3.5 text-blue-400" />
+                    <span>View More / All Types ({currentCategory.packages.length})</span>
                   </button>
-                )}
+                </>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setCardDisplayMode("slider")}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#003B9C] hover:bg-blue-700 text-white text-xs font-bold transition-all cursor-pointer shadow-xs"
+                >
+                  <SlidersHorizontal className="w-3.5 h-3.5" />
+                  <span>Show Single Type Slider</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* 1. SINGLE TYPE SLIDER SHOWCASE (DEFAULT VIEW) */}
+          {cardDisplayMode === "slider" && (
+            <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                {/* Left: Artwork Asset & Features */}
+                <div className="lg:col-span-5 space-y-4">
+                  <div className="relative rounded-2xl overflow-hidden aspect-4/3 bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-800 shadow-inner group">
+                    <img 
+                      src={currentCategory.packages[activePackageIndex]?.image} 
+                      alt={currentCategory.packages[activePackageIndex]?.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                    
+                    {currentCategory.packages[activePackageIndex]?.badge && (
+                      <div className="absolute top-3 right-3">
+                        <span className={`text-[10px] font-mono font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm ${currentCategory.packages[activePackageIndex]?.badgeColor || "bg-blue-600 text-white"}`}>
+                          {currentCategory.packages[activePackageIndex]?.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                      <span className="text-[11px] font-mono font-bold flex items-center gap-1 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-lg">
+                        <Clock className="w-3.5 h-3.5 text-amber-400" />
+                        <span>{currentCategory.packages[activePackageIndex]?.turnaround}</span>
+                      </span>
+                      <span className="text-[10px] font-mono bg-blue-600/90 backdrop-blur-md px-2.5 py-1 rounded-lg font-bold uppercase">
+                        MOQ: {currentCategory.packages[activePackageIndex]?.moq}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Highlights checklist */}
+                  <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-850/60 border border-slate-150 dark:border-slate-800 space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold block mb-1">
+                      Included Production Features
+                    </span>
+                    {currentCategory.packages[activePackageIndex]?.features.map((feat, i) => (
+                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
+                        <Check className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right: Specifications, Volume Tier Rates, and CTAs */}
+                <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+                  <div>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                        {currentCategory.packages[activePackageIndex]?.subtitle}
+                      </span>
+                      <span className="text-slate-300 dark:text-slate-700">•</span>
+                      <span className="text-xs font-mono text-slate-400 font-semibold">
+                        Type {activePackageIndex + 1} of {currentCategory.packages.length}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl sm:text-3xl font-display font-black text-slate-900 dark:text-white leading-tight mb-4">
+                      {currentCategory.packages[activePackageIndex]?.title}
+                    </h3>
+
+                    {/* Prominent Price Banner */}
+                    <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50/80 via-white to-slate-50 dark:from-slate-850 dark:via-slate-850 dark:to-slate-800 border border-blue-200/80 dark:border-slate-700 flex flex-wrap items-baseline justify-between gap-3 mb-5">
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold block">
+                          Base Package Price
+                        </span>
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-3xl font-display font-black text-slate-950 dark:text-white">
+                            {currentCategory.packages[activePackageIndex]?.baseStartingPrice}
+                          </span>
+                          <span className="text-xs text-slate-500 font-sans">
+                            / starting bundle
+                          </span>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold block">
+                          Per Unit Rate
+                        </span>
+                        <span className="text-sm font-mono font-bold text-emerald-600 dark:text-emerald-400">
+                          {currentCategory.packages[activePackageIndex]?.perUnitRate}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Stock & Finishing Specs */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5 text-xs font-sans">
+                      <div className="p-3 bg-slate-50 dark:bg-slate-850 rounded-xl border border-slate-200/70 dark:border-slate-800">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block font-bold mb-0.5">Paper / Material Stock</span>
+                        <span className="font-bold text-slate-900 dark:text-white">{currentCategory.packages[activePackageIndex]?.stock}</span>
+                      </div>
+                      <div className="p-3 bg-slate-50 dark:bg-slate-850 rounded-xl border border-slate-200/70 dark:border-slate-800">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block font-bold mb-0.5">Finishing Technique</span>
+                        <span className="font-bold text-slate-900 dark:text-white">{currentCategory.packages[activePackageIndex]?.finishing}</span>
+                      </div>
+                    </div>
+
+                    {/* Volume Rate Matrix with Clickable WhatsApp Orders */}
+                    <div className="space-y-2 mb-6">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold">
+                          Select Volume Tier (1-Click WhatsApp Order)
+                        </span>
+                        <span className="text-[10px] text-blue-600 dark:text-blue-400 font-mono">
+                          Westlands Shop A11 Fulfillment
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        {currentCategory.packages[activePackageIndex]?.bundles.map((bundle, idx) => (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => handleOrderWhatsApp(currentCategory.packages[activePackageIndex].title, bundle)}
+                            className={`p-2.5 rounded-xl text-left border transition-all cursor-pointer ${
+                              bundle.isPopular 
+                                ? "bg-blue-50 dark:bg-blue-950/40 border-blue-400 dark:border-blue-700 ring-2 ring-blue-500/20" 
+                                : "bg-slate-50/80 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 hover:border-slate-400"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between text-xs mb-1">
+                              <span className="font-bold text-slate-850 dark:text-slate-100">{bundle.quantity}</span>
+                              {bundle.isPopular && <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>}
+                            </div>
+                            <div className="text-sm font-display font-black text-slate-950 dark:text-white">
+                              KSh {bundle.price.toLocaleString()}
+                            </div>
+                            {bundle.unitRate && (
+                              <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono mt-0.5">
+                                {bundle.unitRate}
+                              </div>
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons & Slider Controls Footer */}
+                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <button
+                        type="button"
+                        onClick={() => handleOrderWhatsApp(currentCategory.packages[activePackageIndex].title, currentCategory.packages[activePackageIndex].bundles[0])}
+                        className="py-3 px-4 rounded-xl bg-[#003B9C] hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                      >
+                        <Phone className="w-4 h-4" />
+                        <span>Order this Type on WhatsApp</span>
+                      </button>
+                      
+                      {onSelectForCalculator && (
+                        <button
+                          type="button"
+                          onClick={() => onSelectForCalculator(currentCategory.packages[activePackageIndex].calculatorId)}
+                          className="py-3 px-4 rounded-xl bg-slate-900 hover:bg-black text-white dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                        >
+                          <Calculator className="w-4 h-4 text-blue-400" />
+                          <span>Customize in Calculator</span>
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Bottom Slider Nav Indicators */}
+                    <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                      <div className="flex items-center gap-2">
+                        {currentCategory.packages.map((_, dotIdx) => (
+                          <button
+                            key={dotIdx}
+                            onClick={() => setActivePackageIndex(dotIdx)}
+                            aria-label={`Go to type ${dotIdx + 1}`}
+                            className={`h-2 transition-all rounded-full cursor-pointer ${
+                              activePackageIndex === dotIdx 
+                                ? "w-6 bg-[#003B9C]" 
+                                : "w-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300"
+                            }`}
+                          />
+                        ))}
+                      </div>
+
+                      <div className="flex items-center gap-3 text-xs">
+                        <button
+                          type="button"
+                          onClick={() => setActivePackageIndex((prev) => (prev < currentCategory.packages.length - 1 ? prev + 1 : 0))}
+                          className="text-blue-600 dark:text-blue-400 hover:underline font-bold flex items-center gap-1 cursor-pointer"
+                        >
+                          <span>Next Type: {currentCategory.packages[(activePackageIndex + 1) % currentCategory.packages.length]?.title}</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                        <span className="text-slate-300 dark:text-slate-700">|</span>
+                        <button
+                          type="button"
+                          onClick={() => setCardDisplayMode("grid")}
+                          className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-semibold flex items-center gap-1 cursor-pointer"
+                        >
+                          <LayoutGrid className="w-3 h-3 text-blue-500" />
+                          <span>View all {currentCategory.packages.length} types</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          ))}
+          )}
+
+          {/* 2. ALL TYPES GRID VIEW (REVEALED WHEN USER CLICKS "VIEW ALL TYPES") */}
+          {cardDisplayMode === "grid" && (
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-3.5 bg-blue-50/70 dark:bg-blue-950/30 rounded-2xl border border-blue-200/60 dark:border-blue-900/40">
+                <div className="flex items-center gap-2">
+                  <LayoutGrid className="w-4 h-4 text-blue-600" />
+                  <span className="text-xs font-mono font-bold text-slate-800 dark:text-slate-200">
+                    Comparing all {currentCategory.packages.length} types of {currentCategory.label}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setCardDisplayMode("slider")}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-850 dark:text-white text-xs font-bold border border-slate-200 dark:border-slate-700 cursor-pointer shadow-xs transition-all"
+                >
+                  <SlidersHorizontal className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Switch to Single Type Slider</span>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {currentCategory.packages.map((pkg) => (
+                  <div
+                    key={pkg.id}
+                    className={`rounded-3xl bg-white dark:bg-slate-900 border transition-all duration-300 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 ${
+                      pkg.badge ? "border-blue-300 dark:border-blue-700 ring-2 ring-blue-500/20" : "border-slate-200/80 dark:border-slate-800"
+                    }`}
+                  >
+                    <div>
+                      {/* Artwork Image Banner with floating badge */}
+                      <div className="relative h-44 w-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                        <img 
+                          src={pkg.image} 
+                          alt={pkg.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                        
+                        {pkg.badge && (
+                          <div className="absolute top-3 right-3">
+                            <span className={`text-[10px] font-mono font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm ${pkg.badgeColor || "bg-blue-600 text-white"}`}>
+                              {pkg.badge}
+                            </span>
+                          </div>
+                        )}
+
+                        <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                          <span className="text-[11px] font-mono font-bold flex items-center gap-1 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-md">
+                            <Clock className="w-3 h-3 text-amber-400" />
+                            <span>{pkg.turnaround}</span>
+                          </span>
+                          <span className="text-[10px] font-mono bg-blue-600/90 backdrop-blur-md px-2 py-0.5 rounded-md font-bold uppercase">
+                            MOQ: {pkg.moq}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Card Title & Starting Price */}
+                      <div className="p-5 pb-3">
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 block mb-0.5">
+                          {pkg.subtitle}
+                        </span>
+                        <h3 className="text-base font-display font-bold text-slate-900 dark:text-white leading-snug mb-3">
+                          {pkg.title}
+                        </h3>
+
+                        {/* Prominent Price Tag */}
+                        <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-850 border border-slate-150 dark:border-slate-800 mb-4">
+                          <div className="flex items-baseline justify-between mb-1">
+                            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
+                              Price From
+                            </span>
+                            <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
+                              {pkg.perUnitRate}
+                            </span>
+                          </div>
+                          <div className="flex items-baseline gap-1.5">
+                            <span className="text-2xl font-display font-black text-slate-950 dark:text-white">
+                              {pkg.baseStartingPrice}
+                            </span>
+                            <span className="text-[11px] text-slate-500 font-sans">
+                              / base bundle
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Quantity & Price Tier Matrix */}
+                        <div className="space-y-1.5 mb-4">
+                          <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold block mb-1">
+                            Volume Rate Matrix (KES)
+                          </span>
+                          <div className="grid grid-cols-2 gap-1.5">
+                            {pkg.bundles.map((bundle, idx) => (
+                              <button
+                                key={idx}
+                                type="button"
+                                onClick={() => handleOrderWhatsApp(pkg.title, bundle)}
+                                className={`p-2 rounded-xl text-left border transition-all cursor-pointer ${
+                                  bundle.isPopular 
+                                    ? "bg-blue-50/80 dark:bg-blue-950/40 border-blue-300 dark:border-blue-700/60 ring-1 ring-blue-500/20" 
+                                    : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-150 dark:border-slate-800 hover:border-slate-300"
+                                }`}
+                              >
+                                <div className="flex items-center justify-between text-[11px]">
+                                  <span className="font-bold text-slate-800 dark:text-slate-200 font-sans">
+                                    {bundle.quantity}
+                                  </span>
+                                  {bundle.isPopular && (
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                                  )}
+                                </div>
+                                <div className="text-xs font-display font-black text-slate-900 dark:text-white">
+                                  KSh {bundle.price.toLocaleString()}
+                                </div>
+                                {bundle.unitRate && (
+                                  <div className="text-[9px] text-slate-500 dark:text-slate-400 font-mono">
+                                    {bundle.unitRate}
+                                  </div>
+                                )}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Specifications */}
+                        <div className="space-y-1.5 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] font-sans">
+                          <div className="flex items-start gap-1.5 text-slate-600 dark:text-slate-400">
+                            <span className="text-blue-500 font-bold">✓</span>
+                            <span><strong className="text-slate-800 dark:text-slate-200">Stock:</strong> {pkg.stock}</span>
+                          </div>
+                          <div className="flex items-start gap-1.5 text-slate-600 dark:text-slate-400">
+                            <span className="text-blue-500 font-bold">✓</span>
+                            <span><strong className="text-slate-800 dark:text-slate-200">Finish:</strong> {pkg.finishing}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="p-5 pt-3 space-y-2 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-850/40">
+                      <button
+                        type="button"
+                        onClick={() => handleOrderWhatsApp(pkg.title, pkg.bundles[0])}
+                        className="w-full py-2.5 px-3 rounded-xl bg-[#003B9C] hover:bg-blue-700 text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                      >
+                        <Phone className="w-3.5 h-3.5" />
+                        <span>Order on WhatsApp</span>
+                      </button>
+                      
+                      {onSelectForCalculator && (
+                        <button
+                          type="button"
+                          onClick={() => onSelectForCalculator(pkg.calculatorId)}
+                          className="w-full py-2 px-3 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                        >
+                          <Calculator className="w-3 h-3 text-blue-500" />
+                          <span>Customize in Calculator</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
