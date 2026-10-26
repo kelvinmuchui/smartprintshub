@@ -20,7 +20,7 @@ export const ReviewsSection: React.FC = () => {
       role: "Corporate Advocate, Westlands Legal Partners",
       rating: 5,
       date: "1 month ago",
-      text: "Printed 500 executive business cards on 400gsm cotton board with soft-touch velvet lamination. The paper weight and tactile feel is leagues ahead of standard commercial print shops in Nairobi.",
+      text: "Printed 500 executive business cards on 300gsm premium board with soft-touch velvet lamination. The paper weight and tactile feel is leagues ahead of standard commercial print shops in Nairobi.",
       avatar: "BO",
       verified: true,
       serviceUsed: "Executive Business Cards (Soft-Touch)"

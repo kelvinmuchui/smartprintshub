@@ -294,7 +294,7 @@ export default function AiDesigner() {
                   RGB-to-CMYK conversion check
                 </span>
                 <span className="px-3 py-1 bg-white dark:bg-slate-800 border dark:border-slate-700 text-[10px] text-slate-400 rounded-full font-mono">
-                  350gsm matte paper auto-calibration
+                  300gsm matte paper auto-calibration
                 </span>
               </div>
             </div>

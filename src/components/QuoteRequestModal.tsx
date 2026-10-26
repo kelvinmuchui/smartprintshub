@@ -44,8 +44,8 @@ export const AVAILABLE_SERVICES: ServiceOption[] = [
     id: "biz-cards",
     title: "Executive Business Cards",
     category: "Commercial Printing",
-    defaultStock: "350gsm Silk Artboard",
-    stockOptions: ["300gsm Silk Artboard", "350gsm Heavy Artboard", "400gsm Executive Card", "Conqueror Textured White", "Kraft Eco-Board"],
+    defaultStock: "300gsm Silk Artboard",
+    stockOptions: ["300gsm Silk Artboard", "300gsm Matte Artboard", "300gsm Gloss Cardstock", "300gsm Conqueror Textured White", "300gsm Kraft Eco-Board"],
     finishOptions: ["Velvet Soft-Touch Matte", "Thermal Matte Lamination", "High-Gloss UV Lamination", "Spot UV + Velvet", "Metallic Gold / Silver Foil", "3mm Rounded Corners"]
   },
   {

@@ -162,13 +162,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
             </div>
 
             <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 space-y-3">
-              <div className="flex items-baseline justify-between">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
-                  Starting Rate
+              <div className="flex items-center justify-between text-[11px] font-mono">
+                <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-bold">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Custom Quote</span>
                 </span>
-                <span className="text-sm font-display font-black text-slate-900 dark:text-white">
-                  {service.startingPrice}
-                </span>
+                <span className="text-slate-400 font-medium">Free Pre-Press Check</span>
               </div>
 
               <div className="grid grid-cols-2 gap-2">

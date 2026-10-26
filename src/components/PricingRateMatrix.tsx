@@ -128,7 +128,7 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
           baseStartingPrice: "KSh 1,500",
           perUnitRate: "KSh 15 / card",
           turnaround: "Same-Day (3–4 hrs)",
-          stock: "350gsm Heavy Artboard",
+          stock: "300gsm Heavy Artboard",
           finishing: "Thermal Matte or High-Gloss Lamination",
           moq: "100 Cards",
           features: [
@@ -155,13 +155,13 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
           baseStartingPrice: "KSh 2,200",
           perUnitRate: "KSh 22 / card",
           turnaround: "24 Hours Dispatch",
-          stock: "350gsm–400gsm Heavy Silk Cardstock",
+          stock: "300gsm Heavy Silk Cardstock",
           finishing: "Ultra-Matte Velvet Soft-Touch Skin",
           moq: "100 Cards",
           features: [
             "Luxurious suede peach-skin tactile texture",
             "Zero finger-print smudges and reflection-free",
-            "Heavy 400gsm board weight for maximum firmness",
+            "Heavy 300gsm board weight for maximum firmness",
             "Optional 3mm rounded corner edging"
           ],
           bundles: [
@@ -182,7 +182,7 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
           baseStartingPrice: "KSh 3,200",
           perUnitRate: "KSh 32 / card",
           turnaround: "24–48 Hours",
-          stock: "400gsm Heavyweight Artboard",
+          stock: "300gsm Heavyweight Artboard",
           finishing: "Raised 3D Spot UV or Gold/Silver Stamping",
           moq: "100 Cards",
           features: [
@@ -216,8 +216,8 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
           calculatorId: "biz-cards"
         },
         {
-          name: "Matte / Gloss Laminated (350gsm)",
-          stock: "350gsm Heavy Artboard",
+          name: "Matte / Gloss Laminated (300gsm)",
+          stock: "300gsm Heavy Artboard",
           turnaround: "Same-Day (3-4 hrs)",
           tiers: [
             { qty: "100", price: "KSh 1,500" },
@@ -230,7 +230,7 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
         },
         {
           name: "Velvet Soft-Touch Luxury",
-          stock: "350gsm–400gsm Board",
+          stock: "300gsm Board",
           turnaround: "24 Hours",
           tiers: [
             { qty: "100", price: "KSh 2,200" },
@@ -242,8 +242,8 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
           calculatorId: "biz-cards"
         },
         {
-          name: "Spot UV / Gold Foil (350gsm)",
-          stock: "400gsm Heavy Card",
+          name: "Spot UV / Gold Foil (300gsm)",
+          stock: "300gsm Heavy Card",
           turnaround: "24–48 Hours",
           tiers: [
             { qty: "100", price: "KSh 3,200" },

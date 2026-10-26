@@ -17,7 +17,7 @@ export const AnimatedMarqueeTicker: React.FC = () => {
   const track1 = [
     { icon: <Clock className="w-3.5 h-3.5 text-blue-400" />, text: "Same-Day Express Dispatch in Westlands" },
     { icon: <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />, text: "300 DPI Pre-Press Proofing Guarantee" },
-    { icon: <Printer className="w-3.5 h-3.5 text-cyan-400" />, text: "Executive Business Cards on 400gsm Cotton Stock" },
+    { icon: <Printer className="w-3.5 h-3.5 text-cyan-400" />, text: "Executive Business Cards on 300gsm Silk Artboard" },
     { icon: <Zap className="w-3.5 h-3.5 text-amber-400" />, text: "Heavy Teardrop Roll-up Banners & Teardrop Flags" },
     { icon: <Truck className="w-3.5 h-3.5 text-indigo-400" />, text: "47-County Nationwide Doorstep Courier" },
     { icon: <Sparkles className="w-3.5 h-3.5 text-pink-400" />, text: "Soft-Touch Velvet Lamination & Spot UV" },

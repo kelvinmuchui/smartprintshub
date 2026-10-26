@@ -68,10 +68,10 @@ export const HeroShowcaseSlider: React.FC<HeroShowcaseSliderProps> = ({
       tag: "Executive Stationery & Unboxing",
       client: "Westlands Executive Suite",
       title: "Velvet Soft-Touch Business Cards & Custom Packaging",
-      description: "400gsm cotton artboard finished with deep velvety soft-touch matte lamination, raised spot UV, and matching rigid magnetic presentation gift boxes.",
+      description: "300gsm silk artboard finished with deep velvety soft-touch matte lamination, raised spot UV, and matching rigid magnetic presentation gift boxes.",
       image: luxuryBusinessCards,
       secondaryImage: luxuryPackagingBox,
-      specs: ["400gsm Premium Cotton Board", "Raised Spot UV Coating", "Rigid Presentation Packaging"],
+      specs: ["300gsm Silk Artboard", "Raised Spot UV Coating", "Rigid Presentation Packaging"],
       badge: "Executive Favorite",
       turnaround: "Express Production",
       whatsappTopic: "Luxury Business Cards and Packaging"

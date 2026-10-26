@@ -53,11 +53,11 @@ export const SERVICES_LIST: PrintService[] = [
     id: "biz-cards",
     title: "Executive Business Cards",
     category: "printing",
-    description: "Make an unmistakable physical impression. Premium 350gsm–400gsm artboard, velvety soft-touch matte lamination, spot UV, or metallic foil stamping.",
+    description: "Make an unmistakable physical impression. Premium 300gsm artboard, velvety soft-touch matte lamination, spot UV, or metallic foil stamping.",
     iconName: "ContactRound",
-    startingPrice: "KES 1,000 / 100pcs (KES 10/card)",
+    startingPrice: "Custom Quote",
     popularFinishing: "Soft-Touch Matte + Spot UV",
-    specs: ["Stock: 350gsm / 400gsm Silk Artboard", "Single or double-sided full CMYK", "Corner radiuses: Standard square or 3mm rounded"],
+    specs: ["Stock: 300gsm Silk Artboard", "Single or double-sided full CMYK", "Corner radiuses: Standard square or 3mm rounded"],
     highlight: "Popular with Westlands Executives"
   },
   {
@@ -66,7 +66,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "printing",
     description: "Ultra high-resolution calibrated color printing for marketing collateral, multi-page proposals, flyers, and event programs on gloss, satin, and matte stocks.",
     iconName: "Palette",
-    startingPrice: "KES 50 / page",
+    startingPrice: "Custom Quote",
     popularFinishing: "Gloss / Matte Lamination",
     specs: ["Paper Weights: 80gsm to 350gsm", "Rich custom color calibration & heavy ink density", "A3, A4, A5 & custom die-cut dimensions"],
     highlight: "Same-Day Express Available"
@@ -77,7 +77,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "printing",
     description: "Bespoke corporate booklet binders, annual financial reports, luxury restaurant menus, and executive watermarked stationery with edge-to-edge bleed.",
     iconName: "BookOpen",
-    startingPrice: "KES 2,500 onwards",
+    startingPrice: "Custom Quote",
     popularFinishing: "Wire-O Spiral & Perfect Glue Binding",
     specs: ["Full color bleed with high-opacity cover coats", "Premium Conqueror, textured & recycled stocks", "Spot UV and blind debossing highlights"]
   },
@@ -87,7 +87,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "printing",
     description: "Self-carbonated duplicate and triplicate books with sequential numbering, wrap-around writing shields, and perforated tear-off sheets.",
     iconName: "FileSpreadsheet",
-    startingPrice: "KES 1,500 / Book",
+    startingPrice: "Custom Quote",
     popularFinishing: "NCR Carbonless duplicate/triplicate",
     specs: ["Hard cover binding with heavy protective pad shields", "Tailor-made grid systems & tax invoice compliance", "Custom corporate logos & serial numbers"]
   },
@@ -97,7 +97,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "printing",
     description: "High-speed crisp black & white reproduction. Razor-sharp typography contrast and instant bulk volume efficiency for legal briefs, tenders, and manuals.",
     iconName: "Printer",
-    startingPrice: "KES 5 / page",
+    startingPrice: "Custom Quote",
     popularFinishing: "Stapled / Wire-O / Thermal tape binding",
     specs: ["Perfect for manuals, thesis submissions & contracts", "High-throughput industrial production speeds", "Automated double-sided collation"]
   },
@@ -109,7 +109,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "signage",
     description: "Sturdy aluminum teardrop base fitted with satin non-curl block-out vinyl. Vibrant high-pigment print that resists studio and outdoor glare.",
     iconName: "Flag",
-    startingPrice: "KES 4,500 / stand (Bundle 3+: KES 4,000)",
+    startingPrice: "Custom Quote",
     popularFinishing: "Heavy Teardrop Stand + Padded Carry Bag",
     specs: ["Standard dimension: 85cm x 200cm & 100cm x 200cm", "Waterproof curl-resistant satin blockout visual", "Fade-resistant dye-sublimation ink"],
     highlight: "Event & Conference Best Seller"
@@ -120,7 +120,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "signage",
     description: "Dynamic outdoor promotional flags with heavy cross-bases, water bags, and wind-permeable sublimation polyester fabric for maximum brand visibility.",
     iconName: "Compass",
-    startingPrice: "KES 7,500 / unit",
+    startingPrice: "Custom Quote",
     popularFinishing: "3.5m / 4.5m Aluminum Pole + Water Bag",
     specs: ["Double or single-sided mirror print", "Reinforced pole sleeve & double-stitched hems", "Engineered for 50+ km/h wind resistance"]
   },
@@ -140,7 +140,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "signage",
     description: "High-precision architectural CAD blueprints, engineering plots, structural schematics, and vibrant photo-realistic storefront posters.",
     iconName: "Maximize",
-    startingPrice: "KES 350 / sheet",
+    startingPrice: "Custom Quote",
     popularFinishing: "UV Matte Lamination & Foam-board Mounting",
     specs: ["High-speed 1200 DPI plotting precision", "Bond papers, tracing vellum, and matte vinyl", "Accurate 1:1 architectural scaling fidelity"]
   },
@@ -152,7 +152,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "apparel",
     description: "Premium 100% combed cotton round-neck tees and heavyweight pique polo shirts. Decorated with crisp screen-printing, direct-to-film (DTF), or precision embroidery.",
     iconName: "Shirt",
-    startingPrice: "KES 650 / shirt",
+    startingPrice: "Custom Quote",
     popularFinishing: "High-Density Screen Print or 3D Embroidery",
     specs: ["180gsm–220gsm ringspun cotton", "Fade-proof, wash-tested fabric inks", "Full range: XS through 4XL in 20+ corporate colors"],
     highlight: "Popular for Corporate Uniforms & Events"
@@ -163,7 +163,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "apparel",
     description: "Heavy-duty reflective safety jackets and vests with custom company logo screen-printing or heat transfer across the chest and back.",
     iconName: "ShieldCheck",
-    startingPrice: "KES 450 / pc",
+    startingPrice: "Custom Quote",
     popularFinishing: "Double Reflective Bands + Front Zipper & Pocket",
     specs: ["Standard Kenyan OSHA safety compliant", "High-visibility fluorescent neon green & orange", "Durable polyester mesh with reinforced borders"]
   },
@@ -173,7 +173,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "apparel",
     description: "Structured 6-panel baseball caps, snapbacks, bucket hats, and fleece pullover hoodies with rich textured 3D puffed embroidery.",
     iconName: "Users2",
-    startingPrice: "KES 550 / cap",
+    startingPrice: "Custom Quote",
     popularFinishing: "3D Puff Embroidery + Adjustable Metal Buckle",
     specs: ["Heavy brushed cotton twill caps", "High-thread-count multi-color embroidery", "Long-lasting colorfastness"]
   },
@@ -185,7 +185,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "packaging",
     description: "Waterproof, oil-proof, and scratch-resistant die-cut stickers on gloss, matte, transparent, or metallic gold foil vinyl. Kiss-cut sheets or individual singles.",
     iconName: "Layers",
-    startingPrice: "KES 15 / sticker",
+    startingPrice: "Custom Quote",
     popularFinishing: "Precision Digital Contour Die-Cutting",
     specs: ["Available on rolls, A3 arrays, or single die-cut units", "Eco-solvent UV-cured outdoor-grade inks", "Adheres securely to glass, plastic, corrugated board & metal"],
     highlight: "Top Pick for Food & Cosmetic Brands"
@@ -196,7 +196,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "packaging",
     description: "Eco-friendly premium white board and natural kraft paper gift bags with twisted paper or luxury satin ribbon handles, featuring edge-to-edge brand printing.",
     iconName: "Briefcase",
-    startingPrice: "KES 80 / bag",
+    startingPrice: "Custom Quote",
     popularFinishing: "Reinforced Base + Matte Velvet Lamination",
     specs: ["180gsm to 300gsm reinforced kraft and art paper", "Custom sizing for retail bottles, apparel & gift sets", "Available in small batches or mass retail quantities"]
   },
@@ -208,7 +208,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "branding",
     description: "Custom laser-engraved insulated thermal flasks, ceramic coffee mugs, metallic stylus pens, branded umbrellas, and USB flash drives for VIP corporate gifts.",
     iconName: "Award",
-    startingPrice: "KES 550 onwards",
+    startingPrice: "Custom Quote",
     popularFinishing: "Laser Etch Engraving or Full-Color UV Print",
     specs: ["Food-grade stainless steel & premium ceramic", "Luxury matte black, metallic, and brand pantone finishes", "Gift box packaging options available"]
   },
@@ -218,7 +218,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "branding",
     description: "Silky satin double-sided sublimation lanyards with metallic swivel hooks, safety breakaway clips, and waterproof rigid PVC employee/conference ID cards.",
     iconName: "FileText",
-    startingPrice: "KES 120 / lanyard set",
+    startingPrice: "Custom Quote",
     popularFinishing: "Satin Heat-Transfer + Metal Lobster Claw",
     specs: ["Widths: 15mm, 20mm, or 25mm", "Photo-quality vibrant full CMYK print", "Matching RFID & CR80 smart cards available"]
   },
@@ -240,7 +240,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "cyber",
     description: "Instant KRA PIN registration, electronic Tax returns filing, SHA health registrations, eCitizen, NTSA vehicle registration, and CR12 company search.",
     iconName: "Fingerprint",
-    startingPrice: "KES 300 / service",
+    startingPrice: "Custom Quote",
     popularFinishing: "Immediate Official Certificate Print & Digital PDF",
     specs: ["Speedy registration & verified downloads", "Compliant local tax representation guidance", "Instant validation and confirmation receipt via WhatsApp"],
     highlight: "Fast-Track Digital Desk"
@@ -251,7 +251,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "cyber",
     description: "Official biometric-compliant passport and visa photographs (US Visa, Schengen, UK, Canadian, Kenyan E-Passport). Correct lighting, strict sizing, and digital files.",
     iconName: "Camera",
-    startingPrice: "KES 200 (Set of 4)",
+    startingPrice: "Custom Quote",
     popularFinishing: "Satin Die-Cut Biometric Prints + Soft Copy to Email",
     specs: ["Guaranteed embassy biometric compliance", "White, off-white, and light grey backdrops", "Direct upload-ready high-res JPEG provided"]
   },
@@ -261,7 +261,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "cyber",
     description: "Online visa schedule typing support, TLScontact/VFS Global appointment booking, and flight/itinerary document compilation packs.",
     iconName: "Globe",
-    startingPrice: "KES 500",
+    startingPrice: "Custom Quote",
     popularFinishing: "Organized Travel Dossier in Clear Folder",
     specs: ["VFS Global, TLS, and US Embassy portal support", "High-volume dossier print & matching", "Strict confidentiality and personal data protection"]
   }
@@ -376,7 +376,7 @@ export const PORTFOLIO_LIST: PortfolioItem[] = [
     image: luxuryBusinessCards,
     client: "Westlands Executive Suite",
     badge: "Spot UV Finish",
-    description: "400gsm heavyweight cotton and silk artboard finished with deep velvety soft-touch matte lamination and gold-embossed logo accents."
+    description: "300gsm heavyweight cotton and silk artboard finished with deep velvety soft-touch matte lamination and gold-embossed logo accents."
   },
   {
     id: "proj-9",
@@ -452,7 +452,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     title: "Executive Business Cards",
     category: "Business Cards",
     price: 1200,
-    description: "Pack of 100 super-premium 350gsm business cards with choice of professional laminations.",
+    description: "Pack of 100 super-premium 300gsm business cards with choice of professional laminations.",
     image: luxuryBusinessCards,
     unit: "pack (100pcs)",
     finishingOptions: ["Matte Laminating", "Gloss Laminating", "Soft-Touch Matte", "Spot-UV Coating"]
@@ -616,10 +616,11 @@ export const QUOTE_CONFIG_ITEMS: QuoteConfigItem[] = [
     minimumQty: 100,
     quantityTiers: [100, 250, 500, 1000, 2000],
     stockOptions: [
-      { name: "350gsm Silk Artboard", priceMultiplier: 1.0 },
-      { name: "400gsm Heavy Cardstock", priceMultiplier: 1.2 },
-      { name: "Conqueror Textured White", priceMultiplier: 1.45 },
-      { name: "Kraft Eco-Board 350gsm", priceMultiplier: 1.15 }
+      { name: "300gsm Silk Artboard", priceMultiplier: 1.0 },
+      { name: "300gsm Matte Artboard", priceMultiplier: 1.05 },
+      { name: "300gsm Heavy Cardstock", priceMultiplier: 1.1 },
+      { name: "300gsm Conqueror Textured White", priceMultiplier: 1.35 },
+      { name: "300gsm Kraft Eco-Board", priceMultiplier: 1.15 }
     ],
     finishOptions: [
       { name: "Velvet Soft-Touch Matte", extraPerUnit: 2.5 },
