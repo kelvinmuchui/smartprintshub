@@ -55,7 +55,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "printing",
     description: "Make an unmistakable physical impression. Premium 350gsm–400gsm artboard, velvety soft-touch matte lamination, spot UV, or metallic foil stamping.",
     iconName: "ContactRound",
-    startingPrice: "KES 1,200 / 100pcs",
+    startingPrice: "KES 1,000 / 100pcs (KES 10/card)",
     popularFinishing: "Soft-Touch Matte + Spot UV",
     specs: ["Stock: 350gsm / 400gsm Silk Artboard", "Single or double-sided full CMYK", "Corner radiuses: Standard square or 3mm rounded"],
     highlight: "Popular with Westlands Executives"
@@ -109,7 +109,7 @@ export const SERVICES_LIST: PrintService[] = [
     category: "signage",
     description: "Sturdy aluminum teardrop base fitted with satin non-curl block-out vinyl. Vibrant high-pigment print that resists studio and outdoor glare.",
     iconName: "Flag",
-    startingPrice: "KES 6,500 / unit",
+    startingPrice: "KES 4,500 / stand (Bundle 3+: KES 4,000)",
     popularFinishing: "Heavy Teardrop Stand + Padded Carry Bag",
     specs: ["Standard dimension: 85cm x 200cm & 100cm x 200cm", "Waterproof curl-resistant satin blockout visual", "Fade-resistant dye-sublimation ink"],
     highlight: "Event & Conference Best Seller"

@@ -46,6 +46,7 @@ import SeoStatusDashboard from "./components/SeoStatusDashboard";
 import { PortfolioGallery } from "./components/PortfolioGallery";
 import { TrustPillars } from "./components/TrustPillars";
 import { ServicesSection } from "./components/ServicesSection";
+import { PricingRateMatrix } from "./components/PricingRateMatrix";
 import { QuickQuoteCalculator } from "./components/QuickQuoteCalculator";
 import { DeliveryCoverageMatrix } from "./components/DeliveryCoverageMatrix";
 import { ArtworkPrepressGuide } from "./components/ArtworkPrepressGuide";
@@ -407,7 +408,19 @@ export default function App() {
             </motion.div>
           </section>
 
-          {/* SECTION 2: PRODUCTION SERVICES CATALOG */}
+          {/* SECTION 2: OFFICIAL RATE CARD & PRICING MATRIX (DS CREATIONS STYLE BUNDLES & RATES) */}
+          <section id="pricing" className="scroll-mt-24">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
+            >
+              <PricingRateMatrix onSelectForCalculator={handleSelectForQuote} />
+            </motion.div>
+          </section>
+
+          {/* SECTION 3: PRODUCTION SERVICES CATALOG */}
           <section id="services" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}

@@ -45,6 +45,7 @@ export default function Navbar({
 
   const navItems = [
     { id: "home", label: "Home" },
+    { id: "pricing", label: "Pricing & Rates" },
     { id: "services", label: "Our Services" },
     { id: "calculator", label: "Instant Quote" },
     { id: "portfolio", label: "Our Portfolio" },

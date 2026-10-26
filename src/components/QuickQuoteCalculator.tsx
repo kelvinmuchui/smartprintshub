@@ -341,6 +341,14 @@ export const QuickQuoteCalculator: React.FC<QuickQuoteCalculatorProps> = ({
                   {currentProduct.leadTimes.find(t => t.speed === selectedSpeed)?.label}
                 </span>
               </div>
+              <div className="flex justify-between items-center text-[11px] text-emerald-400">
+                <span>3mm Bleed & Pre-Press Check:</span>
+                <span className="font-mono font-bold">FREE (KSh 0)</span>
+              </div>
+              <div className="flex justify-between items-center text-[11px] text-slate-400">
+                <span>Westlands Shop A11 Pickup:</span>
+                <span className="font-mono text-emerald-400 font-bold">FREE</span>
+              </div>
               <div className="flex justify-between items-center border-t border-slate-800/80 pt-2 font-mono">
                 <span className="text-slate-400">Unit Cost Rate:</span>
                 <span className="text-blue-400 font-bold">KES {calculation.unitPrice.toLocaleString()} / {currentProduct.unit.replace(/s$/, "")}</span>
@@ -350,7 +358,7 @@ export const QuickQuoteCalculator: React.FC<QuickQuoteCalculatorProps> = ({
             {/* Savings banner if applicable */}
             {calculation.savings > 0 && (
               <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono flex items-center justify-between">
-                <span>Bulk Tier Savings</span>
+                <span>Bulk Volume Savings</span>
                 <span className="font-bold">-KES {calculation.savings.toLocaleString()}</span>
               </div>
             )}
