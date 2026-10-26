@@ -13,7 +13,8 @@ import {
   LayoutGrid,
   Info,
   BadgeCheck,
-  ChevronRight
+  ChevronRight,
+  FileText
 } from "lucide-react";
 import { 
   luxuryBusinessCards, 
@@ -33,6 +34,7 @@ import {
 
 interface PricingRateMatrixProps {
   onSelectForCalculator?: (serviceId: string) => void;
+  onRequestQuote?: (serviceId?: string) => void;
 }
 
 interface PriceBundle {
@@ -77,7 +79,10 @@ interface PricingCategory {
   }[];
 }
 
-export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({ onSelectForCalculator }) => {
+export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({ 
+  onSelectForCalculator,
+  onRequestQuote
+}) => {
   const [activeTab, setActiveTab] = useState<string>("biz-cards");
   const [viewMode, setViewMode] = useState<"cards" | "table">("cards");
 
@@ -972,8 +977,19 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({ onSelectFo
           </h2>
         </div>
         
-        {/* View Toggle (Cards vs Table) */}
-        <div className="flex items-center gap-2 self-start md:self-end">
+        {/* View Toggle (Cards vs Table) & Request Quote CTA */}
+        <div className="flex flex-wrap items-center gap-2 self-start md:self-end">
+          {onRequestQuote && (
+            <button
+              type="button"
+              onClick={() => onRequestQuote(activeTab)}
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#003B9C] hover:bg-blue-700 text-white text-xs font-bold transition-all cursor-pointer shadow-xs"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>Request Custom Quote</span>
+            </button>
+          )}
+
           <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200/80 dark:border-slate-700">
             <button
               onClick={() => setViewMode("cards")}

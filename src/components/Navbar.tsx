@@ -13,7 +13,8 @@ import {
   MapPin,
   ChevronRight,
   ShieldCheck,
-  Instagram
+  Instagram,
+  FileText
 } from "lucide-react";
 import { CartItem } from "../types";
 
@@ -27,6 +28,7 @@ interface NavbarProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   onOpenSeoDashboard?: () => void;
+  onOpenQuoteModal?: (serviceId?: string) => void;
 }
 
 export default function Navbar({
@@ -38,7 +40,8 @@ export default function Navbar({
   setIsCartOpen,
   searchQuery,
   setSearchQuery,
-  onOpenSeoDashboard
+  onOpenSeoDashboard,
+  onOpenQuoteModal
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -46,11 +49,11 @@ export default function Navbar({
   const navItems = [
     { id: "home", label: "Home" },
     { id: "pricing", label: "Pricing & Rates" },
+    { id: "quote-request", label: "Request a Quote" },
     { id: "services", label: "Our Services" },
-    { id: "calculator", label: "Instant Quote" },
+    { id: "calculator", label: "Instant Calculator" },
     { id: "portfolio", label: "Our Portfolio" },
     { id: "delivery", label: "Delivery Areas" },
-    { id: "artwork-guide", label: "Artwork Guide" },
     { id: "contact", label: "Contact Us" }
   ];
 
@@ -203,11 +206,20 @@ export default function Navbar({
 
             {/* Get Quote Quick button */}
             <button
-              onClick={() => { setTab("upload"); window.scrollTo(0, 0); }}
-              className="hidden sm:flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white rounded-lg font-sans text-sm font-semibold shadow-md transition-all group"
+              onClick={() => {
+                if (onOpenQuoteModal) {
+                  onOpenQuoteModal();
+                } else {
+                  setTab("quote-request");
+                  const el = document.getElementById("quote-request");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
+              className="hidden sm:flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white rounded-lg font-sans text-sm font-semibold shadow-md transition-all group cursor-pointer"
               id="btn-nav-cta"
             >
-              <span>Instant Quote</span>
+              <FileText className="w-4 h-4 text-blue-200" />
+              <span>Request Quote</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </button>
 
@@ -267,26 +279,31 @@ export default function Navbar({
 
                 {/* Mobile Instant Quote Widget */}
                 <div className="pt-3 border-t border-slate-200/50 dark:border-slate-800 grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      if (onOpenQuoteModal) {
+                        onOpenQuoteModal();
+                      } else {
+                        setTab("quote-request");
+                        const el = document.getElementById("quote-request");
+                        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }
+                    }}
+                    className="flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold text-center cursor-pointer"
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Request Quote</span>
+                  </button>
                   <a
                     href="https://wa.me/254743603068"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-center gap-2 px-3 py-2 bg-slate-900 hover:bg-black text-white rounded-lg text-xs font-semibold text-center border border-slate-850"
+                    className="flex items-center justify-center gap-2 px-3 py-2 bg-[#003B9C] hover:bg-blue-800 text-white rounded-lg text-xs font-semibold text-center"
                   >
-                    <Phone className="w-4.5 h-4.5" />
+                    <Phone className="w-4 h-4" />
                     <span>WhatsApp</span>
                   </a>
-                  <button
-                    onClick={() => {
-                      setTab("calculator");
-                      setMobileMenuOpen(false);
-                      const el = document.getElementById("calculator");
-                      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }}
-                    className="flex items-center justify-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold text-center cursor-pointer"
-                  >
-                    <span>Instant Quote</span>
-                  </button>
                 </div>
 
                 <a
