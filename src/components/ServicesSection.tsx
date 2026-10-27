@@ -207,7 +207,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                 {isBizCards ? (
                   <div className="space-y-3 mb-4">
                     {/* Slider Navigation Bar */}
-                    <div className="flex items-center justify-between p-1.5 bg-slate-100 dark:bg-slate-850 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <div className="flex items-center justify-between p-1.5 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
                       <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
                         {BIZ_CARD_SUBTYPES.map((bt, idx) => (
                           <button
@@ -312,7 +312,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                               setBizCardTypeIndex(BIZ_CARD_SUBTYPES.findIndex(b => b.id === bt.id));
                               setShowAllBizCardTypes(false);
                             }}
-                            className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200/70 dark:border-slate-800 hover:border-blue-400 cursor-pointer transition-all"
+                            className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700 hover:border-blue-400 cursor-pointer transition-all"
                           >
                             <div className="flex items-center justify-between text-xs font-bold mb-1 text-slate-900 dark:text-white">
                               <span>{bt.name}</span>

@@ -330,14 +330,14 @@ export default function App() {
                   {SERVICES_LIST.slice(0, 3).map((s) => (
                     <div 
                       key={s.id} 
-                      className="p-5 bg-slate-50 dark:bg-slate-850 rounded-2xl border border-slate-200/50 dark:border-slate-800 flex flex-col justify-between hover:shadow-md transition-shadow"
+                      className="p-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200/50 dark:border-slate-700 flex flex-col justify-between hover:shadow-md transition-shadow"
                     >
                       <div>
                         <span className="text-[9px] uppercase font-mono tracking-widest text-blue-600 dark:text-blue-400 font-bold block mb-1">{s.category} Service</span>
-                        <h4 className="font-display font-bold text-base text-slate-850/90 dark:text-white leading-tight mb-2">
+                        <h4 className="font-display font-bold text-base text-slate-900 dark:text-white leading-tight mb-2">
                           {s.title}
                         </h4>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                           {s.description}
                         </p>
                       </div>
@@ -398,13 +398,13 @@ export default function App() {
                   </div>
                   
                   <div className="grid grid-cols-3 gap-3 pt-4">
-                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-850 border border-slate-150 rounded text-slate-500 font-bold block">
+                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-700 dark:text-slate-300 font-bold block">
                       Aura Coffee
                     </span>
-                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-850 border border-slate-150 rounded text-slate-500 font-bold block">
+                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-700 dark:text-slate-300 font-bold block">
                       Kilimani Tech
                     </span>
-                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-850 border border-slate-150 rounded text-slate-500 font-bold block">
+                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-700 dark:text-slate-300 font-bold block">
                       Westlands Realty
                     </span>
                   </div>

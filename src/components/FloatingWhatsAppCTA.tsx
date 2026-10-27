@@ -8,7 +8,7 @@ export const FloatingWhatsAppCTA: React.FC = () => {
     <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-50 flex items-end gap-2">
       {/* Speech bubble tooltip */}
       {showTooltip && (
-        <div className="relative mb-2 p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl shadow-xl max-w-[210px] text-left hidden sm:block">
+        <div className="relative mb-2 p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl max-w-[210px] text-left hidden sm:block">
           <button
             type="button"
             onClick={() => setShowTooltip(false)}
