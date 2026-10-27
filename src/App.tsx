@@ -34,7 +34,11 @@ import {
   BookOpen,
   ChevronDown,
   Globe,
-  Fingerprint
+  Fingerprint,
+  Home,
+  Info,
+  ArrowUp,
+  LayoutGrid
 } from "lucide-react";
 
 import Navbar from "./components/Navbar";
@@ -179,7 +183,7 @@ export default function App() {
       />
 
       {/* Main Container Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-24 md:space-y-36">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:py-12 space-y-24 md:space-y-36">
         
         {/* SECTION 1: HOME PAGE HERO SHOWCASE & BENTO GRID */}
         <section id="home" className="scroll-mt-24">
@@ -814,33 +818,123 @@ export default function App() {
         </div>
       </footer>
 
-      {/* FLOATING ACTION BOTTOM PANEL BAR FOR MOBILE */}
-      <div className="fixed bottom-4 left-4 right-4 z-40 lg:hidden flex gap-2">
-        <a 
-          href="tel:+254743603068"
-          className="flex-1 py-3 bg-blue-700 text-white rounded-xl text-xs font-black uppercase tracking-wider text-center shadow-lg"
-        >
-          Call Manager
-        </a>
-        <a 
-          href="https://wa.me/254743603068?text=Hello%20SmartPrints%20Hub,%20I%20need%20a%20print%20quote."
-          target="_blank"
-          style={{ backgroundColor: "#003B9C" }}
-          rel="noreferrer"
-          className="flex-1 py-3 text-white rounded-xl text-xs font-black uppercase tracking-wider text-center shadow-lg"
-        >
-          WhatsApp Chat
-        </a>
-        <button 
-          onClick={() => { 
-            setTab("calculator"); 
-            document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-          className="flex-1 py-3 bg-[#0A1B3D] text-white border border-slate-800 rounded-xl text-[10px] font-black uppercase tracking-widest text-center shadow-lg cursor-pointer"
-        >
-          Instant Quote
-        </button>
-      </div>
+      {/* MOBILE BOTTOM NAVIGATION TAB BAR (DS CREATIONS STYLE) */}
+      <nav 
+        aria-label="Mobile Navigation Bar"
+        className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 dark:bg-slate-900/95 border-t border-slate-200 dark:border-slate-800 backdrop-blur-md px-2 py-1 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]"
+      >
+        <div className="flex items-center justify-around max-w-md mx-auto">
+          {/* 1. Home */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("home");
+              document.getElementById("home")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "home" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Home className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Home</span>
+            {tab === "home" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 2. Services */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("services");
+              document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "services" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Printer className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Services</span>
+            {tab === "services" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 3. Portfolio */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("portfolio");
+              document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "portfolio" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <LayoutGrid className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Portfolio</span>
+            {tab === "portfolio" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 4. About */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("about");
+              document.getElementById("about")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "about" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Info className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">About</span>
+            {tab === "about" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 5. Contact */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("contact");
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "contact" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Phone className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Contact</span>
+            {tab === "contact" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 6. Scroll to Top (DS Creations style) */}
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Scroll to top"
+            className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md hover:bg-blue-700 transition-colors cursor-pointer shrink-0 ml-1"
+          >
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </nav>
 
       {/* SHOPPING CART INTEGRATION DRAWER POPUP */}
       <CartDrawer 
