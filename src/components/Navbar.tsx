@@ -49,13 +49,10 @@ export default function Navbar({
 
   const navItems = [
     { id: "home", label: "Home" },
-    { id: "pricing", label: "Pricing & Rates" },
-    { id: "quote-request", label: "Request a Quote" },
-    { id: "services", label: "Our Services" },
-    { id: "calculator", label: "Instant Calculator" },
-    { id: "portfolio", label: "Our Portfolio" },
-    { id: "delivery", label: "Delivery Areas" },
-    { id: "contact", label: "Contact Us" }
+    { id: "about", label: "About" },
+    { id: "services", label: "Services" },
+    { id: "portfolio", label: "Portfolio" },
+    { id: "contact", label: "Contact" }
   ];
 
 

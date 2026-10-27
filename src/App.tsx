@@ -297,7 +297,7 @@ export default function App() {
               </div>
 
               {/* SECTION: ABOUT SMARTPRINTS HUB */}
-              <div className="pt-6">
+              <div id="about" className="scroll-mt-24 pt-6">
                 {/* About Page section matching the mockup exactly */}
                 <AboutUs />
               </div>
