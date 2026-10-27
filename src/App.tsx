@@ -579,14 +579,13 @@ export default function App() {
                     </span>
 
                     <h3 className="text-xl font-display font-black text-slate-900 dark:text-white mb-4">
-                      Physical Map: Westlands Market Shop A11
+                      Find Us: Westlands Market Shop A11
                     </h3>
 
-                    {/* Google Map iframe embedded for accurate Westlands directions */}
                     <div className="w-full h-80 rounded-2xl overflow-hidden shadow-inner border border-slate-200">
                       <iframe 
                         title="SmartPrints Hub Westlands Location"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8541989018445!2d36.804130674844624!3d-1.259648998728469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1737f19cb5bf%3A0x7d65b1d9bf59df!2sWestlands%20Market!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
+                        src="https://maps.google.com/maps?q=-1.26354,36.80345&z=17&output=embed"
                         className="w-full h-full border-0"
                         allowFullScreen={true}
                         loading="lazy"
@@ -595,14 +594,17 @@ export default function App() {
                     </div>
 
                     <div className="mt-4 flex flex-wrap justify-between items-center gap-3">
-                      <span className="text-xs text-slate-500 font-mono">Westlands, Nairobi, Kenya</span>
+                      <div className="text-xs text-slate-500">
+                        <span className="block font-semibold text-slate-700 dark:text-slate-300">Westlands, Nairobi, Kenya</span>
+                        <span className="font-mono">-1.26354, 36.80345</span>
+                      </div>
                       <a
-                        href="https://google.com/maps/place/Westlands+Market+Nairobi"
+                        href="https://www.google.com/maps/dir/?api=1&destination=-1.26354%2C36.80345"
                         target="_blank"
-                        rel="noreferrer"
-                        className="px-4 py-2 bg-[#003B9C] text-white rounded-lg text-xs font-bold uppercase tracking-wider transition-colors"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-[#003B9C] text-white rounded-lg text-xs font-bold uppercase tracking-wider transition-colors hover:bg-blue-700"
                       >
-                        Launch Directions tool
+                        Get Directions
                       </a>
                     </div>
                   </div>

@@ -60,8 +60,8 @@ export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
           },
           geo: {
             "@type": "GeoCoordinates",
-            latitude: -1.2678,
-            longitude: 36.8078
+            latitude: -1.26354,
+            longitude: 36.80345
           },
           priceRange: "$$",
           sameAs: [
