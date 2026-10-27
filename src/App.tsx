@@ -54,7 +54,6 @@ import { DeliveryCoverageMatrix } from "./components/DeliveryCoverageMatrix";
 import { ArtworkPrepressGuide } from "./components/ArtworkPrepressGuide";
 import { ReviewsSection } from "./components/ReviewsSection";
 import { HeroShowcaseSlider } from "./components/HeroShowcaseSlider";
-import { AnimatedMarqueeTicker } from "./components/AnimatedMarqueeTicker";
 import { ThreeStepProcess } from "./components/ThreeStepProcess";
 import { FloatingWhatsAppCTA } from "./components/FloatingWhatsAppCTA";
 
@@ -179,9 +178,6 @@ export default function App() {
         onOpenQuoteModal={handleOpenQuoteModal}
       />
 
-      {/* Infinite Animated Capabilities Ticker (inspired by printshop.co.ke) */}
-      <AnimatedMarqueeTicker />
-
       {/* Main Container Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-24 md:space-y-36">
         
@@ -204,6 +200,7 @@ export default function App() {
                 const el = document.getElementById("services");
                 if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
+              onOpenQuoteModal={handleOpenQuoteModal}
             />
 
             {/* 2. THREE SUMMARY BENTO TRUST & LOCATION CARDS */}
@@ -212,18 +209,18 @@ export default function App() {
               {/* 3. CORE STATISTICS GRID CARD */}
               <div className="lg:col-span-4 bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm flex justify-between items-center">
                 <div className="flex flex-col text-left">
-                  <span className="text-3xl font-display font-black text-[#0A1B3D] dark:text-blue-400">10,000+</span>
-                  <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">High Fidelity Prints</span>
+                  <span className="text-3xl font-display font-black text-black dark:text-blue-400">10,000+</span>
+                  <span className="text-[10px] uppercase font-black text-black dark:text-slate-300 tracking-wider">High Fidelity Prints</span>
                 </div>
                 <div className="h-8 w-px bg-slate-200 dark:bg-slate-800" />
                 <div className="flex flex-col text-left">
                   <span className="text-3xl font-display font-black text-blue-600 dark:text-blue-400">99.8%</span>
-                  <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Client Smiles</span>
+                  <span className="text-[10px] uppercase font-black text-black dark:text-slate-300 tracking-wider">Client Smiles</span>
                 </div>
                 <div className="h-8 w-px bg-slate-200 dark:bg-slate-800" />
                 <div className="flex -space-x-2.5">
-                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-300 flex items-center justify-center text-[10px] font-bold text-slate-800">KW</div>
-                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-800">DO</div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-300 flex items-center justify-center text-[10px] font-bold text-slate-900">KW</div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-900">DO</div>
                   <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-blue-600 flex items-center justify-center text-[9px] font-black text-white">+3k</div>
                 </div>
               </div>
@@ -784,6 +781,17 @@ export default function App() {
               Sunday: 7:30 AM – 8:30 PM<br />
               Fulfillment: Shop A11, Westlands Market
             </p>
+            <div className="mt-3 pt-2.5 border-t border-slate-900">
+              <span className="text-[10px] text-slate-400 block mb-1 font-mono uppercase tracking-wider font-bold">Email Orders:</span>
+              <a 
+                href="mailto:smartprintershub1@gmail.com" 
+                className="inline-flex items-center gap-1.5 text-xs text-amber-300 font-mono font-black hover:text-amber-200 transition-colors"
+                title="Email SmartPrints Hub"
+              >
+                <Mail className="w-3.5 h-3.5 text-amber-400" />
+                <span>smartprintershub1@gmail.com</span>
+              </a>
+            </div>
           </div>
 
         </div>

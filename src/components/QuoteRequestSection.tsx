@@ -98,7 +98,7 @@ export const QuoteRequestSection: React.FC<QuoteRequestSectionProps> = ({
       `------------------------------------------`,
       `*PRODUCTION HUB:*`,
       `SmartPrints Hub, Westlands Market, Shop A11, Nairobi`,
-      `Email: smartprintershub1@gmail.com | Tel: +254 743 603 068`,
+      `Email: muchuikelvin423@gmail.com / smartprintershub1@gmail.com | Tel: +254 743 603 068`,
       `------------------------------------------`,
       `Please confirm pricing estimate, paper samples & production schedule.`
     ].filter(Boolean);
@@ -157,7 +157,7 @@ export const QuoteRequestSection: React.FC<QuoteRequestSectionProps> = ({
       const quoteText = generateQuoteText(trackingCode);
       const whatsappUrl = `https://wa.me/254743603068?text=${encodeURIComponent(quoteText)}`;
       const emailSubject = `[Quote Request ${trackingCode}] ${activeService.title} - ${customerName}${companyName ? ` (${companyName})` : ""}`;
-      const emailUrl = `mailto:smartprintershub1@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(quoteText)}`;
+      const emailUrl = `mailto:muchuikelvin423@gmail.com,smartprintershub1@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(quoteText)}`;
 
       setSubmittedData({
         trackingId: trackingCode,

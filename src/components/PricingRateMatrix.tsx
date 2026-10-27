@@ -1181,11 +1181,11 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
 
                   {/* Highlights checklist */}
                   <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-850/60 border border-slate-150 dark:border-slate-800 space-y-2">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold block mb-1">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-black dark:text-slate-300 font-extrabold block mb-1">
                       Included Production Features
                     </span>
                     {currentCategory.packages[activePackageIndex]?.features.map((feat, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
+                      <div key={i} className="flex items-start gap-2 text-xs text-black dark:text-slate-300 font-medium">
                         <Check className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
                         <span>{feat}</span>
                       </div>
@@ -1201,32 +1201,32 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
                         {currentCategory.packages[activePackageIndex]?.subtitle}
                       </span>
                       <span className="text-slate-300 dark:text-slate-700">•</span>
-                      <span className="text-xs font-mono text-slate-400 font-semibold">
+                      <span className="text-xs font-mono text-black dark:text-slate-300 font-bold">
                         Type {activePackageIndex + 1} of {currentCategory.packages.length}
                       </span>
                     </div>
 
-                    <h3 className="text-2xl sm:text-3xl font-display font-black text-slate-900 dark:text-white leading-tight mb-4">
+                    <h3 className="text-2xl sm:text-3xl font-display font-black text-black dark:text-white leading-tight mb-4">
                       {currentCategory.packages[activePackageIndex]?.title}
                     </h3>
 
                     {/* Prominent Price Banner */}
                     <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-50/80 via-white to-slate-50 dark:from-slate-850 dark:via-slate-850 dark:to-slate-800 border border-blue-200/80 dark:border-slate-700 flex flex-wrap items-baseline justify-between gap-3 mb-5">
                       <div>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold block">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-black dark:text-slate-300 font-bold block">
                           Base Package Price
                         </span>
                         <div className="flex items-baseline gap-2">
-                          <span className="text-3xl font-display font-black text-slate-950 dark:text-white">
+                          <span className="text-3xl font-display font-black text-black dark:text-white">
                             {currentCategory.packages[activePackageIndex]?.baseStartingPrice}
                           </span>
-                          <span className="text-xs text-slate-500 font-sans">
+                          <span className="text-xs text-black dark:text-slate-300 font-sans font-semibold">
                             / starting bundle
                           </span>
                         </div>
                       </div>
                       <div className="text-right">
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold block">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-black dark:text-slate-300 font-bold block">
                           Per Unit Rate
                         </span>
                         <span className="text-sm font-mono font-bold text-emerald-600 dark:text-emerald-400">
@@ -1238,22 +1238,22 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
                     {/* Stock & Finishing Specs */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5 text-xs font-sans">
                       <div className="p-3 bg-slate-50 dark:bg-slate-850 rounded-xl border border-slate-200/70 dark:border-slate-800">
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block font-bold mb-0.5">Paper / Material Stock</span>
-                        <span className="font-bold text-slate-900 dark:text-white">{currentCategory.packages[activePackageIndex]?.stock}</span>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-black dark:text-slate-300 block font-bold mb-0.5">Paper / Material Stock</span>
+                        <span className="font-black text-black dark:text-white">{currentCategory.packages[activePackageIndex]?.stock}</span>
                       </div>
                       <div className="p-3 bg-slate-50 dark:bg-slate-850 rounded-xl border border-slate-200/70 dark:border-slate-800">
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block font-bold mb-0.5">Finishing Technique</span>
-                        <span className="font-bold text-slate-900 dark:text-white">{currentCategory.packages[activePackageIndex]?.finishing}</span>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-black dark:text-slate-300 block font-bold mb-0.5">Finishing Technique</span>
+                        <span className="font-black text-black dark:text-white">{currentCategory.packages[activePackageIndex]?.finishing}</span>
                       </div>
                     </div>
 
                     {/* Volume Rate Matrix with Clickable WhatsApp Orders */}
                     <div className="space-y-2 mb-6">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold">
+                        <span className="text-[10px] font-mono uppercase tracking-widest text-black dark:text-slate-300 font-bold">
                           Select Volume Tier (1-Click WhatsApp Order)
                         </span>
-                        <span className="text-[10px] text-blue-600 dark:text-blue-400 font-mono">
+                        <span className="text-[10px] text-blue-600 dark:text-blue-400 font-mono font-semibold">
                           Westlands Shop A11 Fulfillment
                         </span>
                       </div>
@@ -1270,14 +1270,14 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
                             }`}
                           >
                             <div className="flex items-center justify-between text-xs mb-1">
-                              <span className="font-bold text-slate-850 dark:text-slate-100">{bundle.quantity}</span>
+                              <span className="font-bold text-black dark:text-slate-100">{bundle.quantity}</span>
                               {bundle.isPopular && <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>}
                             </div>
-                            <div className="text-sm font-display font-black text-slate-950 dark:text-white">
+                            <div className="text-sm font-display font-black text-black dark:text-white">
                               KSh {bundle.price.toLocaleString()}
                             </div>
                             {bundle.unitRate && (
-                              <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono mt-0.5">
+                              <div className="text-[10px] text-black dark:text-slate-300 font-mono font-semibold mt-0.5">
                                 {bundle.unitRate}
                               </div>
                             )}
@@ -1341,7 +1341,7 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
                         <button
                           type="button"
                           onClick={() => setCardDisplayMode("grid")}
-                          className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-semibold flex items-center gap-1 cursor-pointer"
+                          className="text-black dark:text-slate-300 hover:text-blue-700 dark:hover:text-white font-bold flex items-center gap-1 cursor-pointer"
                         >
                           <LayoutGrid className="w-3 h-3 text-blue-500" />
                           <span>View all {currentCategory.packages.length} types</span>
@@ -1360,14 +1360,14 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
               <div className="flex items-center justify-between p-3.5 bg-blue-50/70 dark:bg-blue-950/30 rounded-2xl border border-blue-200/60 dark:border-blue-900/40">
                 <div className="flex items-center gap-2">
                   <LayoutGrid className="w-4 h-4 text-blue-600" />
-                  <span className="text-xs font-mono font-bold text-slate-800 dark:text-slate-200">
+                  <span className="text-xs font-mono font-bold text-black dark:text-slate-200">
                     Comparing all {currentCategory.packages.length} types of {currentCategory.label}
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setCardDisplayMode("slider")}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-750 text-slate-850 dark:text-white text-xs font-bold border border-slate-200 dark:border-slate-700 cursor-pointer shadow-xs transition-all"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-750 text-black dark:text-white text-xs font-bold border border-slate-200 dark:border-slate-700 cursor-pointer shadow-xs transition-all"
                 >
                   <SlidersHorizontal className="w-3.5 h-3.5 text-blue-600" />
                   <span>Switch to Single Type Slider</span>
@@ -1416,14 +1416,14 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
                         <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 block mb-0.5">
                           {pkg.subtitle}
                         </span>
-                        <h3 className="text-base font-display font-bold text-slate-900 dark:text-white leading-snug mb-3">
+                        <h3 className="text-base font-display font-black text-black dark:text-white leading-snug mb-3">
                           {pkg.title}
                         </h3>
 
                         {/* Prominent Price Tag */}
                         <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-850 border border-slate-150 dark:border-slate-800 mb-4">
                           <div className="flex items-baseline justify-between mb-1">
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
+                            <span className="text-[10px] font-mono uppercase tracking-wider text-black dark:text-slate-300 font-bold">
                               Price From
                             </span>
                             <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
@@ -1431,10 +1431,10 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
                             </span>
                           </div>
                           <div className="flex items-baseline gap-1.5">
-                            <span className="text-2xl font-display font-black text-slate-950 dark:text-white">
+                            <span className="text-2xl font-display font-black text-black dark:text-white">
                               {pkg.baseStartingPrice}
                             </span>
-                            <span className="text-[11px] text-slate-500 font-sans">
+                            <span className="text-[11px] text-black dark:text-slate-300 font-sans font-medium">
                               / base bundle
                             </span>
                           </div>
@@ -1442,7 +1442,7 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
 
                         {/* Quantity & Price Tier Matrix */}
                         <div className="space-y-1.5 mb-4">
-                          <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold block mb-1">
+                          <span className="text-[10px] font-mono uppercase tracking-widest text-black dark:text-slate-300 font-bold block mb-1">
                             Volume Rate Matrix (KES)
                           </span>
                           <div className="grid grid-cols-2 gap-1.5">
@@ -1458,18 +1458,18 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
                                 }`}
                               >
                                 <div className="flex items-center justify-between text-[11px]">
-                                  <span className="font-bold text-slate-800 dark:text-slate-200 font-sans">
+                                  <span className="font-bold text-black dark:text-slate-200 font-sans">
                                     {bundle.quantity}
                                   </span>
                                   {bundle.isPopular && (
                                     <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
                                   )}
                                 </div>
-                                <div className="text-xs font-display font-black text-slate-900 dark:text-white">
+                                <div className="text-xs font-display font-black text-black dark:text-white">
                                   KSh {bundle.price.toLocaleString()}
                                 </div>
                                 {bundle.unitRate && (
-                                  <div className="text-[9px] text-slate-500 dark:text-slate-400 font-mono">
+                                  <div className="text-[9px] text-black dark:text-slate-300 font-mono font-semibold">
                                     {bundle.unitRate}
                                   </div>
                                 )}
@@ -1480,13 +1480,13 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
 
                         {/* Specifications */}
                         <div className="space-y-1.5 pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] font-sans">
-                          <div className="flex items-start gap-1.5 text-slate-600 dark:text-slate-400">
+                          <div className="flex items-start gap-1.5 text-black dark:text-slate-300 font-medium">
                             <span className="text-blue-500 font-bold">✓</span>
-                            <span><strong className="text-slate-800 dark:text-slate-200">Stock:</strong> {pkg.stock}</span>
+                            <span><strong className="text-black dark:text-slate-200">Stock:</strong> {pkg.stock}</span>
                           </div>
-                          <div className="flex items-start gap-1.5 text-slate-600 dark:text-slate-400">
+                          <div className="flex items-start gap-1.5 text-black dark:text-slate-300 font-medium">
                             <span className="text-blue-500 font-bold">✓</span>
-                            <span><strong className="text-slate-800 dark:text-slate-200">Finish:</strong> {pkg.finishing}</span>
+                            <span><strong className="text-black dark:text-slate-200">Finish:</strong> {pkg.finishing}</span>
                           </div>
                         </div>
                       </div>
@@ -1507,7 +1507,7 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
                         <button
                           type="button"
                           onClick={() => onSelectForCalculator(pkg.calculatorId)}
-                          className="w-full py-2 px-3 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                          className="w-full py-2 px-3 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-black dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-[11px] font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                         >
                           <Calculator className="w-3 h-3 text-blue-500" />
                           <span>Customize in Calculator</span>
@@ -1541,10 +1541,10 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-xs font-sans">
               {currentCategory.tableRows.map((row, idx) => (
                 <tr key={idx} className="hover:bg-blue-50/40 dark:hover:bg-slate-850/60 transition-colors">
-                  <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white">
+                  <td className="py-3.5 px-4 font-bold text-black dark:text-white">
                     {row.name}
                   </td>
-                  <td className="py-3.5 px-4 text-slate-600 dark:text-slate-400">
+                  <td className="py-3.5 px-4 text-black dark:text-slate-300 font-medium">
                     {row.stock}
                   </td>
                   <td className="py-3.5 px-4 font-mono text-[11px]">
@@ -1554,9 +1554,9 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
                     </span>
                   </td>
                   {row.tiers.map((tier, tIdx) => (
-                    <td key={tIdx} className="py-3.5 px-4 font-mono font-bold text-slate-800 dark:text-slate-200">
+                    <td key={tIdx} className="py-3.5 px-4 font-mono font-bold text-black dark:text-slate-200">
                       <div>{tier.price}</div>
-                      <div className="text-[10px] font-normal text-slate-400">({tier.qty} pcs)</div>
+                      <div className="text-[10px] font-normal text-black dark:text-slate-300 font-medium">({tier.qty} pcs)</div>
                     </td>
                   ))}
                   <td className="py-3.5 px-4 font-mono font-extrabold text-emerald-600 dark:text-emerald-400">
@@ -1593,10 +1593,10 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase font-mono">
+            <h4 className="text-xs font-bold text-black dark:text-white uppercase font-mono">
               Free Pre-Press Audit
             </h4>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-sans mt-0.5">
+            <p className="text-[11px] text-black dark:text-slate-300 leading-relaxed font-sans mt-0.5 font-medium">
               Every job receives a complimentary 3mm bleed, 300 DPI, and CMYK color check.
             </p>
           </div>
@@ -1607,10 +1607,10 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
             <Truck className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase font-mono">
+            <h4 className="text-xs font-bold text-black dark:text-white uppercase font-mono">
               Free Delivery &gt; 10k
             </h4>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-sans mt-0.5">
+            <p className="text-[11px] text-black dark:text-slate-300 leading-relaxed font-sans mt-0.5 font-medium">
               Free courier delivery in Westlands & Nairobi CBD on orders above KES 10,000.
             </p>
           </div>
@@ -1621,10 +1621,10 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
             <Clock className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase font-mono">
+            <h4 className="text-xs font-bold text-black dark:text-white uppercase font-mono">
               Same-Day Dispatch
             </h4>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-sans mt-0.5">
+            <p className="text-[11px] text-black dark:text-slate-300 leading-relaxed font-sans mt-0.5 font-medium">
               Orders confirmed by 11:30 AM can be picked up or dispatched the same afternoon.
             </p>
           </div>
@@ -1635,10 +1635,10 @@ export const PricingRateMatrix: React.FC<PricingRateMatrixProps> = ({
             <Sparkles className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase font-mono">
+            <h4 className="text-xs font-bold text-black dark:text-white uppercase font-mono">
               Design Setup Assistance
             </h4>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-sans mt-0.5">
+            <p className="text-[11px] text-black dark:text-slate-300 leading-relaxed font-sans mt-0.5 font-medium">
               Print-ready files = KSh 0. In-house custom graphic artwork layout from KSh 1,000.
             </p>
           </div>

@@ -133,11 +133,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
           <span className="text-xs font-mono font-bold tracking-widest uppercase text-blue-600 dark:text-blue-400 block mb-1">
             Production Catalog & Capabilities
           </span>
-          <h3 className="text-2xl sm:text-3xl font-display font-black text-slate-900 dark:text-white uppercase tracking-tight">
+          <h3 className="text-2xl sm:text-3xl font-display font-black text-black dark:text-white uppercase tracking-tight">
             Commercial Printing, Signage & Apparel
           </h3>
         </div>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-sans max-w-sm">
+        <p className="text-xs sm:text-sm text-black dark:text-slate-200 font-sans max-w-sm font-medium">
           High-resolution output, custom finishing, and industrial precision under one roof at Westlands Market.
         </p>
       </div>
@@ -148,10 +148,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
           <button
             key={cat.id}
             onClick={() => setActiveCategory(cat.id)}
-            className={`px-4 py-2 text-xs font-medium rounded-xl whitespace-nowrap transition-all cursor-pointer ${
+            className={`px-4 py-2 text-xs font-bold rounded-xl whitespace-nowrap transition-all cursor-pointer ${
               activeCategory === cat.id
-                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm font-bold"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                ? "bg-white dark:bg-slate-900 text-black dark:text-white shadow-sm font-bold"
+                : "text-slate-800 dark:text-slate-300 hover:text-black dark:hover:text-white"
             }`}
           >
             {cat.label}
@@ -188,16 +188,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                       {service.highlight}
                     </span>
                   ) : (
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-800 font-bold">
                       {service.category}
                     </span>
                   )}
                 </div>
 
-                <h4 className="text-lg font-display font-bold text-slate-900 dark:text-white mb-2 leading-tight flex items-center justify-between">
+                <h4 className="text-lg font-display font-black text-black dark:text-white mb-2 leading-tight flex items-center justify-between">
                   <span>{service.title}</span>
                   {isBizCards && (
-                    <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-bold uppercase">
+                    <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-400 font-bold uppercase">
                       300gsm Standard
                     </span>
                   )}
@@ -207,7 +207,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                 {isBizCards ? (
                   <div className="space-y-3 mb-4">
                     {/* Slider Navigation Bar */}
-                    <div className="flex items-center justify-between p-1.5 bg-slate-50 dark:bg-slate-850 rounded-xl border border-slate-200/70 dark:border-slate-800">
+                    <div className="flex items-center justify-between p-1.5 bg-slate-100 dark:bg-slate-850 rounded-xl border border-slate-200 dark:border-slate-800">
                       <div className="flex items-center gap-1 overflow-x-auto scrollbar-none">
                         {BIZ_CARD_SUBTYPES.map((bt, idx) => (
                           <button
@@ -220,7 +220,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                             className={`px-2 py-1 rounded-lg text-[10px] font-bold whitespace-nowrap transition-all cursor-pointer ${
                               !showAllBizCardTypes && bizCardTypeIndex === idx
                                 ? "bg-[#003B9C] text-white shadow-xs"
-                                : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                                : "text-slate-800 dark:text-slate-400 hover:text-black font-semibold"
                             }`}
                           >
                             {bt.name.replace(" 300gsm Silk", "")}
@@ -236,7 +236,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                             setBizCardTypeIndex((prev) => (prev > 0 ? prev - 1 : BIZ_CARD_SUBTYPES.length - 1));
                           }}
                           aria-label="Previous Card Type"
-                          className="p-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-blue-600 cursor-pointer"
+                          className="p-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-300 hover:text-blue-600 cursor-pointer"
                         >
                           <ChevronLeft className="w-3 h-3" />
                         </button>
@@ -247,7 +247,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                             setBizCardTypeIndex((prev) => (prev < BIZ_CARD_SUBTYPES.length - 1 ? prev + 1 : 0));
                           }}
                           aria-label="Next Card Type"
-                          className="p-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-blue-600 cursor-pointer"
+                          className="p-1 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-300 hover:text-blue-600 cursor-pointer"
                         >
                           <ChevronRight className="w-3 h-3" />
                         </button>
@@ -256,28 +256,28 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
 
                     {!showAllBizCardTypes ? (
                       /* SINGLE TYPE SPOTLIGHT VIEW */
-                      <div className="p-3 bg-blue-50/40 dark:bg-blue-950/20 rounded-xl border border-blue-100 dark:border-blue-900/40 space-y-2">
+                      <div className="p-3 bg-blue-50/50 dark:bg-blue-950/20 rounded-xl border border-blue-100 dark:border-blue-900/40 space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-xs font-bold text-slate-900 dark:text-white">
+                          <span className="text-xs font-black text-black dark:text-white">
                             {currentBizType.name}
                           </span>
                           <span className="text-[9px] font-mono font-extrabold uppercase px-2 py-0.5 rounded-full bg-blue-600 text-white">
                             {currentBizType.badge}
                           </span>
                         </div>
-                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-sans">
+                        <p className="text-xs text-black dark:text-slate-200 leading-relaxed font-sans font-medium">
                           {currentBizType.desc}
                         </p>
-                        <div className="space-y-1 pt-1.5 border-t border-blue-200/50 dark:border-blue-900/50">
+                        <div className="space-y-1 pt-1.5 border-t border-blue-200/60 dark:border-blue-900/50">
                           {currentBizType.specs.map((sp, i) => (
-                            <div key={i} className="flex items-start gap-1.5 text-[11px] text-slate-700 dark:text-slate-300 font-sans">
-                              <span className="text-blue-500 font-bold shrink-0">✓</span>
+                            <div key={i} className="flex items-start gap-1.5 text-[11px] text-black dark:text-slate-200 font-sans font-semibold">
+                              <span className="text-blue-600 font-bold shrink-0">✓</span>
                               <span>{sp}</span>
                             </div>
                           ))}
                         </div>
-                        <div className="text-[11px] text-slate-500 dark:text-slate-400 pt-1">
-                          <span className="font-semibold text-slate-700 dark:text-slate-300">Finishing: </span>
+                        <div className="text-[11px] text-slate-900 dark:text-slate-300 pt-1 font-medium">
+                          <span className="font-bold text-black dark:text-white">Finishing: </span>
                           <span>{currentBizType.finishing}</span>
                         </div>
 
@@ -320,7 +320,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                                 {bt.badge}
                               </span>
                             </div>
-                            <p className="text-[11px] text-slate-500 leading-snug">{bt.desc}</p>
+                            <p className="text-[11px] text-black dark:text-slate-300 leading-snug font-medium">{bt.desc}</p>
                           </div>
                         ))}
                       </div>
@@ -329,7 +329,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                 ) : (
                   /* STANDARD SERVICE CARD PRESENTATION */
                   <>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans mb-4">
+                    <p className="text-xs text-black dark:text-slate-200 leading-relaxed font-sans mb-4 font-medium">
                       {service.description}
                     </p>
 
@@ -337,8 +337,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                     {service.specs && service.specs.length > 0 && (
                       <div className="space-y-1.5 pt-3 border-t border-slate-100 dark:border-slate-800/80 mb-4">
                         {service.specs.slice(0, 3).map((spec, i) => (
-                          <div key={i} className="flex items-start gap-2 text-[11px] text-slate-600 dark:text-slate-400 font-sans">
-                            <span className="text-blue-500 dark:text-blue-400 font-bold shrink-0">✓</span>
+                          <div key={i} className="flex items-start gap-2 text-[11px] text-black dark:text-slate-200 font-sans font-semibold">
+                            <span className="text-blue-600 dark:text-blue-400 font-bold shrink-0">✓</span>
                             <span>{spec}</span>
                           </div>
                         ))}
@@ -346,8 +346,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
                     )}
 
                     {service.popularFinishing && (
-                      <div className="text-[11px] text-slate-500 dark:text-slate-400 font-sans mb-4">
-                        <span className="font-semibold text-slate-700 dark:text-slate-300">Finishing: </span>
+                      <div className="text-[11px] text-slate-900 dark:text-slate-300 font-sans mb-4 font-medium">
+                        <span className="font-bold text-black dark:text-white">Finishing: </span>
                         <span>{service.popularFinishing}</span>
                       </div>
                     )}
@@ -357,11 +357,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectForQuo
 
             <div className="pt-4 border-t border-slate-100 dark:border-slate-800/80 space-y-3">
               <div className="flex items-center justify-between text-[11px] font-mono">
-                <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-bold">
+                <span className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-bold">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>Custom Quote</span>
                 </span>
-                <span className="text-slate-400 font-medium">Free Pre-Press Check</span>
+                <span className="text-slate-800 dark:text-slate-400 font-bold">Free Pre-Press Check</span>
               </div>
 
               <div className="grid grid-cols-2 gap-2">

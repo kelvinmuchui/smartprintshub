@@ -14,7 +14,8 @@ import {
   ChevronRight,
   ShieldCheck,
   Instagram,
-  FileText
+  FileText,
+  Mail
 } from "lucide-react";
 import { CartItem } from "../types";
 
@@ -61,19 +62,33 @@ export default function Navbar({
 
   return (
     <>
-      {/* Upper Info Mini bar - Westlands Focus */}
-      <div className="w-full bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800/80 font-mono flex flex-wrap justify-between items-center gap-2 relative z-50">
-        <div className="flex items-center gap-4">
+      {/* Upper Info Mini bar - High utility header matching top professional print portals */}
+      <div className="w-full bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800/80 font-mono flex flex-wrap justify-between items-center gap-2 relative z-50">
+        <div className="flex items-center gap-4 flex-wrap">
           <span className="flex items-center gap-1.5 hover:text-white transition-colors">
-            <MapPin className="w-3.5 h-3.5 text-blue-400" />
-            <span>Westlands Market, Shop A11, Kenya</span>
+            <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+            <span>Shop A11, Westlands Market, Nairobi</span>
           </span>
-          <span className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
-            <Clock className="w-3.5 h-3.5 text-blue-400" />
-            <span>Mon-Fri: 6:30 AM – 9:30 PM | Sat: 7 AM – 9:30 PM | Sun: 7:30 AM – 8:30 PM</span>
+          <a 
+            href="mailto:smartprintershub1@gmail.com" 
+            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 text-slate-950 font-mono font-black text-xs shadow-md shadow-amber-500/20 hover:shadow-amber-400/40 hover:scale-105 active:scale-95 transition-all duration-200 border border-yellow-200 group"
+            title="Official Email: smartprintershub1@gmail.com"
+          >
+            <div className="w-4 h-4 rounded-full bg-slate-950 text-amber-300 flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform">
+              <Mail className="w-2.5 h-2.5" />
+            </div>
+            <span className="tracking-tight">smartprintershub1@gmail.com</span>
+            <span className="flex h-2 w-2 relative ml-0.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+          </a>
+          <span className="hidden xl:flex items-center gap-1.5 hover:text-white transition-colors text-slate-300">
+            <Clock className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+            <span>Mon-Sun: 6:30 AM – 9:30 PM (Daily)</span>
           </span>
         </div>
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <a
             href="https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0"
             target="_blank"
@@ -82,20 +97,20 @@ export default function Navbar({
             title="Follow SmartPrints Hub on Instagram (@smartprinters_hub_westlands)"
           >
             <Instagram className="w-3.5 h-3.5 text-pink-400 group-hover:scale-110 transition-transform" />
-            <span className="font-semibold">Instagram</span>
+            <span className="font-semibold hidden sm:inline">Instagram</span>
           </a>
-          <a href="tel:+254743603068" className="flex items-center gap-1.5 text-white bg-blue-600/20 text-blue-400 hover:bg-blue-600/30 px-2 py-0.5 rounded transition-all">
-            <Phone className="w-3.5 h-3.5 animate-pulse" />
+          <a href="tel:+254743603068" className="flex items-center gap-1.5 text-white bg-blue-600/30 text-blue-300 hover:bg-blue-600/50 px-2.5 py-0.5 rounded transition-all font-bold">
+            <Phone className="w-3.5 h-3.5 animate-pulse text-blue-400" />
             <span>+254 743 603 068</span>
           </a>
-          <span className="text-[10px] uppercase tracking-wider bg-blue-600 text-white px-2 py-0.5 rounded-full font-sans font-semibold">
-            Same Day Printing
+          <span className="text-[10px] uppercase tracking-wider bg-emerald-600 text-white px-2 py-0.5 rounded-full font-sans font-bold">
+            Same Day Print
           </span>
         </div>
       </div>
 
       {/* Primary Sticky Header */}
-      <header className="sticky top-0 z-40 w-full glassmorphism border-b shadow-sm transition-all duration-300">
+      <header className="sticky top-0 z-40 w-full glassmorphism border-b shadow-sm transition-all duration-300 bg-white/95 dark:bg-slate-900/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           {/* Brand Logo Identity */}
@@ -126,17 +141,17 @@ export default function Navbar({
                   const el = document.getElementById(item.id);
                   if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
                 }}
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all relative ${
+                className={`px-3 py-2 text-sm rounded-lg transition-all relative font-bold ${
                   currentTab === item.id
-                    ? "text-blue-600 dark:text-blue-400 bg-blue-500/5"
-                    : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white hover:bg-slate-100/50 dark:hover:bg-slate-800/40"
+                    ? "text-[#003B9C] dark:text-blue-400 bg-blue-50 dark:bg-slate-800"
+                    : "text-black hover:text-[#003B9C] dark:text-slate-200 dark:hover:text-white hover:bg-slate-100/70 dark:hover:bg-slate-800/40"
                 }`}
               >
                 <span>{item.label}</span>
                 {currentTab === item.id && (
                   <motion.div
                     layoutId="activeTabUnderline"
-                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-blue-600 rounded-full"
+                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#003B9C] rounded-full"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -266,14 +281,14 @@ export default function Navbar({
                       const el = document.getElementById(item.id);
                       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
                     }}
-                    className={`nav-mobile-item flex items-center justify-between w-full px-4 py-2.5 text-left text-sm font-medium rounded-lg transition-all ${
+                    className={`nav-mobile-item flex items-center justify-between w-full px-4 py-2.5 text-left text-sm font-bold rounded-lg transition-all ${
                       currentTab === item.id
-                        ? "text-blue-600 bg-blue-50 dark:text-blue-400 dark:bg-slate-800"
-                        : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850"
+                        ? "text-[#003B9C] bg-blue-50 dark:text-blue-400 dark:bg-slate-800"
+                        : "text-black dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-850"
                     }`}
                   >
                     <span>{item.label}</span>
-                    <ChevronRight className={`w-4 h-4 text-slate-400 transition-transform ${currentTab === item.id ? "rotate-90 text-blue-500" : ""}`} />
+                    <ChevronRight className={`w-4 h-4 text-slate-400 transition-transform ${currentTab === item.id ? "rotate-90 text-[#003B9C]" : ""}`} />
                   </button>
                 ))}
 
@@ -305,6 +320,21 @@ export default function Navbar({
                     <span>WhatsApp</span>
                   </a>
                 </div>
+
+                <a
+                  href="mailto:smartprintershub1@gmail.com"
+                  className="w-full mt-2.5 py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 text-slate-950 text-xs font-mono font-black flex items-center justify-center gap-2 border border-yellow-200 shadow-md hover:scale-[1.01] active:scale-95 transition-all"
+                  title="Official Email: smartprintershub1@gmail.com"
+                >
+                  <div className="w-4 h-4 rounded-full bg-slate-950 text-amber-300 flex items-center justify-center shrink-0">
+                    <Mail className="w-2.5 h-2.5" />
+                  </div>
+                  <span>smartprintershub1@gmail.com</span>
+                  <span className="flex h-2 w-2 relative ml-1">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                </a>
 
                 <a
                   href="https://www.instagram.com/smartprinters_hub_westlands?dlrf=dDd5MnBjcXRrYTB0"

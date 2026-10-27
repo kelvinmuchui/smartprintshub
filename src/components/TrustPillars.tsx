@@ -30,11 +30,11 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onQuoteClick }) => {
           <span className="text-xs font-mono font-bold tracking-widest uppercase text-blue-600 dark:text-blue-400 block mb-1">
             Why Westlands & Nairobi Choose Us
           </span>
-          <h3 className="text-2xl sm:text-3xl font-display font-black text-slate-900 dark:text-white uppercase tracking-tight">
+          <h3 className="text-2xl sm:text-3xl font-display font-black text-black dark:text-white uppercase tracking-tight">
             The SmartPrints Quality Guarantee
           </h3>
         </div>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md">
+        <p className="text-xs sm:text-sm text-black dark:text-slate-300 max-w-md font-medium">
           Commercial offset fidelity, automated pre-press proofing, and fast-track courier delivery across all 47 counties.
         </p>
       </div>
@@ -44,23 +44,23 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onQuoteClick }) => {
         {TRUST_PILLARS.map((pillar) => (
           <div
             key={pillar.id}
-            className="group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-blue-500/40 dark:hover:border-blue-400/40 transition-all flex flex-col justify-between"
+            className="group p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-blue-500/40 dark:hover:border-blue-400/40 transition-all flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center group-hover:scale-105 transition-transform">
                   {getIcon(pillar.iconName)}
                 </div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-800 dark:text-slate-400">
                   {pillar.tagline}
                 </span>
               </div>
 
-              <h4 className="text-base font-display font-bold text-slate-900 dark:text-white mb-2 leading-snug">
+              <h4 className="text-base font-display font-black text-black dark:text-white mb-2 leading-snug">
                 {pillar.title}
               </h4>
 
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
+              <p className="text-xs text-black dark:text-slate-300 leading-relaxed font-sans font-medium">
                 {pillar.description}
               </p>
             </div>
@@ -68,7 +68,7 @@ export const TrustPillars: React.FC<TrustPillarsProps> = ({ onQuoteClick }) => {
             <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-1.5 text-[11px] font-bold text-blue-600 dark:text-blue-400 font-mono">
               <span>Verified Standard</span>
               <span aria-hidden="true">·</span>
-              <span className="text-slate-400 font-normal">Active Today</span>
+              <span className="text-slate-600 dark:text-slate-400 font-medium">Active Today</span>
             </div>
           </div>
         ))}

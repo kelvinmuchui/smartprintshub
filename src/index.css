@@ -161,3 +161,27 @@ html {
 body {
   font-family: var(--font-sans);
 }
+
+/* User requirement: Ensure text on white background is solid high-contrast black */
+:root:not(.dark) .bg-white {
+  color: #000000;
+}
+
+:root:not(.dark) .bg-white h1,
+:root:not(.dark) .bg-white h2,
+:root:not(.dark) .bg-white h3,
+:root:not(.dark) .bg-white h4,
+:root:not(.dark) .bg-white h5,
+:root:not(.dark) .bg-white h6,
+:root:not(.dark) .bg-white strong,
+:root:not(.dark) .bg-white b {
+  color: #000000 !important;
+}
+
+:root:not(.dark) .bg-white .text-slate-500,
+:root:not(.dark) .bg-white .text-slate-600,
+:root:not(.dark) .bg-white .text-slate-700,
+:root:not(.dark) .bg-white .text-slate-800,
+:root:not(.dark) .bg-white .text-slate-900 {
+  color: #000000 !important;
+}
