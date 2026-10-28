@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.smartprintshub.co.ke/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://www.smartprintshub.co.ke/logo-square.png</image:loc>
-      <image:title>SmartPrints Hub Official Logo</image:title>
-      <image:caption>SmartPrints Hub - Premier Printing and Branding in Westlands, Nairobi</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.smartprintshub.co.ke/logo.png</image:loc>
-      <image:title>SmartPrints Hub Brand Logo</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.smartprintshub.co.ke/og-image.png</image:loc>
-      <image:title>SmartPrints Hub Westlands Services</image:title>
-    </image:image>
   </url>
   <url>
     <loc>https://www.smartprintshub.co.ke/printing-in-westlands/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-09-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://www.smartprintshub.co.ke/logo-square.png</image:loc>
-      <image:title>Printing in Westlands Nairobi - SmartPrints Hub</image:title>
-    </image:image>
   </url>
 </urlset>

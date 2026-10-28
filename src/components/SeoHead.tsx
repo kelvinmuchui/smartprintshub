@@ -9,8 +9,8 @@ interface SeoHeadProps {
 export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
   useEffect(() => {
     const title = isLocalLandingPage
-      ? "Printing in Westlands Nairobi | 0743 603 068 | SmartPrints Hub"
-      : "Printing in Westlands Nairobi | 0743 603 068 | SmartPrints Hub";
+      ? "Printing in Westlands Nairobi | SmartPrints Hub"
+      : "Printing in Westlands Nairobi | SmartPrints Hub";
     const description = isLocalLandingPage
       ? PRIMARY_DESCRIPTION
       : PRIMARY_DESCRIPTION;
@@ -33,22 +33,8 @@ export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
           "@type": ["LocalBusiness", "PrintShop", "Organization"],
           "@id": `${SITE_URL}/#business`,
           name: BUSINESS.name,
-          alternateName: BUSINESS.alternateName,
           description: BUSINESS.description,
           url: SITE_URL,
-          logo: {
-            "@type": "ImageObject",
-            url: BUSINESS.logo,
-            contentUrl: BUSINESS.logo,
-            width: 512,
-            height: 512,
-            caption: "SmartPrints Hub Official Logo"
-          },
-          image: [
-            BUSINESS.logo,
-            `${SITE_URL}/logo.png`,
-            SOCIAL_IMAGE
-          ],
           telephone: BUSINESS.phone,
           email: BUSINESS.email,
           address: {
@@ -58,12 +44,6 @@ export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
             addressRegion: BUSINESS.region,
             addressCountry: BUSINESS.country
           },
-          geo: {
-            "@type": "GeoCoordinates",
-            latitude: -1.26354,
-            longitude: 36.80345
-          },
-          priceRange: "$$",
           sameAs: [
             BUSINESS.instagram,
             "https://wa.me/254743603068"
@@ -130,20 +110,16 @@ export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
     setMeta('meta[name="twitter:image"]', "name", SOCIAL_IMAGE);
     setLink("canonical", canonical);
 
-    let schemaElement = document.head.querySelector<HTMLScriptElement>('script[data-smartprints-schema="true"]');
-    if (!schemaElement) {
-      const existing = document.head.querySelector<HTMLScriptElement>('script[type="application/ld+json"]');
-      if (existing) {
-        schemaElement = existing;
-        schemaElement.dataset.smartprintsSchema = "true";
-      } else {
-        schemaElement = document.createElement("script");
-        schemaElement.type = "application/ld+json";
-        schemaElement.dataset.smartprintsSchema = "true";
-        document.head.appendChild(schemaElement);
-      }
-    }
+    document.head.querySelectorAll('script[type="application/ld+json"]').forEach((element) => element.remove());
+    const schemaElement = document.createElement("script");
+    schemaElement.type = "application/ld+json";
+    schemaElement.dataset.smartprintsSchema = "true";
     schemaElement.textContent = JSON.stringify(schema);
+    document.head.appendChild(schemaElement);
+
+    return () => {
+      schemaElement.remove();
+    };
   }, [isLocalLandingPage]);
 
   return null;

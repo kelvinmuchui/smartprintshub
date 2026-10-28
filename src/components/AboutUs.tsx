@@ -44,17 +44,17 @@ export default function AboutUs() {
           </div>
 
           {/* Bold Header */}
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black uppercase tracking-tight text-black dark:text-white leading-tight">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black uppercase tracking-tight text-slate-850 dark:text-white leading-tight">
             Your Trusted Print <br />
             Partner In Westlands
           </h3>
 
           {/* Mission/Profile Statement Copy */}
-          <p className="text-xs sm:text-sm text-black dark:text-slate-300 leading-relaxed font-sans font-medium">
-            At SmartPrints Hub, we specialize in high-quality printing services tailored to meet your business and personal needs. We proudly offer full-cycle production, managing your project from concept and design to the final vibrant, heavy-ink print.
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-sans font-medium">
+            At SmartPrints Hub (inspired by Westlands' finest DS Creations), we specialize in high-quality printing services tailored to meet your business and personal needs. We proudly offer full-cycle production, managing your project from concept and design to the final vibrant, heavy-ink print.
           </p>
 
-          <hr className="border-slate-200 dark:border-slate-800" />
+          <hr className="border-slate-100 dark:border-slate-800/80" />
 
           {/* Bottom Grid Highlights (Diverse Formats & Fast Turnaround) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
@@ -64,10 +64,10 @@ export default function AboutUs() {
                 <Printer className="w-5 h-5" />
               </div>
               <div className="space-y-0.5">
-                <h4 className="text-xs sm:text-sm font-display font-black text-black dark:text-white uppercase tracking-tight">
+                <h4 className="text-xs sm:text-sm font-display font-bold text-slate-800 dark:text-white uppercase tracking-tight">
                   Diverse Formats
                 </h4>
-                <p className="text-[11px] text-slate-900 dark:text-slate-300 leading-normal font-medium">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">
                   Large format (A0–A3) banner printing down to everyday essentials (A4–A6).
                 </p>
               </div>
@@ -79,10 +79,10 @@ export default function AboutUs() {
                 <Zap className="w-5 h-5" />
               </div>
               <div className="space-y-0.5">
-                <h4 className="text-xs sm:text-sm font-display font-black text-black dark:text-white uppercase tracking-tight">
+                <h4 className="text-xs sm:text-sm font-display font-bold text-slate-800 dark:text-white uppercase tracking-tight">
                   Fast Turnaround
                 </h4>
-                <p className="text-[11px] text-slate-900 dark:text-slate-300 leading-normal font-medium">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">
                   Fulfilling accurate, crisp-registration, and high-density, professional results on demand.
                 </p>
               </div>
