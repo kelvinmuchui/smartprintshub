@@ -1,4 +1,4 @@
-import { PrintService, PortfolioItem } from "./types";
+import { PrintService, PortfolioItem, DeliveryZone, QuoteConfigItem } from "./types";
 import printedLanyards from "./assets/images/printed_lanyards_1782060369007.jpg";
 import orangeNotebooks from "./assets/images/orange_notebooks_1782060385152.jpg";
 import largeFormatBurgerBanner from "./assets/images/large_format_burger_banner_1782060399147.jpg";
@@ -14,151 +14,256 @@ import afdbBackdropBanner from "./assets/images/afdb_backdrop_banner_17883547653
 import afdbRollupBanners from "./assets/images/afdb_rollup_banners_1788354779144.jpg";
 import framedLakeCanvas from "./assets/images/framed_lake_canvas_1788354739742.jpg";
 import pesaPapUmbrellas from "./assets/images/pesa_pap_umbrellas_1782116346864.jpg";
+import luxuryBusinessCards from "./assets/images/luxury_business_cards_1788273973821.jpg";
+import brandedCorporateFlasks from "./assets/images/branded_corporate_flasks_1788274006304.jpg";
+import luxuryPackagingBox from "./assets/images/luxury_packaging_box_1788274020431.jpg";
+import rollupExpoBanner from "./assets/images/rollup_expo_banner_1788273988689.jpg";
+import triFoldBrochures from "./assets/images/tri_fold_brochures_1788274041456.jpg";
+import rissulStickers from "./assets/images/rissul_stickers.jpg";
+import planitHardHat from "./assets/images/planit_projects_hard_hat.jpg";
+
+export {
+  printedLanyards,
+  orangeNotebooks,
+  largeFormatBurgerBanner,
+  whiteGiftBags,
+  weddingProgramme,
+  printedUmbrellas,
+  stickerRollPrinting,
+  vibitRollupBanner,
+  vibitFlyersStack,
+  googleGeminiNotebook,
+  googleGeminiRollups,
+  afdbBackdropBanner,
+  afdbRollupBanners,
+  framedLakeCanvas,
+  pesaPapUmbrellas,
+  luxuryBusinessCards,
+  brandedCorporateFlasks,
+  luxuryPackagingBox,
+  rollupExpoBanner,
+  triFoldBrochures,
+  rissulStickers,
+  planitHardHat
+};
 
 export const SERVICES_LIST: PrintService[] = [
-  // 1. PRINTING SERVICES
+  // 1. COMMERCIAL & DIGITAL PRINTING
+  {
+    id: "biz-cards",
+    title: "Executive Business Cards",
+    category: "printing",
+    description: "Make an unmistakable physical impression. Premium 300gsm artboard, velvety soft-touch matte lamination, spot UV, or metallic foil stamping.",
+    iconName: "ContactRound",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Soft-Touch Matte + Spot UV",
+    specs: ["Stock: 300gsm Silk Artboard", "Single or double-sided full CMYK", "Corner radiuses: Standard square or 3mm rounded"],
+    highlight: "Popular with Westlands Executives"
+  },
   {
     id: "color-print",
-    title: "Vivid Color Printing",
+    title: "Vivid Color Digital Offset",
     category: "printing",
-    description: "Ultra high-resolution colour lasers and digital offsets on premium gloss, satin, and matte stock.",
+    description: "Ultra high-resolution calibrated color printing for marketing collateral, multi-page proposals, flyers, and event programs on gloss, satin, and matte stocks.",
     iconName: "Palette",
-    startingPrice: "KES 50 / page",
+    startingPrice: "Custom Quote",
     popularFinishing: "Gloss / Matte Lamination",
-    specs: ["Paper Weights: 80gsm to 350gsm", "Rich custom color calibration", "A3, A4 & custom cut dimensions"]
+    specs: ["Paper Weights: 80gsm to 350gsm", "Rich custom color calibration & heavy ink density", "A3, A4, A5 & custom die-cut dimensions"],
+    highlight: "Same-Day Express Available"
+  },
+  {
+    id: "corporate-docs",
+    title: "Company Profiles, Catalogues & Menus",
+    category: "printing",
+    description: "Bespoke corporate booklet binders, annual financial reports, luxury restaurant menus, and executive watermarked stationery with edge-to-edge bleed.",
+    iconName: "BookOpen",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Wire-O Spiral & Perfect Glue Binding",
+    specs: ["Full color bleed with high-opacity cover coats", "Premium Conqueror, textured & recycled stocks", "Spot UV and blind debossing highlights"]
+  },
+  {
+    id: "receipt-invoice",
+    title: "Branded NCR Receipt & Invoice Books",
+    category: "printing",
+    description: "Self-carbonated duplicate and triplicate books with sequential numbering, wrap-around writing shields, and perforated tear-off sheets.",
+    iconName: "FileSpreadsheet",
+    startingPrice: "Custom Quote",
+    popularFinishing: "NCR Carbonless duplicate/triplicate",
+    specs: ["Hard cover binding with heavy protective pad shields", "Tailor-made grid systems & tax invoice compliance", "Custom corporate logos & serial numbers"]
   },
   {
     id: "bw-print",
     title: "High-Volume Laser Printing & Photocopying",
     category: "printing",
-    description: "High-speed black & white reproduction. Crispy text contrast and instant bulk volume efficiency.",
+    description: "High-speed crisp black & white reproduction. Razor-sharp typography contrast and instant bulk volume efficiency for legal briefs, tenders, and manuals.",
     iconName: "Printer",
-    startingPrice: "KES 5 / page",
-    popularFinishing: "Stapled / Clipped packs",
-    specs: ["Perfect for manuals, thesis copy & booklets", "Up to 120 pages per minute throughput", "Double-sided options"]
-  },
-  {
-    id: "passport-photo",
-    title: "Biometric Passport Photo Suite",
-    category: "printing",
-    description: "Official biometric-compliant passport photographs. Soft professional lighting, instant digital copy & prints.",
-    iconName: "Camera",
-    startingPrice: "KES 200 (Set of 4)",
-    popularFinishing: "Satin Die-cut Portrait",
-    specs: ["Schengen visa compliant setting", "Kenyan passport biometric-grade background", "Instant digital copy to email"]
-  },
-  {
-    id: "biz-cards",
-    title: "Executive Business Cards",
-    category: "printing",
-    description: "Leave a brilliant physical impression. Soft-touch matte lamination, rounded edges, or elegant corner curves.",
-    iconName: "ContactRound",
-    startingPrice: "KES 1,200 / 100pcs",
-    popularFinishing: "Soft-touch Matte & Spot UV",
-    specs: ["Premium 350gsm card stock", "Single or double sided", "Embossing & foil accents available"]
-  },
-  {
-    id: "corporate-docs",
-    title: "Company Profiles, Letterheads & Menus",
-    category: "printing",
-    description: "Bespoke corporate booklet binders, printed menus for premium hotels, and executive watermarked stationery.",
-    iconName: "BookOpen",
-    startingPrice: "KES 2,500 onwards",
-    popularFinishing: "Wire-O Spiral & Perfect Binding",
-    specs: ["Full color edge-to-edge bleed", "Premium conquering laid papers", "Spot varnish highlights"]
-  },
-  {
-    id: "receipt-invoice",
-    title: "Branded Receipt & Invoice Books",
-    category: "printing",
-    description: "Self-carbonated duplicates and triplicates with sequential numbering, tailored for local Westlands businesses.",
-    iconName: "FileSpreadsheet",
-    startingPrice: "KES 1,500 / Book",
-    popularFinishing: "NCR Carbonless duplicate/triplicate",
-    specs: ["Hard cover binding with pad shields", "Tailor-made grid systems", "Custom corporate logo prints"]
+    startingPrice: "Custom Quote",
+    popularFinishing: "Stapled / Wire-O / Thermal tape binding",
+    specs: ["Perfect for manuals, thesis submissions & contracts", "High-throughput industrial production speeds", "Automated double-sided collation"]
   },
 
-  // 2. BRANDING & LARGE FORMAT
+  // 2. SIGNAGE & EXHIBITION DISPLAYS
   {
     id: "rollup-banners",
-    title: "Luxury Roll Up Banners",
-    category: "branding",
-    description: "Luxury promotional banners. Satin block-out vinyl fitted on absolute heavy aluminum teardrop stands.",
+    title: "Luxury Teardrop Roll Up Banners",
+    category: "signage",
+    description: "Sturdy aluminum teardrop base fitted with satin non-curl block-out vinyl. Vibrant high-pigment print that resists studio and outdoor glare.",
     iconName: "Flag",
-    startingPrice: "KES 6,500 / banner",
-    popularFinishing: "Heavy Aluminum teardrop stand & Bag",
-    specs: ["Standard dimension: 85cm x 200cm", "Waterproof curl-resistant satin visual", "Vibrant dye-sublimation ink"]
+    startingPrice: "Custom Quote",
+    popularFinishing: "Heavy Teardrop Stand + Padded Carry Bag",
+    specs: ["Standard dimension: 85cm x 200cm & 100cm x 200cm", "Waterproof curl-resistant satin blockout visual", "Fade-resistant dye-sublimation ink"],
+    highlight: "Event & Conference Best Seller"
+  },
+  {
+    id: "teardrop-flags",
+    title: "Outdoor Teardrop & Telescopic Flags",
+    category: "signage",
+    description: "Dynamic outdoor promotional flags with heavy cross-bases, water bags, and wind-permeable sublimation polyester fabric for maximum brand visibility.",
+    iconName: "Compass",
+    startingPrice: "Custom Quote",
+    popularFinishing: "3.5m / 4.5m Aluminum Pole + Water Bag",
+    specs: ["Double or single-sided mirror print", "Reinforced pole sleeve & double-stitched hems", "Engineered for 50+ km/h wind resistance"]
+  },
+  {
+    id: "acrylic-3d-signs",
+    title: "3D Acrylic Signage & Backlit Lightboxes",
+    category: "signage",
+    description: "Architectural interior and exterior signage, custom laser-cut acrylic logo wall letters, floating standoff plaques, and LED-illuminated store signs.",
+    iconName: "Sparkles",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Brushed Aluminum Standoffs + LED Halo",
+    specs: ["Precision laser-cut 5mm–10mm cast acrylic", "Indoor boardroom & outdoor weather-resistant finishes", "Complete installation support available across Westlands"]
   },
   {
     id: "large-format",
     title: "Large Format A0, A1 & A2 Plotting",
-    category: "branding",
-    description: "High-precision structural CAD blueprints, engineering plots, and large visual retail storefront posters.",
+    category: "signage",
+    description: "High-precision architectural CAD blueprints, engineering plots, structural schematics, and vibrant photo-realistic storefront posters.",
     iconName: "Maximize",
-    startingPrice: "KES 350 / sheet",
-    popularFinishing: "Lamination & Core board mounting",
-    specs: ["High-speed plotting precision", "Draft papers to outdoor banners", "Exact scaling fidelity"]
+    startingPrice: "Custom Quote",
+    popularFinishing: "UV Matte Lamination & Foam-board Mounting",
+    specs: ["High-speed 1200 DPI plotting precision", "Bond papers, tracing vellum, and matte vinyl", "Accurate 1:1 architectural scaling fidelity"]
   },
+
+  // 3. BRANDED APPAREL & WORKWEAR
+  {
+    id: "branded-tshirts",
+    title: "Custom Branded T-Shirts & Polos",
+    category: "apparel",
+    description: "Premium 100% combed cotton round-neck tees and heavyweight pique polo shirts. Decorated with crisp screen-printing, direct-to-film (DTF), or precision embroidery.",
+    iconName: "Shirt",
+    startingPrice: "Custom Quote",
+    popularFinishing: "High-Density Screen Print or 3D Embroidery",
+    specs: ["180gsm–220gsm ringspun cotton", "Fade-proof, wash-tested fabric inks", "Full range: XS through 4XL in 20+ corporate colors"],
+    highlight: "Popular for Corporate Uniforms & Events"
+  },
+  {
+    id: "reflector-jackets",
+    title: "High-Visibility Branded Reflector Vests",
+    category: "apparel",
+    description: "Heavy-duty reflective safety jackets and vests with custom company logo screen-printing or heat transfer across the chest and back.",
+    iconName: "ShieldCheck",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Double Reflective Bands + Front Zipper & Pocket",
+    specs: ["Standard Kenyan OSHA safety compliant", "High-visibility fluorescent neon green & orange", "Durable polyester mesh with reinforced borders"]
+  },
+  {
+    id: "embroidered-caps",
+    title: "Embroidered Corporate Caps & Hoodies",
+    category: "apparel",
+    description: "Structured 6-panel baseball caps, snapbacks, bucket hats, and fleece pullover hoodies with rich textured 3D puffed embroidery.",
+    iconName: "Users2",
+    startingPrice: "Custom Quote",
+    popularFinishing: "3D Puff Embroidery + Adjustable Metal Buckle",
+    specs: ["Heavy brushed cotton twill caps", "High-thread-count multi-color embroidery", "Long-lasting colorfastness"]
+  },
+
+  // 4. PACKAGING, STICKERS & LABELS
   {
     id: "stickers-labels",
-    title: "Vinyl Stickers & Product Labels",
-    category: "branding",
-    description: "Waterproof, UV-resistant die-cut label sheets or custom shapes on glossy or matte vinyl stock.",
+    title: "Waterproof Vinyl Stickers & Product Labels",
+    category: "packaging",
+    description: "Waterproof, oil-proof, and scratch-resistant die-cut stickers on gloss, matte, transparent, or metallic gold foil vinyl. Kiss-cut sheets or individual singles.",
     iconName: "Layers",
-    startingPrice: "KES 15 / sticker",
-    popularFinishing: "Precision digital contour die-cutting",
-    specs: ["A4/A3 layout arrays or individual cuts", "Eco-solvent outdoor proof ink", "Gloss, transparent & gold foil materials"]
+    startingPrice: "Custom Quote",
+    popularFinishing: "Precision Digital Contour Die-Cutting",
+    specs: ["Available on rolls, A3 arrays, or single die-cut units", "Eco-solvent UV-cured outdoor-grade inks", "Adheres securely to glass, plastic, corrugated board & metal"],
+    highlight: "Top Pick for Food & Cosmetic Brands"
   },
   {
+    id: "kraft-gift-bags",
+    title: "Custom Branded Paper Gift Bags & Packaging",
+    category: "packaging",
+    description: "Eco-friendly premium white board and natural kraft paper gift bags with twisted paper or luxury satin ribbon handles, featuring edge-to-edge brand printing.",
+    iconName: "Briefcase",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Reinforced Base + Matte Velvet Lamination",
+    specs: ["180gsm to 300gsm reinforced kraft and art paper", "Custom sizing for retail bottles, apparel & gift sets", "Available in small batches or mass retail quantities"]
+  },
+
+  // 5. PROMOTIONAL MERCHANDISE & CORPORATE GIFTS
+  {
     id: "merch-printing",
-    title: "Corporate Merchandise (Mugs, T-shirts, Canvas)",
+    title: "Executive Promotional Merchandise",
     category: "branding",
-    description: "Durable sublimation printing for customized corporate coffee mugs, branded t-shirts, and fine art canvas prints.",
-    iconName: "Shirt",
-    startingPrice: "KES 800 onwards",
-    popularFinishing: "Heat-press & fine-canvas framing",
-    specs: ["Dual-wall poly mugs & high-grade cotton", "Vibrant wash-safe textile transfers", "Pine-wood visual wrapping for fine canvas"]
+    description: "Custom laser-engraved insulated thermal flasks, ceramic coffee mugs, metallic stylus pens, branded umbrellas, and USB flash drives for VIP corporate gifts.",
+    iconName: "Award",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Laser Etch Engraving or Full-Color UV Print",
+    specs: ["Food-grade stainless steel & premium ceramic", "Luxury matte black, metallic, and brand pantone finishes", "Gift box packaging options available"]
+  },
+  {
+    id: "corporate-lanyards",
+    title: "Sublimated Lanyards & PVC ID Badges",
+    category: "branding",
+    description: "Silky satin double-sided sublimation lanyards with metallic swivel hooks, safety breakaway clips, and waterproof rigid PVC employee/conference ID cards.",
+    iconName: "FileText",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Satin Heat-Transfer + Metal Lobster Claw",
+    specs: ["Widths: 15mm, 20mm, or 25mm", "Photo-quality vibrant full CMYK print", "Matching RFID & CR80 smart cards available"]
   },
   {
     id: "vehicle-branding",
-    title: "Vehicle & Window UV Branding",
+    title: "Vehicle Fleet & Storefront Window Wraps",
     category: "branding",
-    description: "Turn your standard fleet or Westlands storefront windows into absolute gold mines with high-gloss perforated wraps.",
-    iconName: "Sparkles",
-    startingPrice: "Quote Required",
-    popularFinishing: "Gloss Laminate + Professional Installation",
-    specs: ["Perforated One-Way Vision materials", "Anti-scratch cast wraps & vehicle vinyls", "Acoustically & chemically stable materials"]
+    description: "Turn company fleets and Westlands storefront windows into 24/7 advertising engines with cast vehicle vinyl and perforated one-way vision graphics.",
+    iconName: "TrendingUp",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Cast Wrap Vinyl + Anti-Scratch UV Overlaminate",
+    specs: ["One-Way Vision perforated film for store windows", "Clean peel adhesive that protects vehicle factory paint", "Professional on-site installation across Nairobi"]
   },
 
-  // 3. CYBER & DIGITAL
+  // 6. CYBER, GOV REGISTRATION & VISA PACKS
   {
-    id: "cv-formatting",
-    title: "Professional CV Writing & Laser Editing",
+    id: "kra-pin-itax",
+    title: "KRA PIN, iTax Returns & SHA Portal Desk",
     category: "cyber",
-    description: "Tailored executive formatting, ATS-optimized structure & cover-letter editing to unlock opportunities.",
-    iconName: "StickyNote",
-    startingPrice: "KES 500",
-    specs: ["ATS standard keywords injection", "Elegant modern minimalist design template", "Provided in fully editable DOC & PDF"]
+    description: "Instant KRA PIN registration, electronic Tax returns filing, SHA health registrations, eCitizen, NTSA vehicle registration, and CR12 company search.",
+    iconName: "Fingerprint",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Immediate Official Certificate Print & Digital PDF",
+    specs: ["Speedy registration & verified downloads", "Compliant local tax representation guidance", "Instant validation and confirmation receipt via WhatsApp"],
+    highlight: "Fast-Track Digital Desk"
+  },
+  {
+    id: "passport-photo",
+    title: "Biometric Passport & Visa Photo Suite",
+    category: "cyber",
+    description: "Official biometric-compliant passport and visa photographs (US Visa, Schengen, UK, Canadian, Kenyan E-Passport). Correct lighting, strict sizing, and digital files.",
+    iconName: "Camera",
+    startingPrice: "Custom Quote",
+    popularFinishing: "Satin Die-Cut Biometric Prints + Soft Copy to Email",
+    specs: ["Guaranteed embassy biometric compliance", "White, off-white, and light grey backdrops", "Direct upload-ready high-res JPEG provided"]
   },
   {
     id: "appointment-booking",
-    title: "Embassy Visa & Appointment Bookings",
+    title: "Embassy Visa Booking & Travel Documentation",
     category: "cyber",
-    description: "Official online schedule management, visa applications typing support, and e-citizens credentials booking.",
+    description: "Online visa schedule typing support, TLScontact/VFS Global appointment booking, and flight/itinerary document compilation packs.",
     iconName: "Globe",
-    startingPrice: "KES 500",
-    specs: ["Embassy passport submission portal help", "Document package formatting & print matching", "Confidentiality and absolute data privacy compliance"]
-  },
-
-  // 4. KRA PIN & TAX SERVICES (CYBER SERVICES SPECIALTIES EXTRACTED SECURELY)
-  {
-    id: "kra-pin-itax",
-    title: "KRA PIN, iTax Returns & SHA Registration",
-    category: "cyber",
-    description: "Instant KRA PIN registration, electronic Tax returns filing, SHA healthcare portals, eCitizen, NTSA, HELB, NSSF & NHIF support.",
-    iconName: "Fingerprint",
-    startingPrice: "KES 300 / service",
-    specs: ["Speedy registration & direct certificate downloads", "Compliant local tax representation guidelines", "Instant validation confirmation via WhatsApp"]
+    startingPrice: "Custom Quote",
+    popularFinishing: "Organized Travel Dossier in Clear Folder",
+    specs: ["VFS Global, TLS, and US Embassy portal support", "High-volume dossier print & matching", "Strict confidentiality and personal data protection"]
   }
 ];
 
@@ -263,6 +368,69 @@ export const PORTFOLIO_LIST: PortfolioItem[] = [
     category: "printing",
     image: stickerRollPrinting,
     description: "Precision DTF UV and laminate label adhesive plotting presenting vivid colorful high-gloss die-cut character decals."
+  },
+  {
+    id: "proj-8",
+    title: "Executive Soft-Touch Business Cards Collection",
+    category: "corporate",
+    image: luxuryBusinessCards,
+    client: "Westlands Executive Suite",
+    badge: "Spot UV Finish",
+    description: "300gsm heavyweight cotton and silk artboard finished with deep velvety soft-touch matte lamination and gold-embossed logo accents."
+  },
+  {
+    id: "proj-9",
+    title: "Laser-Engraved Matte Black Insulated Thermal Flasks",
+    category: "corporate",
+    image: brandedCorporateFlasks,
+    client: "Corporate VIP Gifting",
+    badge: "Laser Etch",
+    description: "Dual-wall vacuum insulated stainless steel flasks with ultra-crisp permanent fiber-laser logo etching."
+  },
+  {
+    id: "proj-10",
+    title: "Custom Rigid Retail Presentation Packaging Boxes",
+    category: "branding",
+    image: luxuryPackagingBox,
+    client: "Boutique Brand Unboxing",
+    badge: "Custom Packaging",
+    description: "Heavy structural board gift boxes with magnetic closure flaps, velvet interior cushions, and metallic foil stamping."
+  },
+  {
+    id: "proj-11",
+    title: "High-Impact Commercial Expo Roll-Up Display",
+    category: "events",
+    image: rollupExpoBanner,
+    client: "Nairobi Trade Expo",
+    badge: "Display Stand",
+    description: "85cm x 200cm anti-glare satin block-out banner graphics mounted on heavy-duty aluminum teardrop base."
+  },
+  {
+    id: "proj-12",
+    title: "Multi-Panel Trifold Marketing Brochures & Menus",
+    category: "printing",
+    image: triFoldBrochures,
+    client: "Corporate Profiles",
+    badge: "Trifold Print",
+    description: "250gsm satin art card with precision machine creasing, rich color reproduction, and scratch-resistant matte seal."
+  },
+  {
+    id: "proj-13",
+    title: "Rissul Brand Waterproof Die-Cut Vinyl Stickers",
+    category: "printing",
+    image: rissulStickers,
+    client: "Rissul Products",
+    badge: "Vinyl Decals",
+    description: "Waterproof, oil-resistant vinyl stickers with digital contour die-cutting for bottle labeling and retail packaging."
+  },
+  {
+    id: "proj-14",
+    title: "PlanIt Projects Site Safety Gear & Hard Hat Branding",
+    category: "corporate",
+    image: planitHardHat,
+    client: "PlanIt Projects Ltd",
+    badge: "Industrial Gear",
+    description: "UV-cured weather-resistant hard hat decals and high-visibility safety workwear branding for engineering field teams."
   }
 ];
 
@@ -284,18 +452,18 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     title: "Executive Business Cards",
     category: "Business Cards",
     price: 1200,
-    description: "Pack of 100 super-premium 350gsm business cards with choice of professional laminations.",
-    image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=800&q=80",
+    description: "Pack of 100 super-premium 300gsm business cards with choice of professional laminations.",
+    image: luxuryBusinessCards,
     unit: "pack (100pcs)",
     finishingOptions: ["Matte Laminating", "Gloss Laminating", "Soft-Touch Matte", "Spot-UV Coating"]
   },
   {
     id: "shop-roll-banner",
-    title: "Premium teardrop Roll-Up Banner",
+    title: "Premium Teardrop Roll-Up Banner",
     category: "Banners",
     price: 6500,
     description: "Luxury satin non-curl roll up banner mounted on a heavy-tier aluminum base. Carry bag included.",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    image: rollupExpoBanner,
     unit: "unit",
     finishingOptions: ["Standard Teardrop Stand", "Broad-base Stand"]
   },
@@ -305,7 +473,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: "Flyers",
     price: 3500,
     description: "Pack of 250 thick glossy A5 flyers perfect for retail product hand-outs and Westlands expos.",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80",
+    image: triFoldBrochures,
     unit: "pack (250pcs)",
     finishingOptions: ["150gsm Gloss Paper", "250gsm Semi-Matte Paper"]
   },
@@ -315,7 +483,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: "Stickers",
     price: 1500,
     description: "Pack of 100 custom die-cut circular or square stickers printed on premium scratch-proof vinyl.",
-    image: "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=800&q=80",
+    image: rissulStickers,
     unit: "pack (100pcs)",
     finishingOptions: ["Gloss Clear Vinyl", "Matte White Vinyl", "Gloss Gold Foil Vinyl"]
   },
@@ -325,17 +493,17 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: "Canvas / Gifts",
     price: 4900,
     description: "Ultra-vivid printing on woven polyester canvas wrapping around sturdy pine wooden sub-frames.",
-    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80",
+    image: framedLakeCanvas,
     unit: "canvas (16x24 inches)",
     finishingOptions: ["Premium Pine Wrap", "Golden Float Frame"]
   },
   {
     id: "shop-receipt-book",
-    title: "NCR Receipt duplicates Book",
+    title: "NCR Receipt Duplicates Book",
     category: "Receipt Books",
     price: 1500,
     description: "Sequential numbering duplicates receipt tracker pad. Tailor logo graphics placement for your shop.",
-    image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
+    image: orangeNotebooks,
     unit: "book (50 sets)",
     finishingOptions: ["Dup (White/Pink)", "Trip (White/Blue/Yellow)"]
   }
@@ -364,3 +532,295 @@ export const SMARTPRINTS_FAQS = [
     a: "We support direct M-Pesa payments (Paybill / Till), bank transfers, card payments during checkout, and cash-deposit invoices for corporate invoice accounts."
   }
 ];
+
+// TRUST PILLARS
+export const TRUST_PILLARS = [
+  {
+    id: "same-day",
+    title: "Same-Day Express Dispatch",
+    tagline: "Speed Without Compromise",
+    description: "Orders confirmed before 11:30 AM are printed, finished, and dispatched the same day across Westlands and Nairobi.",
+    iconName: "Clock"
+  },
+  {
+    id: "quality-guarantee",
+    title: "Pre-Press Proofing Guarantee",
+    tagline: "Zero Misprints, Zero Surprises",
+    description: "Every file undergoes automated bleed, 300 DPI, and CMYK color-gamut validation before going on our production presses.",
+    iconName: "ShieldCheck"
+  },
+  {
+    id: "county-delivery",
+    title: "47-County Kenya Delivery",
+    tagline: "Doorstep & Regional Depots",
+    description: "Daily courier dispatches via Wells Fargo, G4S, and Speedaf reaching every county from Mombasa to Turkana.",
+    iconName: "Truck"
+  },
+  {
+    id: "direct-whatsapp",
+    title: "Direct WhatsApp Production Desk",
+    tagline: "Personalized Support",
+    description: "Chat directly with a master print technician at Westlands Shop A11 for instant quotes, paper swatch photos, and live order tracking.",
+    iconName: "Phone"
+  }
+];
+
+// KENYA DELIVERY ZONES
+export const DELIVERY_ZONES_LIST: DeliveryZone[] = [
+  {
+    id: "zone-1",
+    zoneName: "Zone 1: Westlands & Parklands",
+    areas: ["Westlands CBD", "Parklands", "Woodvale Grove", "Mpaka Rd", "Sarit Centre", "Westgate", "Spring Valley"],
+    speed: "1 – 2 Hours (Express Rider)",
+    feeEstimate: "KES 200 (Free over KES 10,000)",
+    courierPartner: "SmartPrints Dedicated Messenger",
+    badge: "Fastest Turnaround"
+  },
+  {
+    id: "zone-2",
+    zoneName: "Zone 2: Greater Nairobi",
+    areas: ["Nairobi CBD", "Kilimani", "Upper Hill", "Lavington", "Kileleshwa", "Karen", "Runda", "Gigiri", "Industrial Area", "Embakasi"],
+    speed: "Same-Day (2 – 4 Hours)",
+    feeEstimate: "KES 350 – KES 500",
+    courierPartner: "Direct Motorcycle / Van Dispatch",
+    badge: "Same-Day Guarantee"
+  },
+  {
+    id: "zone-3",
+    zoneName: "Zone 3: Nairobi Metropolitan",
+    areas: ["Kiambu Town", "Ruiru", "Thika", "Kikuyu", "Machakos", "Athi River", "Kitengela", "Ngong", "Limuru"],
+    speed: "Next-Day Morning (Within 24h)",
+    feeEstimate: "KES 450 – KES 650",
+    courierPartner: "Speedaf / Fargo Express",
+    badge: "Next-Day Morning"
+  },
+  {
+    id: "zone-4",
+    zoneName: "Zone 4: Upcountry & All 47 Counties",
+    areas: ["Mombasa", "Kisumu", "Nakuru", "Eldoret", "Nyeri", "Meru", "Kakamega", "Naivasha", "Kisii", "Malindi", "Garissa", "Kitale"],
+    speed: "24 – 48 Hours Overnight",
+    feeEstimate: "KES 600 – KES 1,200",
+    courierPartner: "Wells Fargo / G4S Kenya / Easy Coach Parcel",
+    badge: "Nationwide Tracked"
+  }
+];
+
+// INTERACTIVE QUOTE CONFIGURATION
+export const QUOTE_CONFIG_ITEMS: QuoteConfigItem[] = [
+  {
+    id: "biz-cards",
+    name: "Executive Business Cards",
+    category: "Commercial Printing",
+    basePrice: 12, // KES per card
+    unit: "cards",
+    minimumQty: 100,
+    quantityTiers: [100, 250, 500, 1000, 2000],
+    stockOptions: [
+      { name: "300gsm Silk Artboard", priceMultiplier: 1.0 },
+      { name: "300gsm Matte Artboard", priceMultiplier: 1.05 },
+      { name: "300gsm Heavy Cardstock", priceMultiplier: 1.1 },
+      { name: "300gsm Conqueror Textured White", priceMultiplier: 1.35 },
+      { name: "300gsm Kraft Eco-Board", priceMultiplier: 1.15 }
+    ],
+    finishOptions: [
+      { name: "Velvet Soft-Touch Matte", extraPerUnit: 2.5 },
+      { name: "High-Gloss UV Lamination", extraPerUnit: 2.0 },
+      { name: "Soft-Touch Matte + Spot UV", extraPerUnit: 4.5 },
+      { name: "Metallic Gold / Silver Foil", extraPerUnit: 6.0 }
+    ],
+    leadTimes: [
+      { speed: "express", multiplier: 1.2, label: "Same-Day Express (< 4 hrs)" },
+      { speed: "standard", multiplier: 1.0, label: "Standard (24 hrs)" },
+      { speed: "economy", multiplier: 0.9, label: "Economy (48–72 hrs)" }
+    ]
+  },
+  {
+    id: "rollup-banners",
+    name: "Teardrop Roll-Up Banner Stand",
+    category: "Signage & Displays",
+    basePrice: 6500, // KES per stand
+    unit: "stands",
+    minimumQty: 1,
+    quantityTiers: [1, 2, 4, 8, 15],
+    stockOptions: [
+      { name: "Standard 85cm x 200cm Satin Blockout", priceMultiplier: 1.0 },
+      { name: "Wide 100cm x 200cm Satin Blockout", priceMultiplier: 1.25 },
+      { name: "Double-Sided 85cm x 200cm Display", priceMultiplier: 1.75 }
+    ],
+    finishOptions: [
+      { name: "Heavy Aluminum Teardrop Base + Carry Bag", extraPerUnit: 0 },
+      { name: "Luxury Chrome Wide Base + Hard Case", extraPerUnit: 1500 }
+    ],
+    leadTimes: [
+      { speed: "express", multiplier: 1.15, label: "Same-Day (< 6 hrs)" },
+      { speed: "standard", multiplier: 1.0, label: "Standard (24 hrs)" }
+    ]
+  },
+  {
+    id: "flyers",
+    name: "A5 Marketing Flyers",
+    category: "Commercial Printing",
+    basePrice: 14,
+    unit: "flyers",
+    minimumQty: 250,
+    quantityTiers: [250, 500, 1000, 2500, 5000],
+    stockOptions: [
+      { name: "150gsm Gloss Art Paper", priceMultiplier: 1.0 },
+      { name: "200gsm Silk Art Paper", priceMultiplier: 1.18 },
+      { name: "250gsm Heavy Art Card", priceMultiplier: 1.35 }
+    ],
+    finishOptions: [
+      { name: "Double-Sided Full Color (CMYK)", extraPerUnit: 0 },
+      { name: "Single-Sided Full Color (CMYK)", extraPerUnit: -2.0 },
+      { name: "Double-Sided + Matte Lamination", extraPerUnit: 3.5 }
+    ],
+    leadTimes: [
+      { speed: "express", multiplier: 1.2, label: "Same-Day Express" },
+      { speed: "standard", multiplier: 1.0, label: "Standard (24 hrs)" }
+    ]
+  },
+  {
+    id: "tshirts",
+    name: "Branded Round-Neck Cotton T-Shirts",
+    category: "Branded Apparel",
+    basePrice: 650,
+    unit: "shirts",
+    minimumQty: 10,
+    quantityTiers: [10, 25, 50, 100, 250, 500],
+    stockOptions: [
+      { name: "180gsm 100% Combed Ringspun Cotton", priceMultiplier: 1.0 },
+      { name: "220gsm Heavyweight Luxury Cotton", priceMultiplier: 1.3 }
+    ],
+    finishOptions: [
+      { name: "1-Color Front Chest Screen Print", extraPerUnit: 0 },
+      { name: "Full-Color Front & Back DTF Print", extraPerUnit: 150 },
+      { name: "High-Definition 3D Chest Embroidery", extraPerUnit: 220 }
+    ],
+    leadTimes: [
+      { speed: "standard", multiplier: 1.0, label: "Standard (2–3 Days)" },
+      { speed: "express", multiplier: 1.25, label: "Rush Priority (24 hrs)" }
+    ]
+  },
+  {
+    id: "polos",
+    name: "Executive Branded Pique Polo Shirts",
+    category: "Branded Apparel",
+    basePrice: 1100,
+    unit: "shirts",
+    minimumQty: 10,
+    quantityTiers: [10, 25, 50, 100, 200],
+    stockOptions: [
+      { name: "220gsm Premium Pique Cotton", priceMultiplier: 1.0 },
+      { name: "240gsm Luxury Bio-Washed Pique", priceMultiplier: 1.25 }
+    ],
+    finishOptions: [
+      { name: "Left-Chest Multi-Color Embroidery", extraPerUnit: 0 },
+      { name: "Chest Embroidery + Sleeve / Back Logo", extraPerUnit: 200 }
+    ],
+    leadTimes: [
+      { speed: "standard", multiplier: 1.0, label: "Standard (3–4 Days)" },
+      { speed: "express", multiplier: 1.25, label: "Rush Priority (48 hrs)" }
+    ]
+  },
+  {
+    id: "stickers",
+    name: "Waterproof Die-Cut Vinyl Stickers",
+    category: "Packaging & Labels",
+    basePrice: 15,
+    unit: "stickers",
+    minimumQty: 100,
+    quantityTiers: [100, 250, 500, 1000, 2500],
+    stockOptions: [
+      { name: "Gloss White Vinyl (Waterproof)", priceMultiplier: 1.0 },
+      { name: "Matte Velvet Vinyl (Waterproof)", priceMultiplier: 1.1 },
+      { name: "Clear Transparent Vinyl", priceMultiplier: 1.2 },
+      { name: "Metallic Gold / Holographic Vinyl", priceMultiplier: 1.4 }
+    ],
+    finishOptions: [
+      { name: "Custom Contour Single Die-Cut", extraPerUnit: 0 },
+      { name: "Kiss-Cut Sheets (A4 / A3 Array)", extraPerUnit: -2.0 },
+      { name: "UV Outdoor Anti-Scratch Laminate", extraPerUnit: 3.0 }
+    ],
+    leadTimes: [
+      { speed: "express", multiplier: 1.2, label: "Same-Day Express" },
+      { speed: "standard", multiplier: 1.0, label: "Standard (24 hrs)" }
+    ]
+  },
+  {
+    id: "reflectors",
+    name: "High-Visibility Branded Reflector Vests",
+    category: "Branded Apparel",
+    basePrice: 450,
+    unit: "vests",
+    minimumQty: 10,
+    quantityTiers: [10, 25, 50, 100, 250, 500],
+    stockOptions: [
+      { name: "Neon Lime Green Mesh (OSHA Compliant)", priceMultiplier: 1.0 },
+      { name: "Fluorescent Orange Mesh (OSHA Compliant)", priceMultiplier: 1.0 }
+    ],
+    finishOptions: [
+      { name: "Chest Logo + Back Company Name Print", extraPerUnit: 0 },
+      { name: "Reflective Silver Heat-Transfer Logo", extraPerUnit: 80 }
+    ],
+    leadTimes: [
+      { speed: "express", multiplier: 1.2, label: "Same-Day (Confirmed AM)" },
+      { speed: "standard", multiplier: 1.0, label: "Standard (24 hrs)" }
+    ]
+  },
+  {
+    id: "notebooks",
+    name: "Executive Hardcover Branded Notebooks",
+    category: "Promotional Merchandise",
+    basePrice: 850,
+    unit: "books",
+    minimumQty: 25,
+    quantityTiers: [25, 50, 100, 250, 500],
+    stockOptions: [
+      { name: "A5 Hardcover PU Leatherette + Elastic Band", priceMultiplier: 1.0 },
+      { name: "A5 Linen Fabric Hardcover + Pen Loop", priceMultiplier: 1.25 }
+    ],
+    finishOptions: [
+      { name: "Blind Debossed Company Logo", extraPerUnit: 0 },
+      { name: "Metallic Gold / Silver Foil Stamped Logo", extraPerUnit: 80 },
+      { name: "Full-Color Raised UV Print", extraPerUnit: 120 }
+    ],
+    leadTimes: [
+      { speed: "standard", multiplier: 1.0, label: "Standard (3–4 Days)" },
+      { speed: "express", multiplier: 1.2, label: "Express Priority (48 hrs)" }
+    ]
+  }
+];
+
+// ARTWORK & PRE-PRESS GUIDELINES
+export const ARTWORK_GUIDELINES = {
+  requirements: [
+    {
+      title: "3mm Bleed & Safety Margin",
+      desc: "Extend background artwork 3mm beyond the final cut line. Keep all essential text, logos, and QR codes at least 4mm inside the trim edge to prevent clipping during industrial guillotine cutting.",
+      icon: "Crop"
+    },
+    {
+      title: "CMYK Color Gamut",
+      desc: "Prepare designs in CMYK (Cyan, Magenta, Yellow, Black) color mode, preferably Fogra39 or US Web Coated (SWOP). Screen RGB colors will undergo automated conversion which may subtly shift ultra-neon hues.",
+      icon: "Palette"
+    },
+    {
+      title: "300 DPI High Resolution",
+      desc: "Ensure all bitmap images, photography, and raster textures are minimum 300 DPI at 100% final physical print size. Web images at 72 DPI will appear pixelated on high-precision laser presses.",
+      icon: "Sparkles"
+    },
+    {
+      title: "Convert Fonts to Outlines / Curves",
+      desc: "Convert all typography to vector outlines (Ctrl+Shift+O in Illustrator or Cmd+Shift+O). This guarantees exact font rendering without missing-typeface substitution errors.",
+      icon: "FileCheck"
+    }
+  ],
+  acceptedFormats: [
+    { ext: "PDF", name: "Print-Ready PDF/X-1a or PDF/X-4 (Recommended)", bestFor: "All Commercial & Multi-Page Printing" },
+    { ext: "AI", name: "Adobe Illustrator (.ai)", bestFor: "Vector Logos, Cut Contours & Signage" },
+    { ext: "PSD", name: "Adobe Photoshop (.psd)", bestFor: "Layered 300 DPI Raster Compositions" },
+    { ext: "SVG", name: "Scalable Vector Graphics (.svg)", bestFor: "Crisp Plotting & Contour Die-Cuts" },
+    { ext: "TIFF", name: "Tagged Image File (.tiff, LZW lossless)", bestFor: "Fine Art Canvas & Billboard Graphics" },
+    { ext: "PNG/JPG", name: "High-Res PNG / JPEG (300 DPI minimum)", bestFor: "General Photo & Sticker Submissions" }
+  ]
+};

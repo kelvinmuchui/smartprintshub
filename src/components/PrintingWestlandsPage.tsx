@@ -48,7 +48,7 @@ export default function PrintingWestlandsPage() {
               <article key={service.id} className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm">
                 <h3 className="text-xl font-display font-bold mb-3">{service.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">{service.description}</p>
-                <p className="mt-4 text-xs font-bold text-blue-600 uppercase tracking-wider">{service.startingPrice}</p>
+                <p className="mt-4 text-xs font-bold text-blue-600 uppercase tracking-wider">Custom Quote on Request</p>
               </article>
             ))}
           </div>

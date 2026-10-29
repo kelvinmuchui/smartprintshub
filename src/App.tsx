@@ -34,7 +34,11 @@ import {
   BookOpen,
   ChevronDown,
   Globe,
-  Fingerprint
+  Fingerprint,
+  Home,
+  Info,
+  ArrowUp,
+  LayoutGrid
 } from "lucide-react";
 
 import Navbar from "./components/Navbar";
@@ -44,6 +48,18 @@ import AboutUs from "./components/AboutUs";
 import CartDrawer from "./components/CartDrawer";
 import SeoStatusDashboard from "./components/SeoStatusDashboard";
 import { PortfolioGallery } from "./components/PortfolioGallery";
+import { TrustPillars } from "./components/TrustPillars";
+import { ServicesSection } from "./components/ServicesSection";
+import { PricingRateMatrix } from "./components/PricingRateMatrix";
+import { QuickQuoteCalculator } from "./components/QuickQuoteCalculator";
+import { QuoteRequestModal } from "./components/QuoteRequestModal";
+import { QuoteRequestSection } from "./components/QuoteRequestSection";
+import { DeliveryCoverageMatrix } from "./components/DeliveryCoverageMatrix";
+import { ArtworkPrepressGuide } from "./components/ArtworkPrepressGuide";
+import { ReviewsSection } from "./components/ReviewsSection";
+import { HeroShowcaseSlider } from "./components/HeroShowcaseSlider";
+import { ThreeStepProcess } from "./components/ThreeStepProcess";
+import { FloatingWhatsAppCTA } from "./components/FloatingWhatsAppCTA";
 
 import { SERVICES_LIST, PORTFOLIO_LIST, SHOP_PRODUCTS, SMARTPRINTS_FAQS } from "./data";
 import { CartItem, TrackingStatus } from "./types";
@@ -55,7 +71,13 @@ export default function App() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSeoDashboardOpen, setIsSeoDashboardOpen] = useState(false);
-  const [expandedService, setExpandedService] = useState<string | null>(null);
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [quotePresetId, setQuotePresetId] = useState<string>("biz-cards");
+
+  const handleOpenQuoteModal = (serviceId?: string) => {
+    if (serviceId) setQuotePresetId(serviceId);
+    setIsQuoteModalOpen(true);
+  };
 
   // Shop item customization states
   const [selectedProductSizes, setSelectedProductSizes] = useState<Record<string, string>>({});
@@ -64,6 +86,28 @@ export default function App() {
 
   // Active query status tracking helper
   const [recentTrackCode, setRecentTrackCode] = useState<TrackingStatus | null>(null);
+
+  // Quote configurator selection
+  const [selectedQuoteProductId, setSelectedQuoteProductId] = useState<string>("biz-cards");
+
+  const handleSelectForQuote = (serviceId: string) => {
+    const mapping: Record<string, string> = {
+      "biz-cards": "biz-cards",
+      "color-print": "flyers",
+      "rollup-banners": "rollup-banners",
+      "teardrop-flags": "rollup-banners",
+      "branded-tshirts": "tshirts",
+      "polos": "polos",
+      "reflector-jackets": "reflectors",
+      "stickers-labels": "stickers",
+      "corporate-docs": "notebooks",
+      "merch-printing": "notebooks"
+    };
+    setSelectedQuoteProductId(mapping[serviceId] || "biz-cards");
+    setTab("calculator");
+    const el = document.getElementById("calculator");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   // Apply dark mode theme class to HTML node
   useEffect(() => {
@@ -135,145 +179,131 @@ export default function App() {
         setIsCartOpen={setIsCartOpen}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        onOpenQuoteModal={handleOpenQuoteModal}
       />
 
       {/* Main Container Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-24 md:space-y-36">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 md:py-12 space-y-24 md:space-y-36">
         
-        {/* SECTION 1: HOME PAGE BENTO GRID */}
+        {/* SECTION 1: HOME PAGE HERO SHOWCASE & BENTO GRID */}
         <section id="home" className="scroll-mt-24">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="space-y-8"
+            className="space-y-10"
           >
+            {/* 1. ANIMATED HERO ARTWORK SHOWCASE SLIDER */}
+            <HeroShowcaseSlider 
+              onQuoteClick={() => {
+                setTab("calculator");
+                const el = document.getElementById("calculator");
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              onExploreServices={() => {
+                setTab("services");
+                const el = document.getElementById("services");
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              onOpenQuoteModal={handleOpenQuoteModal}
+            />
+
+            {/* 2. THREE SUMMARY BENTO TRUST & LOCATION CARDS */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-auto">
               
-              {/* Primary Bento Layout - Large Screen Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-auto">
-                
-                {/* 1. HERO CARD (Col Span 12) */}
-                <div className="lg:col-span-12 bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-10 border border-slate-100 dark:border-slate-800 shadow-xl relative overflow-hidden flex flex-col justify-between">
-                  {/* Glowing background floating blurs */}
-                  <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-blue-600/10 to-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-slate-500/5 to-transparent rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="relative z-10 space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold font-sans uppercase tracking-wider border border-blue-500/20">
-                      <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                      <span>Westlands' Premium Print & Custom Branding Experts</span>
-                    </div>
-
-                    <h1 className="text-3xl sm:text-5xl lg:text-5xl font-display font-black text-slate-900 dark:text-white leading-[1.1] tracking-tight">
-                      Printing Services in Westlands, Nairobi That Bring Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-[#003B9C] to-blue-500 dark:from-blue-400 dark:to-blue-450">Ideas to Life</span>
-                    </h1>
-
-                    <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl">
-                      Fast, affordable and high-quality digital printing in Westlands. From corporate business cards & durable roll-up banners to eCitizen & iTax cyber operations.
-                    </p>
-                  </div>
-
-                  {/* CTAs */}
-                  <div className="flex flex-wrap gap-3 mt-8 relative z-10">
-                    <button
-                      onClick={() => {
-                        setTab("services");
-                        document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                      }}
-                      className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#003B9C] to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white font-sans text-xs font-black uppercase tracking-widest shadow-lg shadow-blue-500/20 flex items-center gap-2 transition-transform hover:scale-[1.02]"
-                    >
-                      <span>Explore Services</span>
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={() => {
-                        setTab("contact");
-                        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                      }}
-                      className="px-6 py-3.5 rounded-xl bg-white dark:bg-slate-850 border border-slate-205 dark:border-slate-800 text-[#0A1B3D] dark:text-white font-sans text-xs font-black uppercase tracking-widest hover:border-blue-500 transition-colors"
-                    >
-                      Request Quotation
-                    </button>
-                    <a
-                      href="https://wa.me/254743603068"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="px-6 py-3.5 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 text-white font-sans text-xs font-black uppercase tracking-widest flex items-center gap-1.5 transition-transform hover:scale-[1.02]"
-                    >
-                      <Phone className="w-4 h-4 text-blue-450" />
-                      <span>WhatsApp Chat</span>
-                    </a>
-                  </div>
+              {/* 3. CORE STATISTICS GRID CARD */}
+              <div className="lg:col-span-4 bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm flex justify-between items-center">
+                <div className="flex flex-col text-left">
+                  <span className="text-3xl font-display font-black text-black dark:text-blue-400">10,000+</span>
+                  <span className="text-[10px] uppercase font-black text-black dark:text-slate-300 tracking-wider">High Fidelity Prints</span>
                 </div>
-
-                {/* 3. CORE STATISTICS GRID CARD */}
-                <div className="lg:col-span-4 bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-100 dark:border-slate-800 shadow-md flex justify-between items-center">
-                  <div className="flex flex-col">
-                    <span className="text-3xl font-display font-black text-[#0A1B3D] dark:text-blue-400">10,000+</span>
-                    <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">High Fidelity Prints</span>
-                  </div>
-                  <div className="h-8 w-px bg-slate-200 dark:bg-slate-800" />
-                  <div className="flex flex-col">
-                    <span className="text-3xl font-display font-black text-blue-600 dark:text-blue-400">99.8%</span>
-                    <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Client Smiles</span>
-                  </div>
-                  <div className="h-8 w-px bg-slate-200 dark:bg-slate-800" />
-                  <div className="flex -space-x-2.5">
-                    <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-300 flex items-center justify-center text-[10px] font-bold text-slate-800">KW</div>
-                    <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-800">DO</div>
-                    <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-blue-600 flex items-center justify-center text-[9px] font-black text-white">+3k</div>
-                  </div>
+                <div className="h-8 w-px bg-slate-200 dark:bg-slate-800" />
+                <div className="flex flex-col text-left">
+                  <span className="text-3xl font-display font-black text-blue-600 dark:text-blue-400">99.8%</span>
+                  <span className="text-[10px] uppercase font-black text-black dark:text-slate-300 tracking-wider">Client Smiles</span>
                 </div>
+                <div className="h-8 w-px bg-slate-200 dark:bg-slate-800" />
+                <div className="flex -space-x-2.5">
+                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-300 flex items-center justify-center text-[10px] font-bold text-slate-900">KW</div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-900">DO</div>
+                  <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-blue-600 flex items-center justify-center text-[9px] font-black text-white">+3k</div>
+                </div>
+              </div>
 
-                {/* 4. SAME-DAY DISPATCH BANNER BOX */}
-                <div className="lg:col-span-4 bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-lg flex flex-col justify-between">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Clock className="w-4.5 h-4.5 text-blue-400" />
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-blue-400 font-bold">
-                      Express Delivery Dispatch
-                    </span>
-                  </div>
-                  <h4 className="text-base font-bold text-white uppercase tracking-tight">
-                    Same-Day Printing Westlands
+              {/* 4. SAME-DAY DISPATCH BANNER BOX */}
+              <div className="lg:col-span-4 bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-sm flex flex-col justify-between text-left">
+                <div className="flex items-center gap-2 mb-2">
+                  <Clock className="w-4.5 h-4.5 text-blue-400" />
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-blue-400 font-bold">
+                    Express Delivery Dispatch
+                  </span>
+                </div>
+                <h4 className="text-base font-bold text-white uppercase tracking-tight">
+                  Same-Day Printing Westlands
+                </h4>
+                <p className="text-slate-400 text-xs mt-1">
+                  Standard business cards, pamphlets & glossy brochures ordered before 11:30 AM are dispatched by G4S / Wells Fargo same evening!
+                </p>
+              </div>
+
+              {/* 5. LOCATIVE PHYSICAL ANCHOR */}
+              <div className="lg:col-span-4 bg-gradient-to-br from-[#003B9C] to-slate-900 rounded-3xl p-6 text-white flex flex-col justify-between shadow-sm relative overflow-hidden text-left border border-blue-900/50">
+                <div className="absolute right-0 bottom-0 w-32 h-32 bg-white/5 rounded-full blur-xl" />
+                <div>
+                  <span className="text-[9px] uppercase font-mono tracking-widest text-white/80 font-bold block mb-1">
+                    Our Westlands Address
+                  </span>
+                  <h4 className="text-lg font-display font-black uppercase tracking-tight">
+                    Westlands Shop A11
                   </h4>
-                  <p className="text-slate-400 text-xs mt-1">
-                    Standard business cards, pamphlets & glossy brochures ordered before 11:30 AM are dispatched by G4S / Wells Fargo same evening!
+                  <p className="text-white/80 text-xs mt-1">
+                    Located conveniently inside the premium Westlands Market block. Directly opposite public parking bays.
                   </p>
                 </div>
+                <button 
+                  onClick={() => { 
+                    setTab("contact"); 
+                    const el = document.getElementById("contact");
+                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
+                  className="w-full mt-4 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl font-mono text-[10px] uppercase tracking-wider cursor-pointer"
+                >
+                  View Directions & Maps
+                </button>
+              </div>
 
-                {/* 5. LOCATIVE PHYSICAL ANCHOR */}
-                <div className="lg:col-span-4 bg-gradient-to-br from-[#28A745] to-[#003B9C] rounded-3xl p-6 text-white flex flex-col justify-between shadow-lg relative overflow-hidden">
-                  <div className="absolute right-0 bottom-0 w-32 h-32 bg-white/5 rounded-full blur-xl" />
-                  <div>
-                    <span className="text-[9px] uppercase font-mono tracking-widest text-white/80 font-bold block mb-1">
-                      Our Westlands Address
-                    </span>
-                    <h4 className="text-lg font-display font-black uppercase tracking-tight">
-                      Westlands Shop A11
-                    </h4>
-                    <p className="text-white/80 text-xs mt-1">
-                      Located conveniently inside the premium Westlands Market block. Directly opposite public parking bays.
-                    </p>
-                  </div>
-                  <button 
-                    onClick={() => { 
-                      setTab("contact"); 
-                      const el = document.getElementById("contact");
-                      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }}
-                    className="w-full mt-4 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl font-mono text-[10px] uppercase tracking-wider"
-                  >
-                    View Directions & Maps
-                  </button>
-                </div>
+            </div>
 
+            {/* 3. THREE STEP PROCESS (From Idea to Doorstep in 3 Steps) */}
+            <div className="pt-4">
+              <ThreeStepProcess 
+                onStartClick={() => {
+                  setTab("calculator");
+                  const el = document.getElementById("calculator");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                onUploadClick={() => {
+                  setTab("artwork-guide");
+                  const el = document.getElementById("artwork-guide");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+              />
+            </div>
+
+              {/* SECTION: TRUST PILLARS */}
+              <div className="pt-4">
+                <TrustPillars 
+                  onQuoteClick={() => {
+                    setTab("calculator");
+                    const el = document.getElementById("calculator");
+                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }} 
+                />
               </div>
 
               {/* SECTION: ABOUT SMARTPRINTS HUB */}
-              <div className="pt-6">
-                
+              <div id="about" className="scroll-mt-24 pt-6">
                 {/* About Page section matching the mockup exactly */}
                 <AboutUs />
-
               </div>
 
               {/* FEATURED SERVICES BENTO BANNER */}
@@ -304,14 +334,14 @@ export default function App() {
                   {SERVICES_LIST.slice(0, 3).map((s) => (
                     <div 
                       key={s.id} 
-                      className="p-5 bg-slate-50 dark:bg-slate-850 rounded-2xl border border-slate-200/50 dark:border-slate-800 flex flex-col justify-between hover:shadow-md transition-shadow"
+                      className="p-5 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200/50 dark:border-slate-700 flex flex-col justify-between hover:shadow-md transition-shadow"
                     >
                       <div>
                         <span className="text-[9px] uppercase font-mono tracking-widest text-blue-600 dark:text-blue-400 font-bold block mb-1">{s.category} Service</span>
-                        <h4 className="font-display font-bold text-base text-slate-850/90 dark:text-white leading-tight mb-2">
+                        <h4 className="font-display font-bold text-base text-slate-900 dark:text-white leading-tight mb-2">
                           {s.title}
                         </h4>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                        <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                           {s.description}
                         </p>
                       </div>
@@ -372,13 +402,13 @@ export default function App() {
                   </div>
                   
                   <div className="grid grid-cols-3 gap-3 pt-4">
-                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-850 border border-slate-150 rounded text-slate-500 font-bold block">
+                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-700 dark:text-slate-300 font-bold block">
                       Aura Coffee
                     </span>
-                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-850 border border-slate-150 rounded text-slate-500 font-bold block">
+                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-700 dark:text-slate-300 font-bold block">
                       Kilimani Tech
                     </span>
-                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-850 border border-slate-150 rounded text-slate-500 font-bold block">
+                    <span className="text-xs font-mono text-center p-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded text-slate-700 dark:text-slate-300 font-bold block">
                       Westlands Realty
                     </span>
                   </div>
@@ -389,174 +419,118 @@ export default function App() {
             </motion.div>
           </section>
 
-          {/* SECTION 2: SIMPLIFIED SERVICES */}
-          <section id="services" className="scroll-mt-24 py-16">
+          {/* SECTION 2: OFFICIAL RATE CARD & PRICING MATRIX (DS CREATIONS STYLE BUNDLES & RATES) */}
+          <section id="pricing" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
-              className="space-y-12"
             >
-              <div className="text-center max-w-2xl mx-auto space-y-3 mb-8">
-                <span className="text-[10px] text-blue-600 dark:text-blue-400 font-mono font-bold uppercase tracking-widest block">
-                  Our Professional Services
-                </span>
-                <h2 className="text-3xl sm:text-4xl font-display font-black text-slate-900 dark:text-white uppercase tracking-tight">
-                  High-Precision Printing & Finishing
-                </h2>
-                <div className="h-1 w-12 bg-blue-600 mx-auto rounded-full mt-2" />
-              </div>
-
-              {/* Responsive Services Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {[
-                  {
-                    id: "large-format",
-                    title: "Large Format Prints",
-                    icon: Maximize,
-                    description: "High resolution large format printing solutions designed to make your brand stand out.",
-                    items: [
-                      { name: "Luxury Roll Up Banners", price: "from KES 6,500" },
-                      { name: "Waterproof Vinyl Stickers", price: "from KES 15" },
-                      { name: "Vehicle & Window UV Wraps", price: "Custom Quote" },
-                      { name: "A0, A1, A2 Color Plotting", price: "from KES 350" }
-                    ]
-                  },
-                  {
-                    id: "digital-printing",
-                    title: "Digital Printing",
-                    icon: FileText,
-                    description: "We provide high-quality and excellent digital printing and finishing services for a wide array of products.",
-                    items: [
-                      { name: "Executive Business Cards", price: "from KES 1,200/100pcs" },
-                      { name: "Vivid Color Laser Printing", price: "from KES 50/page" },
-                      { name: "Company Profiles & Booklets", price: "from KES 2,500" },
-                      { name: "High-Volume Laser Copying", price: "from KES 5/page" }
-                    ]
-                  },
-                  {
-                    id: "book-binding",
-                    title: "Book Binding",
-                    icon: BookOpen,
-                    description: "We offer specialized book binding services to give your documents a professional finish.",
-                    items: [
-                      { name: "Hard Cover Thesis Binding", price: "Premium finishing" },
-                      { name: "NCR Receipt & Invoice Books", price: "from KES 1,500/book" },
-                      { name: "Wire-O Spiral Soft Binding", price: "Corporate portfolios" },
-                      { name: "Perfect Glue Binding", price: "Crisp presentation finish" }
-                    ]
-                  },
-                  {
-                    id: "visa-banners",
-                    title: "Visa Application & Posters/Banners",
-                    icon: Globe,
-                    description: "Comprehensive travel visual promotional printing, biometric visa compliant photos, and visa documentation packs.",
-                    items: [
-                      { name: "Biometric Visa Photos", price: "from KES 305" },
-                      { name: "Embassy Document Printing", price: "from KES 10/page" },
-                      { name: "High-Gloss Travel Posters", price: "from KES 350" },
-                      { name: "Promotional Travel Agency Banners", price: "from KES 6,500" }
-                    ]
-                  },
-                  {
-                    id: "digital-registration",
-                    title: "Business & Digital Registry",
-                    icon: Fingerprint,
-                    description: "Fast-track company setup, digital registration, eCitizen support, and local tax compliance portal assistance.",
-                    items: [
-                      { name: "Business Registration Assistance", price: "from KES 4,500" },
-                      { name: "KRA PIN & iTax Filing support", price: "from KES 300" },
-                      { name: "eCitizen Portal Service Access", price: "from KES 300" },
-                      { name: "Smart SHA & NHIF/NSSF Registration", price: "from KES 300" }
-                    ]
-                  }
-                ].map((service) => {
-                  const IconComp = service.icon;
-                  const isExpanded = expandedService === service.id;
-                  
-                  return (
-                    <motion.div
-                      layout
-                      key={service.id}
-                      className="bg-white dark:bg-slate-900 rounded-[2rem] p-8 sm:p-10 border border-slate-150/80 dark:border-slate-800 shadow-sm flex flex-col justify-between items-center text-center hover:shadow-md transition-shadow relative overflow-hidden h-full"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    >
-                      <div className="flex flex-col items-center w-full">
-                        {/* Soft blue icon circle */}
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-50 dark:bg-blue-950/20 flex items-center justify-center text-blue-500 mb-6 transition-transform hover:scale-105 duration-300">
-                          <IconComp className="w-8 h-8 sm:w-10 sm:h-10" />
-                        </div>
-
-                        {/* Title */}
-                        <h4 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                          {service.title}
-                        </h4>
-
-                        {/* Description */}
-                        <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed mb-6 max-w-sm">
-                          {service.description}
-                        </p>
-
-                        {/* Expandable sub-items */}
-                        <AnimatePresence>
-                          {isExpanded && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              className="w-full border-t border-slate-100 dark:border-slate-800 pt-5 mt-2 space-y-3 text-left overflow-hidden"
-                            >
-                              {service.items.map((item, idx) => (
-                                <div key={idx} className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 font-sans border-b border-dashed border-slate-100 dark:border-slate-800/60 pb-2 last:border-none last:pb-0">
-                                  <span className="text-blue-500 dark:text-blue-400 font-bold">✓</span>
-                                  <span className="font-semibold text-slate-800 dark:text-slate-200">{item.name}</span>
-                                </div>
-                              ))}
-                              
-                              <div className="pt-4 flex gap-2 w-full">
-                                <button
-                                  onClick={() => {
-                                    setTab("contact");
-                                    const el = document.getElementById("contact");
-                                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                                  }}
-                                  className="w-full py-2.5 bg-slate-900 dark:bg-slate-800 hover:bg-black text-white rounded-xl text-[10px] font-black uppercase tracking-wider transition-colors cursor-pointer"
-                                >
-                                  Inquire Premium Quote
-                                </button>
-                                <a
-                                  href={`https://wa.me/254743603068?text=Hello%20Smart%20Printers%20Hub,%20I'd%20like%20to%20get%20a%20quote%20for%20${encodeURIComponent(service.title)}.`}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="px-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center transition-colors cursor-pointer"
-                                  title="WhatsApp Chat Inquiry"
-                                >
-                                  <Phone className="w-4 h-4" />
-                                </a>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-
-                      {/* Read More button trigger */}
-                      <button
-                        onClick={() => setExpandedService(isExpanded ? null : service.id)}
-                        className="flex items-center gap-1.5 text-blue-500 hover:text-blue-600 font-bold text-xs uppercase tracking-wider transition-colors mt-6 pt-2 group cursor-pointer"
-                      >
-                        <span>{isExpanded ? "Show Less" : "Read More"}</span>
-                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : "group-hover:translate-y-0.5"}`} />
-                      </button>
-                    </motion.div>
-                  );
-                })}
-              </div>
+              <PricingRateMatrix 
+                onSelectForCalculator={handleSelectForQuote} 
+                onRequestQuote={handleOpenQuoteModal}
+              />
             </motion.div>
           </section>
 
-          {/* SECTION 3: PORTFOLIO GALLERY */}
-          <PortfolioGallery items={PORTFOLIO_LIST} />
+          {/* SECTION 3: PRODUCTION SERVICES CATALOG */}
+          <section id="services" className="scroll-mt-24">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
+            >
+              <ServicesSection onSelectForQuote={(id) => handleOpenQuoteModal(id)} />
+            </motion.div>
+          </section>
+
+          {/* SECTION 4: SEND A QUOTE REQUEST (WHATSAPP OR EMAIL WITH MULTI-SERVICE SELECTION) */}
+          <section id="quote-request" className="scroll-mt-24">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
+            >
+              <QuoteRequestSection 
+                presetServiceId={quotePresetId}
+                onOrderTrackRequested={(code) => {
+                  const el = document.getElementById("order-tracker");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+              />
+            </motion.div>
+          </section>
+
+          {/* SECTION 5: INSTANT QUOTE CALCULATOR */}
+          <section id="calculator" className="scroll-mt-24">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
+            >
+              <QuickQuoteCalculator 
+                onAddToCart={handleAddToCart}
+                presetProductId={selectedQuoteProductId}
+              />
+            </motion.div>
+          </section>
+
+          {/* SECTION 6: LIVE ORDER & QUOTE STATUS TRACKER */}
+          <section id="order-tracker" className="scroll-mt-24">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
+            >
+              <OrderTracker />
+            </motion.div>
+          </section>
+
+          {/* SECTION 4: PORTFOLIO GALLERY */}
+          <section id="portfolio" className="scroll-mt-24">
+            <PortfolioGallery items={PORTFOLIO_LIST} />
+          </section>
+
+          {/* SECTION 5: KENYA DELIVERY COVERAGE MATRIX */}
+          <section id="delivery" className="scroll-mt-24">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
+            >
+              <DeliveryCoverageMatrix />
+            </motion.div>
+          </section>
+
+          {/* SECTION 6: ARTWORK PRE-PRESS GUIDE */}
+          <section id="artwork-guide" className="scroll-mt-24">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
+            >
+              <ArtworkPrepressGuide />
+            </motion.div>
+          </section>
+
+          {/* SECTION 7: REVIEWS & CLIENT STORIES */}
+          <section id="reviews" className="scroll-mt-24">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5 }}
+            >
+              <ReviewsSection />
+            </motion.div>
+          </section>
 
 
 
@@ -693,32 +667,50 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* Standard local review query submission */}
-                  <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-6 rounded-3xl shadow-sm">
-                    <h4 className="text-sm font-bold uppercase text-slate-850 dark:text-white mb-3">
-                      Submit direct Query
-                    </h4>
+                  {/* Direct Quotation & Service Dispatch Card */}
+                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-7 rounded-3xl shadow-sm space-y-4">
+                    <div>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 block mb-1">
+                        Instant Quote Dispatch
+                      </span>
+                      <h4 className="text-base font-display font-bold uppercase text-slate-900 dark:text-white">
+                        Send a Custom Printing Quote
+                      </h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 font-sans mt-1">
+                        Select any of our commercial services, customize your paper stock and finishes, and send your request straight to WhatsApp or Email.
+                      </p>
+                    </div>
 
-                    <div className="space-y-3">
-                      <div>
-                        <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">Your Name</label>
-                        <input type="text" placeholder="Kelvin Muchui" className="w-full text-xs p-2.5 bg-slate-50 dark:bg-slate-800 border dark:border-slate-755 rounded-lg text-slate-850 dark:text-white focus:border-blue-500 outline-none" />
-                      </div>
-                      <div>
-                        <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">WhatsApp number</label>
-                        <input type="tel" placeholder="+254743603068" className="w-full text-xs p-2.5 bg-slate-50 dark:bg-slate-800 border dark:border-slate-755 rounded-lg text-slate-850 dark:text-white focus:border-blue-500 outline-none" />
-                      </div>
-                      <div>
-                        <label className="block text-[10px] uppercase font-bold text-slate-500 mb-1">Message</label>
-                        <textarea rows={3} placeholder="Please print 100 business cards using conqueror stock with gold stamp. Contact on WhatsApp..." className="w-full text-xs p-2 bg-slate-50 dark:bg-slate-800 border dark:border-slate-755 rounded-lg text-slate-850 dark:text-white focus:border-blue-500 outline-none" />
-                      </div>
-
+                    <div className="pt-2 space-y-2.5">
                       <button 
-                        onClick={() => alert("Thank you. Query successfully recorded at Westlands Shop A11 portal!")}
-                        className="w-full py-2.5 bg-[#003B9C] text-white rounded-lg text-xs font-bold uppercase tracking-wider"
+                        type="button"
+                        onClick={() => handleOpenQuoteModal()}
+                        className="w-full py-3 px-4 bg-[#003B9C] hover:bg-blue-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-md transition-transform hover:scale-[1.01]"
                       >
-                        Submit Query Note
+                        <FileText className="w-4 h-4 text-blue-200" />
+                        <span>Open Full Quote Generator</span>
+                        <ChevronRight className="w-4 h-4" />
                       </button>
+
+                      <div className="grid grid-cols-2 gap-2 pt-1">
+                        <a
+                          href="https://wa.me/254743603068?text=Hello%20SmartPrints%20Hub,%20I%20would%20like%20to%20request%20a%20printing%20quotation."
+                          target="_blank"
+                          rel="noreferrer"
+                          className="py-2.5 px-3 bg-slate-900 dark:bg-slate-800 hover:bg-black text-white rounded-xl text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors border border-slate-700"
+                        >
+                          <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                          <span>WhatsApp Desk</span>
+                        </a>
+
+                        <a
+                          href="mailto:smartprintershub1@gmail.com?subject=Print%20Quote%20Request%20-%20SmartPrints%20Hub&body=Hello%20SmartPrints%20Hub%20Team,%0A%0AI%20would%20like%20to%20request%20a%20quotation%20for%20the%20following%20printing%20services:%0A%0A-%20Service:%0A-%20Quantity:%0A-%20Paper/Finishing:%0A-%20Turnaround:%0A%0APlease%20get%20back%20to%20me.%0A%0AThank%20you!"
+                          className="py-2.5 px-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-xl text-[11px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors border border-slate-200 dark:border-slate-700"
+                        >
+                          <Mail className="w-3.5 h-3.5 text-blue-500" />
+                          <span>Email Direct</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
 
@@ -772,9 +764,11 @@ export default function App() {
           <div>
             <span className="text-[10px] font-bold text-white uppercase tracking-wider block mb-3 font-mono">Useful links</span>
             <ul className="space-y-1 text-xs">
-              <li><a href="/printing-in-westlands/" className="hover:text-white">Printing in Westlands</a></li>
+              <li><button onClick={() => { setTab("calculator"); document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Instant Quote Calculator</button></li>
+              <li><button onClick={() => { setTab("delivery"); document.getElementById("delivery")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Delivery Across 47 Counties</button></li>
+              <li><button onClick={() => { setTab("artwork-guide"); document.getElementById("artwork-guide")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Artwork Pre-Press Guide</button></li>
+              <li><a href="/printing-in-westlands/" className="hover:text-white">Printing in Westlands Guide</a></li>
               <li><button onClick={() => { setTab("services"); document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Our Printing Services</button></li>
-              <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Request Custom Quote</button></li>
               <li><button onClick={() => { setTab("contact"); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Westlands Shop A11 Directions</button></li>
               <li><a href="/sitemap.xml" target="_blank" rel="noreferrer" className="hover:text-white text-slate-400 font-mono text-[11px] block">XML Sitemap</a></li>
               <li><a href="/robots.txt" target="_blank" rel="noreferrer" className="hover:text-white text-slate-400 font-mono text-[11px] block">Robots.txt Directives</a></li>
@@ -791,6 +785,17 @@ export default function App() {
               Sunday: 7:30 AM – 8:30 PM<br />
               Fulfillment: Shop A11, Westlands Market
             </p>
+            <div className="mt-3 pt-2.5 border-t border-slate-900">
+              <span className="text-[10px] text-slate-400 block mb-1 font-mono uppercase tracking-wider font-bold">Email Orders:</span>
+              <a 
+                href="mailto:smartprintershub1@gmail.com" 
+                className="inline-flex items-center gap-1.5 text-xs text-amber-300 font-mono font-black hover:text-amber-200 transition-colors"
+                title="Email SmartPrints Hub"
+              >
+                <Mail className="w-3.5 h-3.5 text-amber-400" />
+                <span>smartprintershub1@gmail.com</span>
+              </a>
+            </div>
           </div>
 
         </div>
@@ -813,33 +818,123 @@ export default function App() {
         </div>
       </footer>
 
-      {/* FLOATING ACTION BOTTOM PANEL BAR FOR MOBILE */}
-      <div className="fixed bottom-4 left-4 right-4 z-40 lg:hidden flex gap-2">
-        <a 
-          href="tel:+254743603068"
-          className="flex-1 py-3 bg-blue-700 text-white rounded-xl text-xs font-black uppercase tracking-wider text-center shadow-lg"
-        >
-          Call Manager
-        </a>
-        <a 
-          href="https://wa.me/254743603068?text=Hello%20SmartPrints%20Hub,%20I%20need%20a%20print%20quote."
-          target="_blank"
-          style={{ backgroundColor: "#003B9C" }}
-          rel="noreferrer"
-          className="flex-1 py-3 text-white rounded-xl text-xs font-black uppercase tracking-wider text-center shadow-lg"
-        >
-          WhatsApp Chat
-        </a>
-        <button 
-          onClick={() => { 
-            setTab("contact"); 
-            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
-          }}
-          className="flex-1 py-3 bg-[#0A1B3D] text-white border border-slate-800 rounded-xl text-[10px] font-black uppercase tracking-widest text-center shadow-lg"
-        >
-          Request Quote
-        </button>
-      </div>
+      {/* MOBILE BOTTOM NAVIGATION TAB BAR (DS CREATIONS STYLE) */}
+      <nav 
+        aria-label="Mobile Navigation Bar"
+        className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 dark:bg-slate-900/95 border-t border-slate-200 dark:border-slate-800 backdrop-blur-md px-2 py-1 shadow-[0_-4px_16px_rgba(0,0,0,0.06)]"
+      >
+        <div className="flex items-center justify-around max-w-md mx-auto">
+          {/* 1. Home */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("home");
+              document.getElementById("home")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "home" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Home className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Home</span>
+            {tab === "home" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 2. Services */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("services");
+              document.getElementById("services")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "services" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Printer className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Services</span>
+            {tab === "services" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 3. Portfolio */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("portfolio");
+              document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "portfolio" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <LayoutGrid className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Portfolio</span>
+            {tab === "portfolio" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 4. About */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("about");
+              document.getElementById("about")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "about" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Info className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">About</span>
+            {tab === "about" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 5. Contact */}
+          <button
+            type="button"
+            onClick={() => {
+              setTab("contact");
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-lg transition-colors cursor-pointer ${
+              tab === "contact" 
+                ? "text-[#003B9C] dark:text-blue-400 font-bold" 
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Phone className="w-4.5 h-4.5" />
+            <span className="text-[10px] mt-0.5 tracking-tight">Contact</span>
+            {tab === "contact" && (
+              <span className="w-1 h-1 rounded-full bg-[#003B9C] dark:bg-blue-400 mt-0.5" />
+            )}
+          </button>
+
+          {/* 6. Scroll to Top (DS Creations style) */}
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="Scroll to top"
+            className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md hover:bg-blue-700 transition-colors cursor-pointer shrink-0 ml-1"
+          >
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
+        </div>
+      </nav>
 
       {/* SHOPPING CART INTEGRATION DRAWER POPUP */}
       <CartDrawer 
@@ -856,6 +951,20 @@ export default function App() {
         isOpen={isSeoDashboardOpen} 
         onClose={() => setIsSeoDashboardOpen(false)} 
       />
+
+      {/* FULL QUOTE REQUEST GENERATOR MODAL (DIRECT WHATSAPP & EMAIL DISPATCH) */}
+      <QuoteRequestModal
+        isOpen={isQuoteModalOpen}
+        onClose={() => setIsQuoteModalOpen(false)}
+        presetServiceId={quotePresetId}
+        onOrderTrackRequested={(trackingCode) => {
+          const el = document.getElementById("order-tracker");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
+      />
+
+      {/* FLOATING WHATSAPP CTA WITH HEARTBEAT & EXPANDING RIPPLE (inspired by printshop.co.ke) */}
+      <FloatingWhatsAppCTA />
 
     </div>
   );
