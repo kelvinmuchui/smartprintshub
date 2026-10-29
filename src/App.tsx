@@ -50,8 +50,6 @@ import SeoStatusDashboard from "./components/SeoStatusDashboard";
 import { PortfolioGallery } from "./components/PortfolioGallery";
 import { TrustPillars } from "./components/TrustPillars";
 import { ServicesSection } from "./components/ServicesSection";
-import { PricingRateMatrix } from "./components/PricingRateMatrix";
-import { QuickQuoteCalculator } from "./components/QuickQuoteCalculator";
 import { QuoteRequestModal } from "./components/QuoteRequestModal";
 import { QuoteRequestSection } from "./components/QuoteRequestSection";
 import { DeliveryCoverageMatrix } from "./components/DeliveryCoverageMatrix";
@@ -73,10 +71,18 @@ export default function App() {
   const [isSeoDashboardOpen, setIsSeoDashboardOpen] = useState(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [quotePresetId, setQuotePresetId] = useState<string>("biz-cards");
+  const [quickQuoteDetails, setQuickQuoteDetails] = useState("");
+  const [quickQuoteQuantity, setQuickQuoteQuantity] = useState("");
 
   const handleOpenQuoteModal = (serviceId?: string) => {
     if (serviceId) setQuotePresetId(serviceId);
     setIsQuoteModalOpen(true);
+  };
+
+  const handleScrollToQuickQuote = () => {
+    setTab("pricing");
+    const el = document.getElementById("pricing");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   // Shop item customization states
@@ -86,28 +92,6 @@ export default function App() {
 
   // Active query status tracking helper
   const [recentTrackCode, setRecentTrackCode] = useState<TrackingStatus | null>(null);
-
-  // Quote configurator selection
-  const [selectedQuoteProductId, setSelectedQuoteProductId] = useState<string>("biz-cards");
-
-  const handleSelectForQuote = (serviceId: string) => {
-    const mapping: Record<string, string> = {
-      "biz-cards": "biz-cards",
-      "color-print": "flyers",
-      "rollup-banners": "rollup-banners",
-      "teardrop-flags": "rollup-banners",
-      "branded-tshirts": "tshirts",
-      "polos": "polos",
-      "reflector-jackets": "reflectors",
-      "stickers-labels": "stickers",
-      "corporate-docs": "notebooks",
-      "merch-printing": "notebooks"
-    };
-    setSelectedQuoteProductId(mapping[serviceId] || "biz-cards");
-    setTab("calculator");
-    const el = document.getElementById("calculator");
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   // Apply dark mode theme class to HTML node
   useEffect(() => {
@@ -145,17 +129,6 @@ export default function App() {
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
   // Cart operations
-  const handleAddToCart = (newItem: CartItem) => {
-    setCart((prev) => {
-      const existing = prev.find((i) => i.id === newItem.id);
-      if (existing) {
-        return prev.map((i) => i.id === newItem.id ? { ...i, quantity: i.quantity + newItem.quantity } : i);
-      }
-      return [...prev, newItem];
-    });
-    setIsCartOpen(true);
-  };
-
   const handleRemoveFromCart = (id: string) => {
     setCart((prev) => prev.filter((i) => i.id !== id));
   };
@@ -194,11 +167,7 @@ export default function App() {
           >
             {/* 1. ANIMATED HERO ARTWORK SHOWCASE SLIDER */}
             <HeroShowcaseSlider 
-              onQuoteClick={() => {
-                setTab("calculator");
-                const el = document.getElementById("calculator");
-                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-              }}
+              onQuoteClick={handleScrollToQuickQuote}
               onExploreServices={() => {
                 setTab("services");
                 const el = document.getElementById("services");
@@ -276,11 +245,7 @@ export default function App() {
             {/* 3. THREE STEP PROCESS (From Idea to Doorstep in 3 Steps) */}
             <div className="pt-4">
               <ThreeStepProcess 
-                onStartClick={() => {
-                  setTab("calculator");
-                  const el = document.getElementById("calculator");
-                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
+                onStartClick={handleScrollToQuickQuote}
                 onUploadClick={() => {
                   setTab("artwork-guide");
                   const el = document.getElementById("artwork-guide");
@@ -292,11 +257,7 @@ export default function App() {
               {/* SECTION: TRUST PILLARS */}
               <div className="pt-4">
                 <TrustPillars 
-                  onQuoteClick={() => {
-                    setTab("calculator");
-                    const el = document.getElementById("calculator");
-                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }} 
+                  onQuoteClick={handleScrollToQuickQuote}
                 />
               </div>
 
@@ -419,7 +380,7 @@ export default function App() {
             </motion.div>
           </section>
 
-          {/* SECTION 2: OFFICIAL RATE CARD & PRICING MATRIX (DS CREATIONS STYLE BUNDLES & RATES) */}
+          {/* SECTION 2: QUICK QUOTE */}
           <section id="pricing" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -427,10 +388,72 @@ export default function App() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
             >
-              <PricingRateMatrix 
-                onSelectForCalculator={handleSelectForQuote} 
-                onRequestQuote={handleOpenQuoteModal}
-              />
+              <div className="rounded-3xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-lg">
+                <div className="mx-auto max-w-3xl text-center">
+                  <span className="text-xs font-mono font-bold tracking-widest uppercase text-blue-600 dark:text-blue-400">
+                    Quick quote
+                  </span>
+                  <h2 className="mt-2 text-2xl sm:text-4xl font-display font-black text-slate-900 dark:text-white tracking-tight">
+                    What would you like printed?
+                  </h2>
+                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
+                    Tell us what you need and send it straight to our team on WhatsApp. We’ll confirm the price and turnaround.
+                  </p>
+
+                  <form
+                    className="mt-6 grid gap-3 text-left sm:grid-cols-[1fr_180px_auto]"
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      const message = [
+                        "Hello SmartPrints Hub, I’d like a quote.",
+                        `Print job: ${quickQuoteDetails.trim()}`,
+                        quickQuoteQuantity.trim()
+                          ? `Quantity: ${quickQuoteQuantity.trim()}`
+                          : "Quantity: Not sure yet"
+                      ].join("\n");
+                      window.open(
+                        `https://wa.me/254743603068?text=${encodeURIComponent(message)}`,
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    }}
+                  >
+                    <label className="sr-only" htmlFor="quick-quote-details">What do you need printed?</label>
+                    <input
+                      id="quick-quote-details"
+                      type="text"
+                      required
+                      value={quickQuoteDetails}
+                      onChange={(event) => setQuickQuoteDetails(event.target.value)}
+                      placeholder="e.g. 500 business cards"
+                      className="min-w-0 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+                    />
+                    <label className="sr-only" htmlFor="quick-quote-quantity">Quantity (optional)</label>
+                    <input
+                      id="quick-quote-quantity"
+                      type="text"
+                      value={quickQuoteQuantity}
+                      onChange={(event) => setQuickQuoteQuantity(event.target.value)}
+                      placeholder="Quantity (optional)"
+                      className="min-w-0 rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+                    />
+                    <button
+                      type="submit"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#003B9C] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-700"
+                    >
+                      <Send className="h-4 w-4" />
+                      Get my quote
+                    </button>
+                  </form>
+
+                  <a
+                    href="#quote-request"
+                    className="mt-4 inline-flex text-sm font-semibold text-blue-700 hover:underline dark:text-blue-400"
+                  >
+                    Need more options? Use the detailed quote form
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </section>
 
@@ -464,22 +487,7 @@ export default function App() {
             </motion.div>
           </section>
 
-          {/* SECTION 5: INSTANT QUOTE CALCULATOR */}
-          <section id="calculator" className="scroll-mt-24">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <QuickQuoteCalculator 
-                onAddToCart={handleAddToCart}
-                presetProductId={selectedQuoteProductId}
-              />
-            </motion.div>
-          </section>
-
-          {/* SECTION 6: LIVE ORDER & QUOTE STATUS TRACKER */}
+          {/* SECTION 5: LIVE ORDER & QUOTE STATUS TRACKER */}
           <section id="order-tracker" className="scroll-mt-24">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -571,14 +579,13 @@ export default function App() {
                     </span>
 
                     <h3 className="text-xl font-display font-black text-slate-900 dark:text-white mb-4">
-                      Physical Map: Westlands Market Shop A11
+                      Find Us: Westlands Market Shop A11
                     </h3>
 
-                    {/* Google Map iframe embedded for accurate Westlands directions */}
                     <div className="w-full h-80 rounded-2xl overflow-hidden shadow-inner border border-slate-200">
                       <iframe 
                         title="SmartPrints Hub Westlands Location"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8541989018445!2d36.804130674844624!3d-1.259648998728469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1737f19cb5bf%3A0x7d65b1d9bf59df!2sWestlands%20Market!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
+                        src="https://maps.google.com/maps?q=-1.26354,36.80345&z=17&output=embed"
                         className="w-full h-full border-0"
                         allowFullScreen={true}
                         loading="lazy"
@@ -587,14 +594,17 @@ export default function App() {
                     </div>
 
                     <div className="mt-4 flex flex-wrap justify-between items-center gap-3">
-                      <span className="text-xs text-slate-500 font-mono">Westlands, Nairobi, Kenya</span>
+                      <div className="text-xs text-slate-500">
+                        <span className="block font-semibold text-slate-700 dark:text-slate-300">Westlands, Nairobi, Kenya</span>
+                        <span className="font-mono">-1.26354, 36.80345</span>
+                      </div>
                       <a
-                        href="https://google.com/maps/place/Westlands+Market+Nairobi"
+                        href="https://www.google.com/maps/dir/?api=1&destination=-1.26354%2C36.80345"
                         target="_blank"
-                        rel="noreferrer"
-                        className="px-4 py-2 bg-[#003B9C] text-white rounded-lg text-xs font-bold uppercase tracking-wider transition-colors"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-[#003B9C] text-white rounded-lg text-xs font-bold uppercase tracking-wider transition-colors hover:bg-blue-700"
                       >
-                        Launch Directions tool
+                        Get Directions
                       </a>
                     </div>
                   </div>
@@ -764,7 +774,7 @@ export default function App() {
           <div>
             <span className="text-[10px] font-bold text-white uppercase tracking-wider block mb-3 font-mono">Useful links</span>
             <ul className="space-y-1 text-xs">
-              <li><button onClick={() => { setTab("calculator"); document.getElementById("calculator")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Instant Quote Calculator</button></li>
+              <li><button onClick={handleScrollToQuickQuote} className="hover:text-white">Get a Quick Quote</button></li>
               <li><button onClick={() => { setTab("delivery"); document.getElementById("delivery")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Delivery Across 47 Counties</button></li>
               <li><button onClick={() => { setTab("artwork-guide"); document.getElementById("artwork-guide")?.scrollIntoView({ behavior: "smooth", block: "start" }); }} className="hover:text-white">Artwork Pre-Press Guide</button></li>
               <li><a href="/printing-in-westlands/" className="hover:text-white">Printing in Westlands Guide</a></li>

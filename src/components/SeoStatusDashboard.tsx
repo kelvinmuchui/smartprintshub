@@ -833,7 +833,7 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
                           LocalBusiness & PrintShop Schema
                         </span>
                         <span className="text-[11px] text-slate-500">
-                          Westlands Market Shop A11, GPS (-1.2678, 36.8078), M-Pesa, Mon-Sat hours
+                          Westlands Market Shop A11, GPS (-1.26354, 36.80345), M-Pesa, Mon-Sat hours
                         </span>
                       </div>
                       <span className="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold rounded">

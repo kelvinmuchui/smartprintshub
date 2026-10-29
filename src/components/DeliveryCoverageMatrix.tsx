@@ -175,9 +175,9 @@ export const DeliveryCoverageMatrix: React.FC = () => {
           </div>
         </div>
         <a
-          href="https://google.com/maps/place/Westlands+Market+Nairobi"
+          href="https://www.google.com/maps/dir/?api=1&destination=-1.26354%2C36.80345"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
           className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl text-xs font-mono uppercase tracking-wider shrink-0 transition-colors"
         >
           Open Google Maps Directions
