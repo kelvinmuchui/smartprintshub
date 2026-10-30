@@ -9,8 +9,8 @@ interface SeoHeadProps {
 export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
   useEffect(() => {
     const title = isLocalLandingPage
-      ? "Printing in Westlands Nairobi | 0743 603 068 | SmartPrints Hub"
-      : "Printing in Westlands Nairobi | 0743 603 068 | SmartPrints Hub";
+      ? "Printing in Westlands Nairobi | SmartPrints Hub"
+      : "Printing in Westlands Nairobi | SmartPrints Hub";
     const description = isLocalLandingPage
       ? PRIMARY_DESCRIPTION
       : PRIMARY_DESCRIPTION;
@@ -60,8 +60,8 @@ export default function SeoHead({ isLocalLandingPage = false }: SeoHeadProps) {
           },
           geo: {
             "@type": "GeoCoordinates",
-            latitude: -1.26354,
-            longitude: 36.80345
+            latitude: -1.2678,
+            longitude: 36.8078
           },
           priceRange: "$$",
           sameAs: [

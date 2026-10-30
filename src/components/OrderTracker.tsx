@@ -226,9 +226,9 @@ export default function OrderTracker() {
                   </p>
                   <div className="mt-3 flex gap-2">
                     <a
-                      href="https://www.google.com/maps/dir/?api=1&destination=-1.26354%2C36.80345"
+                      href="https://maps.google.com/?q=Westlands+Market+Westlands"
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noreferrer"
                       className="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors"
                     >
                       Get Directions

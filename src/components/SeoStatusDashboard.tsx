@@ -726,7 +726,7 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
                   <div className="p-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs">
                     <span className="font-bold text-emerald-600 block mb-1">✓ Recommended</span>
                     <p className="text-slate-500 text-[11px]">
-                      "Executive Gold-Foil Business Cards 300gsm silk matte black printed in Westlands Nairobi - SmartPrints Hub"
+                      "Executive Gold-Foil Business Cards 400gsm duplexed matte black printed in Westlands Nairobi - SmartPrints Hub"
                     </p>
                   </div>
                   <div className="p-3 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs">
@@ -751,7 +751,7 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
                     Standardized HTML Image Embed Template
                   </h4>
                   <button
-                    onClick={() => handleCopy('<img src="/path/to/image.jpg" alt="Executive Business Cards 300gsm matte laminated in Westlands Nairobi | SmartPrints Hub" loading="lazy" decoding="async" referrerPolicy="no-referrer" />', "embed-template")}
+                    onClick={() => handleCopy('<img src="/path/to/image.jpg" alt="Executive Business Cards 350gsm matte laminated in Westlands Nairobi | SmartPrints Hub" loading="lazy" decoding="async" referrerPolicy="no-referrer" />', "embed-template")}
                     className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-600 hover:text-white rounded-lg text-xs font-mono font-semibold transition-colors flex items-center gap-1"
                   >
                     {copiedId === "embed-template" ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
@@ -833,7 +833,7 @@ export default function SeoStatusDashboard({ isOpen, onClose }: SeoStatusDashboa
                           LocalBusiness & PrintShop Schema
                         </span>
                         <span className="text-[11px] text-slate-500">
-                          Westlands Market Shop A11, GPS (-1.26354, 36.80345), M-Pesa, Mon-Sat hours
+                          Westlands Market Shop A11, GPS (-1.2678, 36.8078), M-Pesa, Mon-Sat hours
                         </span>
                       </div>
                       <span className="px-2 py-0.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-mono text-[10px] font-bold rounded">
